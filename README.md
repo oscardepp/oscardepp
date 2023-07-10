@@ -1,8 +1,6 @@
 ### Hi there 👋
 
-<a href="https://mail.google.com/mail/u/1/?view=cm&fs=1&to=oscardepp@gmail.com&tf=1
-">oscardepp@gmail.com</a>
-
+I'm a student at Northwestern pursuing a B.S. in Applied Mathematics and M.S. in Computer Science. You'll find computer science and mechanical engineering projects here!
 <!--
 **oscardepp/oscardepp** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 
