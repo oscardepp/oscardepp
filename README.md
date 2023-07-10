@@ -1,5 +1,8 @@
 ### Hi there 👋
 
+<a href="https://mail.google.com/mail/u/1/?view=cm&fs=1&to=userid@gmail.com&tf=1
+">oscardepp@gmail.com</a>
+
 <!--
 **oscardepp/oscardepp** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 
