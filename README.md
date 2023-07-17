@@ -1,4 +1,4 @@
-### Hi there 👋
+### Hi
 
 I'm a student at Northwestern pursuing a B.S. in Applied Mathematics and M.S. in Computer Science. 
 
