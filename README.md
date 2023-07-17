@@ -10,6 +10,7 @@ On my GitHub page, you'll find computer science, applied mathematics, robotics, 
 - [Simple SQL environment in C](https://github.com/oscardepp/SimpleSQL)
 - [Autonomous Drone Project that picks up boxes](https://github.com/oscardepp/autonomousdrone)
 - [CAD Projects(Aerospace, Product Design, Commercial Design)](https://github.com/oscardepp/CADProjects)
+- [OpenStreetMaps Navigation System in C++](https://github.com/oscardepp/OSM-Navigation)
 
 
 
