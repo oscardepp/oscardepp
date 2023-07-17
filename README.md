@@ -1,6 +1,10 @@
 ### Hi there 👋
 
-I'm a student at Northwestern pursuing a B.S. in Applied Mathematics and M.S. in Computer Science. You'll find computer science and mechanical engineering projects here!
+I'm a student at Northwestern pursuing a B.S. in Applied Mathematics and M.S. in Computer Science. 
+
+On my GitHub page, you'll find projects I've done in computer science, applied mathematics, robotics, and mechanical engineering.  Some notable ones I've done are creating a SQL environment in C, an autonomous drone that picks up boxes, Machine Dynamics Simulations in Python, and some CAD projects I've done over the years. 
+
+
 <!--
 **oscardepp/oscardepp** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 
