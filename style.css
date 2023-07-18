@@ -1,9 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap');
 
 * {
-    box-sizing: border-box;
     margin: 0; 
     padding: 0; 
+    box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
 }
 
@@ -43,7 +43,7 @@
     height: 60px; 
     background: url('https://github.com/oscardepp/oscardepp/assets/137336589/92e02de5-afa0-4ba7-b573-2bd9728a39d8');
     background-repeat: no-repeat;
-    background-size: 30px;
+    background-size: 50px;
     filter:invert(1);
     background-position: center;
     cursor: pointer;
@@ -51,7 +51,7 @@
 .toggle.active {
     background: url('https://github.com/oscardepp/oscardepp/assets/137336589/a35ee31d-1818-43cc-be0c-fad41bd7a0d5');
     background-repeat: no-repeat;
-    background-size: 25px;
+    background-size: 35px;
     filter:invert(1);
     background-position: center;
     cursor: pointer;
