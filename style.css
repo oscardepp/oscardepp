@@ -44,6 +44,7 @@
     background: url('https://github.com/oscardepp/oscardepp/assets/137336589/92e02de5-afa0-4ba7-b573-2bd9728a39d8');
     background-repeat: no-repeat;
     background-size: 30px;
+    filter:invert(1);
     background-position: center;
     cursor: pointer;
 }
@@ -51,6 +52,7 @@
     background: url('https://github.com/oscardepp/oscardepp/assets/137336589/a35ee31d-1818-43cc-be0c-fad41bd7a0d5');
     background-repeat: no-repeat;
     background-size: 25px;
+    filter:invert(1);
     background-position: center;
     cursor: pointer;
 }
@@ -120,4 +122,23 @@
 
 .text a:hover {
     letter-spacing: 6px;
+}
+
+.social {
+    position: aboslute; 
+    bottom: 20px; 
+    z-index: 10; 
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    
+}
+.social li {
+    list-style: none; 
+
+}
+
+.social li a {
+    display: inline-block;
+    filter:invert(1);
 }
