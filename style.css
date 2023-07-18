@@ -125,7 +125,7 @@
 }
 
 .social {
-    position: aboslute; 
+    position: absolute; 
     bottom: 20px; 
     z-index: 10; 
     display: flex;
@@ -140,5 +140,26 @@
 
 .social li a {
     display: inline-block;
-    filter:invert(1);
+    filter:invert(1); /* invert */
+    margin-right: 30px; /* bring them apart */
+    transform: scale(0.75);
+    transition: 0.5s; 
+
+}
+
+.social li a:hover {
+    transform: scale(1) translateY(-15px); /* negative goes up */
+}
+
+@media(max-width: 991px) {
+    .showcase, .showcase header {
+        padding: 40px;
+    }
+    .text h2 {
+        font-size: 3em; 
+    }
+    .text h3 {
+        font-size: 1 em; 
+    }
+    
 }
