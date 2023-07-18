@@ -62,18 +62,19 @@
     <script>
         const menuToggle = document.querySelector('.toggle')
         const showcase = document.querySelector('.showcase')
+
         menuToggle.addEventListener('click',() => { // () => means funciton()
           menuToggle.classList.toggle('active')
-          menuToggle.classList.toggle('active')
+          showcase.classList.toggle('active')
         })
     </script>  
-    <footer>
+    <!-- <footer>
       <p id="p1"> </p>
       <script>
         var date = new Date();
         var current_date = " Copyright &copy "+ date.getFullYear()+" Oscar Depp | All Rights Reserved";
         document.getElementById("p1").innerHTML = current_date;
       </script>
-    </footer>
+    </footer> -->
   </body>
 </html>

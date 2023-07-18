@@ -25,7 +25,7 @@
     background: powderblue;
     color: #fff; 
     z-index: 2; /* always in front of the menu, if its a lower number, then menu would be on top*/
-    transition: 0.35s;
+    transition: 0.5s;
 }
 
 .showcase.active {
