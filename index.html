@@ -20,7 +20,7 @@
       <video src ="waves.mov" muted loop autoplay></video>
 
       <div class="overlay"></div>
-      
+
       <div class="text">
         <h2> Never Stop</h2>
         <h3> Exploring the World</h3>
@@ -59,7 +59,14 @@
       </div>
     </div> -->
   
-
+    <script>
+        const menuToggle = document.querySelector('.toggle')
+        const showcase = document.querySelector('.showcase')
+        menuToggle.addEventListener('click',() => { // () => means funciton()
+          menuToggle.classList.toggle('active')
+          menuToggle.classList.toggle('active')
+        })
+    </script>  
     <footer>
       <p id="p1"> </p>
       <script>

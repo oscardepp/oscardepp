@@ -1,5 +1,11 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap');
 
+:root {
+    --samurai-blue: #1C3563;
+
+}
+
+
 * {
     margin: 0; 
     padding: 0; 
@@ -19,7 +25,13 @@
     background: powderblue;
     color: #fff; 
     z-index: 2; /* always in front of the menu, if its a lower number, then menu would be on top*/
+    transition: 0.35s;
 }
+
+.showcase.active {
+    right: 300px; 
+}
+
 .showcase header {
     position: absolute;
     top: 0;
@@ -151,7 +163,35 @@
     transform: scale(1) translateY(-15px); /* negative goes up */
 }
 
-@media(max-width: 991px) {
+.menu {
+    position: absolute;
+    color: var(--overlay-color);
+    top: 0;
+    right: 0;
+    height:100%;
+    width: 300px;
+    display: flex; 
+    align-items: top; 
+    justify-content: center; 
+}
+
+.menu ul {
+    position: relative; 
+    list-style: none; 
+}
+
+.menu ul li a { 
+    text-decoration: none; 
+    font-size: 24 px; 
+    color: #fff;
+}
+
+.menu ul li a:hover {
+    color:aqua;
+
+}
+
+@media(max-width: 800px) {
     .showcase, .showcase header {
         padding: 40px;
     }
