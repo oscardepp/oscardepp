@@ -177,12 +177,12 @@
 .menu ul {
     position: relative; 
     list-style: none; 
+    margin-top: 50px;
 }
 
 .menu ul li a { 
     text-decoration: none; 
     font-size: 24px;
-    padding: 30px 30px;  
     color: #fff;
 }
 
