@@ -165,7 +165,7 @@
 
 .menu {
     position: absolute;
-    color: var(--overlay-color);
+    color: var(--samurai-blue);
     top: 0;
     right: 0;
     height:100%;
