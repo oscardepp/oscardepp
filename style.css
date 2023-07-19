@@ -136,6 +136,22 @@
     z-index: 2; /* always in front of the menu, if its a lower number, then menu would be on top*/
 }
 
+.inner {
+    padding-top: 20px; 
+}
+
+.header {
+    text-align:center;
+    color: #fff;
+    padding: 1rem;
+    position: relative;
+}
+/* .header:after{
+    content: '';
+    bottom:0; 
+    left: 50%; 
+} */
+
 
 .text {
     position: absolute; 
@@ -261,7 +277,7 @@
         z-index: 999; 
         
     }
-    .toggle{
+    .toggle {
         display: none;
     }
     .mobile-nav-toggle {
