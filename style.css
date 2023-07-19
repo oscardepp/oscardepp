@@ -324,7 +324,7 @@
 @media(max-width: 35em) {
     .primary-navigation {
         display: none;
-
+        transition: 0.5s;
     } 
     .showcase.active {
          right:0.02px;
