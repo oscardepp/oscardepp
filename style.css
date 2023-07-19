@@ -261,6 +261,9 @@
         z-index: 999; 
         
     }
+    .toggle{
+        display: none;
+    }
     .mobile-nav-toggle {
         position: absolute; 
         z-index: 1000; 
