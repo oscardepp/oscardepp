@@ -16,7 +16,7 @@
     position: absolute; 
     right: 0; /* very right is zero*/
     width: 100%; 
-    min-height: 50vh; /* viewport height: full height of the screen*/
+    min-height: 100vh; /* viewport height: full height of the screen*/
     padding: 100px; /* controls spacing from edge*/
     display: flex; /* puts stuff in a row */
     justify-content: space-between; /* space is distributed between items of section*/
@@ -237,7 +237,7 @@
 
 @media(max-width: 35em) {
     .primary-navigation {
-        --gap: 2em; 
+        --gap: 2em; /*for flex helps with flex either one way or another*/
         position: fixed;
         flex-direction: column;
         padding: min(15vh,5rem) 1rem; 
