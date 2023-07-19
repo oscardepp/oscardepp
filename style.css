@@ -52,10 +52,10 @@
     text-transform: uppercase;
     cursor: pointer;
 }
-
+ 
 .primary-navigation {
     list-style: none;
-    padding: 0; 
+    padding: 50; 
     margin: 0;
     background: hsl(0 0% 0% / .5);
 }
