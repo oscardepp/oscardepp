@@ -37,7 +37,7 @@
 }
 
 .showcase header {
-    position: relative; 
+    position: absolute; 
     top: 0;
     left: 0; 
     width: 100%;
@@ -97,7 +97,7 @@
 }
 
 .showcase video {
-    position: relative; 
+    position: absolute; 
     top: 0; 
     left: 0; 
     width: 100%; 
@@ -107,7 +107,7 @@
 }
 
 .overlay{
-    position: relative; 
+    position: absolute; 
     top: 0; 
     left: 0; 
     width: 100%; 
