@@ -27,6 +27,11 @@
     transition: 0.5s;
 }
 
+.flex {
+    display: flex;
+    gap: var(--gap, 4rem);
+}
+
 .showcase.active {
     right: 300px; 
 }
