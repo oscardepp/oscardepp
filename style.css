@@ -16,7 +16,7 @@
     position: absolute; 
     right: 0; /* very right is zero*/
     width: 100%; 
-    min-height: 100vh; /* viewport height: full height of the screen*/
+    min-height: 50vh; /* viewport height: full height of the screen*/
     padding: 100px; /* controls spacing from edge*/
     display: flex; /* puts stuff in a row */
     justify-content: space-between; /* space is distributed between items of section*/
@@ -202,7 +202,6 @@
     color: white;
     font-size: 15px;
     padding: 10px 30px; 
- 
     text-align: center;
     
  }
