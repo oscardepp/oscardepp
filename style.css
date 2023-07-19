@@ -2,6 +2,7 @@
 
 :root {
     --samurai-blue: #1C3563;
+    --cream: #F4E7D3;
 
 }
 
@@ -136,21 +137,33 @@
     z-index: 2; /* always in front of the menu, if its a lower number, then menu would be on top*/
 }
 
+.aboutme {
+    background-color: var(--samurai-blue);
+
+}
+
 .inner {
     padding-top: 20px; 
 }
 
-.header {
-    text-align:center;
-    color: #fff;
+.inner.header {
+    text-align: center;
+    color: var(--cream);
     padding: 1rem;
     position: relative;
 }
-/* .header:after{
-    content: '';
+
+/* create a line after each header */ 
+.inner.header:after{
+    content: ''; 
+    position: absolute;
     bottom:0; 
-    left: 50%; 
-} */
+    left: 50%;
+    transform: translateX(-50%);
+    height: 4px; 
+    width:100px; 
+    background-color: #2ecc71;
+}
 
 
 .text {
