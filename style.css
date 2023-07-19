@@ -122,7 +122,7 @@
 }
 
 .contact {
-    /* position: relative;  */
+    position: relative;  
     right: 0; /* very right is zero*/
     width: 100%; 
     min-height: 100vh; /* viewport height: full height of the screen*/
