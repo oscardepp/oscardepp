@@ -97,7 +97,7 @@
 }
 
 .showcase video {
-    /* position: absolute;  */
+    position: absolute; 
     top: 0; 
     left: 0; 
     width: 100%; 
@@ -107,7 +107,7 @@
 }
 
 .overlay{
-    /* position: absolute;  */
+    position: absolute; 
     top: 0; 
     left: 0; 
     width: 100%; 
@@ -255,9 +255,21 @@
         --gap: 2em; /*for flex helps with flex either one way or another*/
         position: fixed;
         flex-direction: column;
-        padding: min(15vh,5rem) 1rem; 
+        padding: min(30vh,10rem) 1rem; 
         inset: 0 0 0 30%;
+        z-index: 999; 
         
+    }
+    .mobile-nav-toggle {
+        position: absolute; 
+        z-index: 1000; 
+        background: url('https://github.com/oscardepp/oscardepp/assets/137336589/92e02de5-afa0-4ba7-b573-2bd9728a39d8'); 
+        background-repeat: no-repeat;
+        border: 0; 
+        width: 2rem; 
+        aspect-ratio: 1; 
+        top: 2rem; 
+        right: 2rem;  
     }
     .showcase, .showcase header {
         padding: 40px;
