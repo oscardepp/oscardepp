@@ -3,7 +3,7 @@
 :root {
     --samurai-blue: #1C3563;
     --cream: #F4E7D3;
-    --dark-lavender: ##E6E6FA;
+    --lavender: #8e8ede;
 
 }
 
@@ -78,7 +78,7 @@
 }
 
 .primary-navigation a:hover {
-    color: var(--dark-lavender);
+    color: var(--lavender);
 }
 
 .toggle {
@@ -126,6 +126,49 @@
     background: rgba(0,0,0,0.5); /* alpha is fourth input, 1 for 0,0,0 means its total black*/ 
 }
 
+.text {
+    position: absolute; 
+    z-index: 10; 
+}
+
+.text h2 {
+    font-size: 5em; /* em just multiplies what its parent is */
+    font-weight: 800;
+    line-height: 1em;
+    text-transform: uppercase;
+}
+.text h3 {
+    font-size: 3em; /* em just multiplies what its parent is */
+    font-weight: 600;
+    line-height: 1em;
+    text-transform: uppercase;
+}
+
+.text p {
+    font-size: 1.1em;
+    margin: 20px 0; /* moves it down 20 pixels top and bottom*/
+    font-weight: 400; 
+    max-width: 700px;
+}
+
+.text a {
+    display: inline-block;
+    font-size: 1em; 
+    background: #fff; 
+    padding: 10px 30px; 
+    text-decoration: none; 
+    color: #111;
+    margin-top: 10px; 
+    text-transform: uppercase; 
+    letter-spacing: 2px; 
+    transition: 0.2s;
+}
+
+.text a:hover {
+    letter-spacing: 6px;
+}
+
+
 .contact {
     position: relative; 
     right: 0; /* very right is zero*/
@@ -140,6 +183,21 @@
     z-index: 2; /* always in front of the menu, if its a lower number, then menu would be on top*/
 }
 
+/* <!---------about----------> */
+.about {
+    background-color: var(--samurai-blue);
+    padding: 80px 0;
+    color: var(--cream);
+}
+
+.about.row {
+    display: flex;
+    justify-content: space-between; 
+    flex-wrap: wrap;
+
+}
+
+/* -------about me page----------*/ 
 .aboutme {
     background-color: var(--samurai-blue);
 }
@@ -208,49 +266,6 @@
     width: 50px; 
 
 
-}
-
-
-.text {
-    position: absolute; 
-    z-index: 10; 
-}
-
-.text h2 {
-    font-size: 5em; /* em just multiplies what its parent is */
-    font-weight: 800;
-    line-height: 1em;
-    text-transform: uppercase;
-}
-.text h3 {
-    font-size: 3em; /* em just multiplies what its parent is */
-    font-weight: 600;
-    line-height: 1em;
-    text-transform: uppercase;
-}
-
-.text p {
-    font-size: 1.1em;
-    margin: 20px 0; /* moves it down 20 pixels top and bottom*/
-    font-weight: 400; 
-    max-width: 700px;
-}
-
-.text a {
-    display: inline-block;
-    font-size: 1em; 
-    background: #fff; 
-    padding: 10px 30px; 
-    text-decoration: none; 
-    color: #111;
-    margin-top: 10px; 
-    text-transform: uppercase; 
-    letter-spacing: 2px; 
-    transition: 0.2s;
-}
-
-.text a:hover {
-    letter-spacing: 6px;
 }
 
 .social {
@@ -327,13 +342,13 @@
 @media(max-width: 35em) {
     .primary-navigation {
         display: none;
-        transition: 0.5s;
+        transition: 1s;
     } 
     .showcase.active {
          right:0.02px;
     }
     .primary-navigation.active {
-        display :flex;
+        display: flex;
         --gap: 2em; /*for flex helps with flex either one way or another*/
         position: fixed;
         flex-direction: column;
@@ -351,15 +366,4 @@
     .text h3 {
         font-size: 1 em; 
     }
-    /* .mobile-nav-toggle {
-        position: absolute; 
-        z-index: 1000; 
-        background: url('https://github.com/oscardepp/oscardepp/assets/137336589/92e02de5-afa0-4ba7-b573-2bd9728a39d8'); 
-        background-repeat: no-repeat;
-        border: 0; 
-        width: 5rem; 
-        aspect-ratio: 1; 
-        top: 2rem; 
-        right: 2rem;  
-    }     */
 }
