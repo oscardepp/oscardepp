@@ -13,7 +13,7 @@
 }
 
 .showcase {
-    position: absolute; 
+    position: static; 
     right: 0; /* very right is zero*/
     width: 100%; 
     min-height: 100dvh; /* viewport height: full height of the screen*/
@@ -37,7 +37,7 @@
 }
 
 .showcase header {
-    position: absolute; 
+    position: relative; 
     top: 0;
     left: 0; 
     width: 100%;
@@ -77,7 +77,7 @@
 }
 
 .toggle {
-    position: relative; /* within the header its position is relative*/
+    position: fixed; /* within the header its position is relative*/
     width: 60px; 
     height: 60px; 
     background: url('https://github.com/oscardepp/oscardepp/assets/137336589/92e02de5-afa0-4ba7-b573-2bd9728a39d8');
@@ -97,7 +97,7 @@
 }
 
 .showcase video {
-    position: absolute; 
+    position: relative; 
     top: 0; 
     left: 0; 
     width: 100%; 
@@ -107,7 +107,7 @@
 }
 
 .overlay{
-    position: absolute; 
+    position: relative; 
     top: 0; 
     left: 0; 
     width: 100%; 
@@ -122,7 +122,7 @@
 }
 
 .contact {
-    /* position: relative;   */
+    position: relative; 
     right: 0; /* very right is zero*/
     width: 100%; 
     min-height: 100dvh; /* viewport height: full height of the screen*/
