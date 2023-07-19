@@ -330,20 +330,9 @@
         inset: 0 0 0 30%;
         z-index: 999; 
         
-    }
+    } 
     .toggle {
         display: none;
-    }
-    .mobile-nav-toggle {
-        position: absolute; 
-        z-index: 1000; 
-        background: url('https://github.com/oscardepp/oscardepp/assets/137336589/92e02de5-afa0-4ba7-b573-2bd9728a39d8'); 
-        background-repeat: no-repeat;
-        border: 0; 
-        width: 2rem; 
-        aspect-ratio: 1; 
-        top: 2rem; 
-        right: 2rem;  
     }
     .showcase, .showcase header {
         padding: 40px;
@@ -354,5 +343,15 @@
     .text h3 {
         font-size: 1 em; 
     }
-    
+}
+.mobile-nav-toggle {
+    position: absolute; 
+    z-index: 1000; 
+    background: url('https://github.com/oscardepp/oscardepp/assets/137336589/92e02de5-afa0-4ba7-b573-2bd9728a39d8'); 
+    background-repeat: no-repeat;
+    border: 0; 
+    width: 5rem; 
+    aspect-ratio: 1; 
+    top: 2rem; 
+    right: 2rem;  
 }
