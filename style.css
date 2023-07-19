@@ -3,6 +3,7 @@
 :root {
     --samurai-blue: #1C3563;
     --cream: #F4E7D3;
+    --dark-lavender: #734F96;
 
 }
 
@@ -74,7 +75,10 @@
     font-size: 24px;
     font-weight: 700; 
     margin-inline-end: .5em;  /* goes in the right direction if it goes in the right direction*/
+}
 
+.primary-navigation a:hover {
+    color: var(--dark-lavender);
 }
 
 .toggle {
@@ -303,7 +307,6 @@
 
 .menu ul li a:hover {
     color:#E6E6FA;
-
 }
 
 .footer {
@@ -330,6 +333,7 @@
          right:0.02px;
     }
     .primary-navigation.active {
+        display :flex;
         --gap: 2em; /*for flex helps with flex either one way or another*/
         position: fixed;
         flex-direction: column;
