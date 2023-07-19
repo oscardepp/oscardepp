@@ -13,7 +13,7 @@
 }
 
 .showcase {
-    /* position: absolute;  */
+    position: absolute;
     right: 0; /* very right is zero*/
     width: 100%; 
     min-height: 100dvh; /* viewport height: full height of the screen*/
@@ -37,7 +37,7 @@
 }
 
 .showcase header {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0; 
     width: 100%;
@@ -125,7 +125,7 @@
     /* position: relative;  */
     right: 0; /* very right is zero*/
     width: 100%; 
-    min-height: 100vh; /* viewport height: full height of the screen*/
+    min-height: 100dvh; /* viewport height: full height of the screen*/
     padding: 100px; /* controls spacing from edge*/
     display: flex; /* puts stuff in a row */
     justify-content: space-between; /* space is distributed between items of section*/
