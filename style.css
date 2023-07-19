@@ -206,6 +206,10 @@
     border-radius: 15px; 
 }
 
+.about-col-2 {
+    flex-basis: 60%;
+}
+
 /* -------about me page----------*/ 
 .aboutme {
     background-color: var(--samurai-blue);
