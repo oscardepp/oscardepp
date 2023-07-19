@@ -139,17 +139,16 @@
 
 .aboutme {
     background-color: var(--samurai-blue);
-
 }
 
 .inner {
     padding-top: 20px; 
-    padding-left: 20px;
+    /* padding-left: 20px; */
 }
 
 .inner.header {
     text-align: center;
-    color: var(--cream);
+    background-color: var(--cream);
     padding: 1rem;
     position: relative;
 }
