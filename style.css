@@ -121,6 +121,21 @@
 
 }
 
+.contact {
+    position: relative; 
+    right: 0; /* very right is zero*/
+    width: 100%; 
+    min-height: 100vh; /* viewport height: full height of the screen*/
+    padding: 100px; /* controls spacing from edge*/
+    display: flex; /* puts stuff in a row */
+    justify-content: space-between; /* space is distributed between items of section*/
+    align-items: center; 
+    background: powderblue;
+    color: #fff; 
+    z-index: 2; /* always in front of the menu, if its a lower number, then menu would be on top*/
+}
+
+
 .text {
     position: relative; 
     z-index: 10; 
