@@ -13,7 +13,7 @@
 }
 
 .showcase {
-    position: absolute; 
+    position: relative; 
     right: 0; /* very right is zero*/
     width: 100%; 
     min-height: 100dvh; /* viewport height: full height of the screen*/
