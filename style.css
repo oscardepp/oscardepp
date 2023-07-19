@@ -57,7 +57,7 @@
     list-style: none;
     padding: 50; 
     margin: 0;
-    background: hsl(0 0% 0% / .5);
+    background: hsl(0 0% 100% / .5);
 }
 
 @supports (backdrop-filter: blur(0.5rem)) {
@@ -77,7 +77,8 @@
 }
 
 .toggle {
-    position: absolute; /* within the header its position is relative*/
+    /* position: absolute; /* within the header its position is relative*/
+    /* right: 0; */
     width: 60px; 
     height: 60px; 
     background: url('https://github.com/oscardepp/oscardepp/assets/137336589/92e02de5-afa0-4ba7-b573-2bd9728a39d8');
