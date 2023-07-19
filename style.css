@@ -54,9 +54,18 @@
 }
 
 .primary-navigation {
-     list-style: none;
-     padding: 0; 
-     margin: 0;
+    list-style: none;
+    color: #fff;
+    padding: 0; 
+    margin: 0;
+    background: hsl(0 0% 0% / .5);
+}
+
+@supports (backdrop-filter: blur(0.5rem)) {
+    .primary-navigation {
+        background: hsl(0 0% 100% / .1);
+        backdrop-filter: blur(0.5rem);
+    }
 }
 
 .primary-navigation a {
@@ -196,6 +205,7 @@
 .menu ul {
     position: relative; 
     list-style: none; 
+    --gap: 2em;
     margin-top: 50px;
 }
 
@@ -225,7 +235,15 @@
     
  }
 
-@media(max-width: 800px) {
+@media(max-width: 35em) {
+    .primary-navigation {
+        --gap: 2em; 
+        position: fixed;
+        flex-direction: column;
+        padding: min(15vh,5rem) 1rem; 
+        inset: 0 0 0 30%;
+        
+    }
     .showcase, .showcase header {
         padding: 40px;
     }
