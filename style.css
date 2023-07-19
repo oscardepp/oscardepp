@@ -13,7 +13,7 @@
 }
 
 .showcase {
-    position: static; 
+    position: relative; 
     right: 0; /* very right is zero*/
     width: 100%; 
     min-height: 100dvh; /* viewport height: full height of the screen*/
@@ -77,7 +77,7 @@
 }
 
 .toggle {
-    position: fixed; /* within the header its position is relative*/
+    position: absolute; /* within the header its position is relative*/
     width: 60px; 
     height: 60px; 
     background: url('https://github.com/oscardepp/oscardepp/assets/137336589/92e02de5-afa0-4ba7-b573-2bd9728a39d8');
@@ -137,7 +137,7 @@
 
 
 .text {
-    position: relative; 
+    position: absolute; 
     z-index: 10; 
 }
 
