@@ -3,7 +3,7 @@
 :root {
     --samurai-blue: #1C3563;
     --cream: #F4E7D3;
-    --dark-lavender: #734F96;
+    --dark-lavender: ##E6E6FA;
 
 }
 
@@ -339,7 +339,7 @@
         flex-direction: column;
         padding: min(30vh,10rem) 1rem; 
         inset: 0 0 0 30%;
-        z-index: 10000; 
+        z-index: 998; 
 
     }
     .showcase, .showcase header {
