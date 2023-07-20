@@ -1,9 +1,10 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap');
 
 :root {
-    --samurai-blue: #1C3563;
+    --samurai-blue: #2B2A4C;
     --cream: #F4E7D3;
     --lavender: #8e8ede;
+    --dark-red: #B31312;
 
 }
 
@@ -12,6 +13,10 @@
     padding: 0; 
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
+}
+
+html { 
+    scroll-behavior: smooth;
 }
 
 .showcase {
@@ -57,14 +62,14 @@
  
 .primary-navigation {
     list-style: none;
-    padding: 50; 
+    padding: 1rem; 
     margin: 0;
-    background: hsl(0 0% 100% / .5);
 }
 
 @supports (backdrop-filter: blur(0.5rem)) {
     .primary-navigation {
         background: hsl(0 0% 100% / .1);
+        /* padding: 1rem; */
         backdrop-filter: blur(0.5rem);
     }
 }
@@ -102,29 +107,7 @@
     background-position: center;
     cursor: pointer;
 }
-/* Video stuff */
-.showcase video {
-    position: absolute; 
-    top: 0; 
-    left: 0; 
-    width: 100%; 
-    height: 100%; 
-    object-fit: cover; 
-    opacity: 0.8;
-}
 
-.overlay{
-    position: absolute; 
-    top: 0; 
-    left: 0; 
-    width: 100%; 
-    height: 100%; 
-    /*
-    background: #03a9f4;
-    mix-blend-mode: overlay;
-    */
-    background: rgba(0,0,0,0.5); /* alpha is fourth input, 1 for 0,0,0 means its total black*/ 
-}
 
 .text {
     position: absolute; 
@@ -169,28 +152,46 @@
 }
 
 
-.contact {
-    position: relative; 
-    right: 0; /* very right is zero*/
+/* ---------Video stuff------------- */
+.showcase video {
+    position: absolute; 
+    top: 0; 
+    left: 0; 
     width: 100%; 
-    min-height: 100dvh; /* viewport height: full height of the screen*/
-    padding: 100px; /* controls spacing from edge*/
-    display: flex; /* puts stuff in a row */
-    justify-content: space-between; /* space is distributed between items of section*/
-    align-items: center; 
-    background: powderblue;
-    color: #fff; 
-    z-index: 2; /* always in front of the menu, if its a lower number, then menu would be on top*/
+    height: 100%; 
+    object-fit: cover; 
+    opacity: 0.8;
 }
+
+.overlay{
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%; 
+    /*
+    background: #03a9f4;
+    mix-blend-mode: overlay;
+    */
+    background: rgba(0,0,0,0.5); /* alpha is fourth input, 1 for 0,0,0 means its total black*/ 
+}
+
 
 /* <!---------about----------> */
 .about {
-    background-color: var(--samurai-blue);
-    padding: 80px 0;
-    color: var(--cream);
+    background-color: #111;
+    height: 70dvh;
+    padding: 100px 0;
+    color: #ababab;
+    margin-bottom: 100px; 
 }
 
-.about.row {
+.about .headabout {
+    color: #fff;
+
+}
+
+.about .row {
     display: flex;
     justify-content: space-between; 
     flex-wrap: wrap;
@@ -202,84 +203,211 @@
 
 }
 .about-col-1 img {
-    width: 30%; 
+    width: 100%; 
     border-radius: 15px; 
 }
 
 .about-col-2 {
     flex-basis: 60%;
-}
-
-/* -------about me page----------*/ 
-.aboutme {
-    background-color: var(--samurai-blue);
-}
-
-.inner {
-    padding-top: 20px; 
-    /* padding-left: 20px; */
-}
-
-.inner.header {
-    text-align: center;
-    background-color: var(--cream);
-    padding: 1rem;
     position: relative;
+        
 }
 
-/* create a line after each header */ 
-.inner.header:after{
-    content: ''; 
-    position: absolute;
-    bottom:0; 
-    left: 50%;
-    transform: translateX(-50%);
-    height: 4px; 
-    width:100px; 
-    background-color: #2ecc71;
+.tab-titles {
+    display: flex; 
+    margin: 185px 0 40px; /* top l & r bottom format */
 }
-
-.inner.container {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around; 
-    flex-flow: wrap;
-    align-items: center; 
-    text-align: center;
-    padding: 1rem 80px; 
-    font-size: 1.2rem;
-
-}
-
-.skill-box {
-    padding: 1rem; 
-    color: #ddd; 
+.tab-links {
+    margin-right: 50px; 
+    font-size: 20px; 
+    font-weight: 500;
     cursor: pointer;
-}
-.skill-title {
-    display: flex; 
-    flex-direction: column; 
-    align-items: center; 
-    padding: 0.5rem; 
-    margin-bottom: 0.5rem;  
+    position: relative;  
 }
 
-.img {
-    width: 90px;
-    height: 90px;
+.tab-links::after {
+    content: '';
+    width: 0; 
+    height: 3px;
+    background: #ff004f;
+    position: absolute;
+    left: 0; 
+    bottom: -8px;
+    transition: 0.5s;
+}
+
+.tab-links.active-link::after {
+    width: 50%;
+}
+
+.tab-contents ul li {
+    list-style: none;
+    margin: 10px 0; 
+}
+.tab-contents ul li span {
+    color: #b54769;
+    font-size: 14px; 
+}
+
+.tab-contents {
+    display: none; 
+}
+
+.tab-contents.active-tab {
+    display: block; 
+}
+
+/* --------Portfolio links -------------*/ 
+
+#portfolio {
+    padding: 50px 0; 
+    background-color: var(--dark-red);
+    color: var(--cream);
+    height: 100vh;
+}
+
+.work-list {
+    display: grid; 
+    grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+    grid-gap: 40px; 
+    margin-top: 300px; 
+}
+
+.work {
+
+    border-radius: 10px; 
     position: relative; 
-    border-radius: 45px; 
-    background-color: #fff; 
+    overflow: hidden;
+}
+.work img {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px; 
+    display: block;
+    transition: transform 0.5s;
+}
+
+.work:hover .layer {
+    height: 100%
+}
+
+.layer {
+    width: 100%; 
+    height: 0%; 
+    background: linear-gradient(rgba(2, 2, 63, 0.65),var(--cream));
+    border-radius: 10px; 
+    position: absolute; 
+    left: 0; 
+    bottom: 0; 
+    overflow: hidden; 
     display: flex; 
+    align-items: center; 
     justify-content: center; 
-    align-items: center;
+    flex-direction: column; 
+    padding: 0 40px; 
+    text-align: center; 
+    font-size: 14px; 
+    transition: height 0.5s;
 }
 
-.skill-icon {
+.layer h3 {
+    font-weight: 500; 
+    margin-bottom : 50px; 
+}
+.layer a{
+    margin-top: 20px; 
+    font-size: 18px;
+    text-decoration: none; 
+    color: var(--cream);
     width: 50px; 
+    height: 60px; 
+}
 
+.work:hover img {
+    transform: scale(1.25);
+}
+
+.btn {
+    display: block; 
+    margin: 50px auto; /* centered */
+    width: border; 
+    font-size: 800; 
+    font-weight: 500; 
+    border: 1px solid var(--cream);
+    padding: 10 -1rem; 
+    text-decoration: none; 
+    color: var(--samurai-blue);
+    transition: background 0.5s;
 
 }
+.btn:hover {
+    background: var(--cream);
+}
+
+/* ------- contact --------*/
+
+.contact {
+    position: relative;
+    left: 0; /* very right is zero*/
+    width: 100%; 
+    min-height: 70dvh; /* viewport height: full height of the screen*/
+    padding: 50px; /* controls spacing from edge*/
+    display: flex; /* puts stuff in a row */
+    flex-direction:column; 
+    justify-content: space-between; /* space is distributed between items of section*/
+    align-items: center; 
+    align-items: center; 
+    background: powderblue;
+    color: #fff; 
+    z-index: 2; /* always in front of the menu, if its a lower number, then menu would be on top*/
+}
+
+.contact header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    /* margin-left: auto;
+    margin-right: auto; */
+    width: 100%;
+    padding: 40px 50px; 
+    z-index: 1000; 
+    display: block;
+    text-transform: uppercase;
+    text-align: left;
+}
+
+.contact .container {
+    position: relative;
+    padding-top: 150px; 
+    display: flex; /* puts stuff in a row */
+    flex-direction:column; 
+    /* justify-content: space-between; /* space is distributed between items of section*/
+    align-items: center;
+    /* margin-top: 20px;  */
+
+}
+
+.contact img {
+    border-radius: 50%;
+    width: 50rem; 
+    aspect-ratio: auto; 
+}
+
+.contact .social {
+    position: absolute; 
+    bottom: -70px; 
+    z-index: 10; 
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+}
+
+.contact .social a {
+    filter:brightness(0.5); /* invert */
+}
+
+
+/* ---------social links----------*/ 
 
 .social {
     position: absolute; 
@@ -288,7 +416,6 @@
     display: flex;
     justify-content: center; 
     align-items: center; 
-    
 }
 .social li {
     list-style: none; 
@@ -337,8 +464,10 @@
     color:#E6E6FA;
 }
 
+/* ------- footer ----- */
 .footer {
     position: fixed;
+    display: inline-block;
     z-index: 100; 
     left: 0;
     bottom: 0;
@@ -349,13 +478,17 @@
     font-size: 15px;
     padding: 10px 30px; 
     text-align: center;
+    justify-content: center;
+    align-items: center; 
     
  }
 
 @media(max-width: 35em) {
     .primary-navigation {
         display: none;
-        transition: 1s;
+        transition: 0.5s;
+        padding-inline: clamp(3rem,10vw,10rem);
+        
     } 
     .showcase.active {
          right:0.02px;
