@@ -204,6 +204,7 @@
       font-family: "Source Serif Pro", serif;
       position: relative;
       top: 100px;
+      width: 100%;
       
     }
 
@@ -213,12 +214,16 @@
       font-size: 40px;
       font-weight: 600;
       margin-left: 3%;
+      position: relative;
     }
 
     #shortstory .synopsis {
-      /* background-color: pink; */
       margin-right: 3%;
       margin-left: 3%;
+      word-wrap:wrap;
+      height: 100%;
+      overflow-wrap: break-word; 
+      /* width:100%; */
     }
 
     #shortstory .row {
@@ -560,6 +565,15 @@
         float: none;
         display: none;
       }
+      #shortstory .synposis {
+        width: 75%;
+      }
+      #shortstory .book {
+        width: 500px; 
+      }
+      #shortstory .book .page {
+        width: 500px;
+      }
 
       
     }
@@ -574,7 +588,7 @@
       <button class="tablink" onclick="openPage('ShortStory', this,'hsla(236, 92%, 15%, 0.631)')" >Short
         Story</button>
       <button class="tablink" onclick="openPage('Poetry', this,'hsla(236, 92%, 15%, 0.631)')">Poetry</button>
-      <button class="tablink" onclick="openPage('Photography', this, 'hsla(236, 92%, 15%, 0.631)')" id="defaultOpen">Photography</button>
+      <button class="tablink" onclick="openPage('Photography', this, 'hsla(236, 92%, 15%, 0.631)')" id="defaultOpen" >Photography</button>
     </div>
     <a href="javascript:void(0);" class="icon" onclick="myFunction()">
       <i class="fa fa-bars fa-2x"></i>
