@@ -44,7 +44,7 @@ html {
 }
 
 .showcase header {
-    position: absolute; 
+    position: fixed; 
     top: 0;
     left: 0; 
     width: 100%;
@@ -73,7 +73,7 @@ html {
 
 @supports (backdrop-filter: blur(0.5rem)) {
     .primary-navigation {
-        background: hsl(0 0% 100% / .1);
+        background: hsl(0, 0%, 100%, 0.1);
         /* padding: 1rem; */
         backdrop-filter: blur(0.5rem);
     }
@@ -185,7 +185,7 @@ html {
 /* <!---------about----------> */
 .about {
     background-color: #111;
-    height: 100rem;
+    height: 100%;
     padding: 100px;
     color: #ababab;
 }
@@ -308,7 +308,7 @@ html {
 }
 
 .work:hover .layer {
-    height: 100%
+    height: 100%;
 }
 
 .layer {
@@ -504,13 +504,13 @@ html {
     
  }
 
-@media(max-width: 60rem) and (min-width: 51rem) {
+@media screen and (max-width: 60rem) and (min-width: 51rem) {
     #portfolio {
         height: 100%;
     }
 }
 
-@media(max-width: 50em) {
+@media screen and (max-width: 50em) {
     .primary-navigation {
         display: none;
         transition: 0.5s;
@@ -553,7 +553,8 @@ html {
         font-size: 3rem;
     }
     .about-col-2 p{
-        font-size: 1.5rem;
+        font-size: 1.4rem;
+        margin-right: 10px;
     }
     .about-col-1 {
         display: block;
