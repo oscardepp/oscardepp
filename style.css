@@ -280,9 +280,10 @@ html {
     z-index: 2;
 }
 
-.portfolio .container .text {
+#portfolio .container .text {
     overflow: wrap;
     padding-right: 10px;
+    z-index: 1;
 }
 
 .work-list {
