@@ -6,6 +6,7 @@ On my GitHub page, you'll find computer science, applied mathematics, robotics, 
 
 ##  Projects
 
+- [Refugee Resettlement Unsupervised Learning ML Project](https://github.com/oscardepp/refugeeresettlement/)
 - [Python Machine Dynamics Simulations](https://github.com/oscardepp/Machine-Dynamics-Simulation)
 - [Simple SQL environment in C](https://github.com/oscardepp/SimpleSQL)
 - [Autonomous Drone Project that picks up boxes](https://github.com/oscardepp/autonomousdrone)
