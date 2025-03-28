@@ -6,6 +6,8 @@ On my GitHub page, you'll find computer science, applied mathematics, robotics, 
 
 ##  Projects
 
+- [ICIP 2025 XRF Adaptive Image Sampling using Self-supervised Learning](https://github.com/oscardepp/icip2025)
+- [Diffusion Models Implementation](https://github.com/oscardepp/diffmodelsimplementations)
 - [Refugee Resettlement Unsupervised Learning ML Project](https://github.com/oscardepp/refugeeresettlement/)
 - [Python Machine Dynamics Simulations](https://github.com/oscardepp/Machine-Dynamics-Simulation)
 - [Simple SQL environment in C](https://github.com/oscardepp/SimpleSQL)
