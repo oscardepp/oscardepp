@@ -8,7 +8,7 @@ On my GitHub page, you'll find computer science, applied mathematics, robotics, 
 
 
 - [ICIP 2025 XRF Adaptive Image Sampling using Self-supervised Learning](https://github.com/oscardepp/icip2025)
-- [Diffusion Models Implementation](https://github.com/oscardepp/diffmodelsimplementations)
+- [Score-Based and SDE Diffusion Models Implementation](https://github.com/oscardepp/diffmodelsimplementations)
 - [Searching for a source without gradients: Infotaxis Simulation](https://github.com/oscardepp/infotaxis_sim)
 - [Scalable Software Architectures Project for Inventory Management Systems: Optiflow API](https://github.com/oscardepp/optiflow)
 - [Refugee Resettlement Unsupervised Learning ML Project](https://github.com/oscardepp/refugeeresettlement/)
