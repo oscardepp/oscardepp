@@ -6,7 +6,7 @@ On my GitHub page, you'll find computer science, applied mathematics, robotics, 
 
 ##  Projects
 
-
+- [NeurIPS 2025 (under review) Uncertainty Quantification using Conditional Diffusion Models](https://github.com/oscardepp/UQDiffModels/)
 - [ICIP 2025 XRF Adaptive Image Sampling using Self-supervised Learning](https://github.com/oscardepp/icip2025)
 - [Score-Based and SDE Diffusion Models Implementation](https://github.com/oscardepp/diffmodelsimplementations)
 - [Searching for a source without gradients: Infotaxis Simulation](https://github.com/oscardepp/infotaxis_sim)
