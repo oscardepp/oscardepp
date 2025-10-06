@@ -5,8 +5,8 @@ I'm a student at Northwestern pursuing a B.S. in Applied Mathematics and M.S. in
 On my GitHub page, you'll find computer science, applied mathematics, robotics, aerospace, and design projects I've done in classes and in my free time. My projects blends together creative design with computer science and simulation work. Below you will find links to my work!
 
 ##  Projects
-
- <!-- - [NeurIPS 2025 (under review) Uncertainty Quantification using Conditional Diffusion Models](https://github.com/oscardepp/UQDiffModels/) -->
+https://github.com/oscardepp/diffmodelsUQ
+- [ICLR 2026 (under review) Uncertainty Quantification using Conditional Diffusion Models](https://github.com/oscardepp/diffmodelsUQ)
 - [ICIP 2025 XRF Adaptive Image Sampling using Self-supervised Learning](https://github.com/oscardepp/icip2025)
 - [Score-Based and SDE Diffusion Models Implementation](https://github.com/oscardepp/diffmodelsimplementations)
 - [Searching for a source without gradients: Infotaxis Simulation](https://github.com/oscardepp/infotaxis_sim)
