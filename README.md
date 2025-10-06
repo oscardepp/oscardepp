@@ -2,6 +2,8 @@
 
 I'm a student pursuing an M.S. in Computer Science at Northwestern University. I recently completed my B.S. in Applied Math at NU as well, graduating Summa Cum Laude. 
 
+I have experience in Optimal Control, Deep Learning (diffusion models), Large Scale Simulations, and Quantitative Finance. 
+
 On my GitHub page, you'll find computer science, applied mathematics, robotics, aerospace, and design projects I've done in classes and in my free time. My projects blends together creative design with computer science and simulation work. Below you will find links to my work!
 
 ##  Projects
