@@ -7,7 +7,6 @@ I have experience in Optimal Control, Deep Learning (diffusion models), Large Sc
 On my GitHub page, you'll find computer science, applied mathematics, robotics, aerospace, and design projects I've done in classes and in my free time. My projects blends together creative design with computer science and simulation work. Below you will find links to my work!
 
 ##  Projects
-https://github.com/oscardepp/diffmodelsUQ
 - [ICLR 2026 (under review) Uncertainty Quantification using Conditional Diffusion Models](https://github.com/oscardepp/diffmodelsUQ)
 - [ICIP 2025 XRF Adaptive Image Sampling using Self-supervised Learning](https://github.com/oscardepp/icip2025)
 - [Score-Based and SDE Diffusion Models Implementation](https://github.com/oscardepp/diffmodelsimplementations)
