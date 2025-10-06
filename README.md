@@ -18,7 +18,7 @@ On my GitHub page, you'll find computer science, applied mathematics, robotics, 
 ## Optimal Control and Robotics Projects
 - [Searching for a source without gradients: Infotaxis Simulation](https://github.com/oscardepp/infotaxis_sim)
 - [Ergodic and Optimal Control Nonlinear Trajectory Optimization](https://github.com/oscardepp/ilqrergodiccontrol)
-- - [Python Machine Dynamics Simulations](https://github.com/oscardepp/Machine-Dynamics-Simulation)
+- [Python Machine Dynamics Simulations](https://github.com/oscardepp/Machine-Dynamics-Simulation)
 - [Autonomous Drone Project for picking up boxes (PID Control)](https://github.com/oscardepp/autonomousdrone)
 
 ## Full-stack project
