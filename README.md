@@ -6,19 +6,27 @@ I have experience in Optimal Control, Deep Learning (diffusion models), Large Sc
 
 On my GitHub page, you'll find computer science, applied mathematics, robotics, aerospace, and design projects I've done in classes and in my free time. My projects blends together creative design with computer science and simulation work. Below you will find links to my work!
 
-##  Projects
+##  Diffusion Model Research Projects
 - [ICLR 2026 (under review) Uncertainty Quantification using Conditional Diffusion Models](https://github.com/oscardepp/diffmodelsUQ)
 - [ICIP 2025 XRF Adaptive Image Sampling using Self-supervised Learning](https://github.com/oscardepp/icip2025)
 - [Score-Based and SDE Diffusion Models Implementation](https://github.com/oscardepp/diffmodelsimplementations)
+
+## ML and Industry-Leaning Projects
+- [Refugee Resettlement Unsupervised Learning ML Project](https://github.com/oscardepp/refugeeresettlement/)
+- [OpenStreetMaps Navigation System in C++](https://github.com/oscardepp/OSM-Navigation)
+
+## Optimal Control and Robotics Projects
 - [Searching for a source without gradients: Infotaxis Simulation](https://github.com/oscardepp/infotaxis_sim)
 - [Ergodic and Optimal Control Nonlinear Trajectory Optimization](https://github.com/oscardepp/ilqrergodiccontrol)
-- [Scalable Software Architectures Project for Inventory Management Systems: Optiflow API](https://github.com/oscardepp/optiflow)
-- [Refugee Resettlement Unsupervised Learning ML Project](https://github.com/oscardepp/refugeeresettlement/)
-- [Python Machine Dynamics Simulations](https://github.com/oscardepp/Machine-Dynamics-Simulation)
-- [Simple SQL environment in C](https://github.com/oscardepp/SimpleSQL)
+- - [Python Machine Dynamics Simulations](https://github.com/oscardepp/Machine-Dynamics-Simulation)
 - [Autonomous Drone Project for picking up boxes (PID Control)](https://github.com/oscardepp/autonomousdrone)
+
+## Full-stack project
+- [Scalable Software Architectures Project for Inventory Management Systems: Optiflow API](https://github.com/oscardepp/optiflow)
+
+## Other Projects
+- [Simple SQL environment in C](https://github.com/oscardepp/SimpleSQL)
 - [CAD Projects(Aerospace, Product Design, Commercial Design)](https://github.com/oscardepp/CADProjects)
-- [OpenStreetMaps Navigation System in C++](https://github.com/oscardepp/OSM-Navigation)
 
 
 
