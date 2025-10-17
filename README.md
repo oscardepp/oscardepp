@@ -2,10 +2,11 @@
 
 I'm a student pursuing an M.S. in Computer Science at Northwestern University. I recently completed my B.S. in Applied Math at NU as well, graduating Summa Cum Laude. 
 
-I have experience in Optimal Control, Deep Learning (diffusion models), Large Scale Simulations, and Quantitative Finance. 
+I have experience in Optimal Control, Deep Learning (diffusion models), Large Scale Simulations, and Quantitative Equity Research and RMBS modeling. 
 
 On my GitHub page, you'll find computer science, applied mathematics, robotics, aerospace, and design projects I've done in classes and in my free time. My projects blends together creative design with computer science and simulation work. Below you will find links to my work!
 
+My website is @ www.oscardepp.com 
 ##  Diffusion Model Research Projects
 - [ICLR 2026 (under review) Uncertainty Quantification using Conditional Diffusion Models](https://github.com/oscardepp/diffmodelsUQ)
 - [ICIP 2025 XRF Adaptive Image Sampling using Self-supervised Learning](https://github.com/oscardepp/icip2025)
