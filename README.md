@@ -1,6 +1,6 @@
 ### Hi
 
-I'm a student pursuing an M.S. in Computer Science at Northwestern University. I recently completed my B.S. in Applied Math at NU as well, graduating Summa Cum Laude. 
+I'm a quantitative researcher at QRT in London & Paris. I recently completed my B.S. in Applied Math and M.S. in Computer Science from Northwestern University.
 
 I have experience in Optimal Control, Deep Learning (diffusion models), Large Scale Simulations, and Quantitative Equity Research and RMBS modeling. 
 
