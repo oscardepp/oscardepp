@@ -4,6 +4,8 @@
 <head>
   <title> Creative </title>
   <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://github.com">
+  <link rel="preconnect" href="https://github.com" crossorigin>
   <!-- favicon -->
   <link rel="icon" type="image/x-icon"
     href="https://github.com/oscardepp/oscardepp/assets/137336589/0ca5e8d0-8f0a-4440-ac49-3d38421e6e07">
@@ -589,6 +591,26 @@
 </head>
 
 <body>
+  <script>
+    const lazyImageObserver = new MutationObserver((mutations) => {
+      for (const mutation of mutations) {
+        for (const node of mutation.addedNodes) {
+          if (node.nodeType !== Node.ELEMENT_NODE) {
+            continue;
+          }
+
+          const images = node.matches('img') ? [node] : node.querySelectorAll('img');
+          for (const image of images) {
+            image.loading = 'lazy';
+            image.decoding = 'async';
+          }
+        }
+      }
+    });
+
+    lazyImageObserver.observe(document.documentElement, { childList: true, subtree: true });
+  </script>
+
   <div class="nav">
     <a href="index.html" class="logo">Oscar Depp</a>
     <div class="header-right" id = "hr">
