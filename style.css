@@ -37,7 +37,8 @@ html {
     gap: var(--gap, 4rem);
 }
 .showcase > .text {
-    z-index: 0;
+    position: absolute;
+    z-index: 5;
 }
 .showcase header {
     position: fixed;
@@ -100,21 +101,18 @@ html {
     background-position: center;
     cursor: pointer;
 }
-.text {
-    position: absolute;
-    z-index: 5;
-}
 .text h2 {
     font-size: 5em;
     font-weight: 800;
     line-height: 1em;
     text-transform: uppercase;
 }
-.text h3 {
-    font-size: 3em;
+.showcase .text h3 {
+    font-size: clamp(1.2rem, 2.2vw, 2rem);
     font-weight: 600;
-    line-height: 1em;
+    line-height: 1.15;
     text-transform: uppercase;
+    max-width: 850px;
 }
 .text p {
     font-size: 1.1em;
@@ -382,15 +380,23 @@ html {
     z-index: 2;
 }
 #portfolio .container .text {
+    position: relative;
     overflow-wrap: break-word;
     padding-right: 10px;
     z-index: 3;
+    max-width: 700px;
+}
+#portfolio .text h2 {
+    font-size: clamp(3rem, 6vw, 5rem);
+}
+#portfolio .text p {
+    margin-top: 20px;
 }
 .work-list {
     display: grid;
     grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
     grid-gap: 40px;
-    margin-top: 300px;
+    margin-top: 60px;
 }
 .work {
     border-radius: 10px;
@@ -487,6 +493,9 @@ html {
     display: block;
     text-transform: uppercase;
     text-align: left;
+}
+.contact header .text {
+    position: relative;
 }
 .contact .container {
     position: relative;
@@ -645,11 +654,8 @@ html {
     .showcase header {
         padding: 40px;
     }
-    .text h2 {
+    .showcase .text h2 {
         font-size: 3em;
-    }
-    .text h3 {
-        font-size: 1em;
     }
     .about {
         flex-wrap: nowrap;
