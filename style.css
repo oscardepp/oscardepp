@@ -30,7 +30,6 @@ html {
     align-items: center; 
     background: #111;
     color: #fff; 
-    z-index: 2; /* always in front of the menu, if its a lower number, then menu would be on top*/
     transition: 0.5s;
 }
 
@@ -41,6 +40,17 @@ html {
 
 .showcase.active {
     right: 300px; 
+}
+
+body.menu-open > .about,
+body.menu-open > #portfolio,
+body.menu-open > .contact {
+    transform: translateX(-300px);
+    transition: transform 0.5s ease;
+}
+
+.showcase > .text {
+    z-index: 0;
 }
 
 .showcase header {
@@ -635,7 +645,7 @@ html {
     display: flex; 
     align-items: top; 
     justify-content: center; 
-    z-index: 1;
+    z-index: 4;
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.5s ease, visibility 0.5s ease;
@@ -691,6 +701,12 @@ html {
 @media screen and (max-width: 50em) {
     .menu {
         display: none;
+    }
+
+    body.menu-open > .about,
+    body.menu-open > #portfolio,
+    body.menu-open > .contact {
+        transform: none;
     }
 
     .primary-navigation {
