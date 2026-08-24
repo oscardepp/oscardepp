@@ -93,26 +93,33 @@
             </ul>
           </div>
           <div class="tab-contents active-tab" id="experience">
-            <ul>
+            <ul class="experience-list">
               <li><span>February 2026-</span><strong>Qube Research & Technologies (QRT)</strong><em class="experience-role">Quantitative Research Analyst</em></li>
               <li><span>June-August 2025</span><strong>PanAgora Asset Management</strong><em class="experience-role">Quantitative Research Intern</em></li>
               <li><span>January 2025-July 2025</span><strong>MAGICS Lab</strong><em class="experience-role">Junior Deep Learning Researcher</em></li>
               <li><span>March 2024-</span><strong>Aggelos Image and Video Processing Lab</strong><em class="experience-role">Junior Deep Learning Researcher</em></li>
-              <li><span>June 2024-Aug. 2024</span><strong>Citigroup</strong><em class="experience-role">Quantitative Analysis Intern</em></li>
-              <li><span>Sept. 2023-</span><strong>Northwestern Athletics</strong><em class="experience-role">Tutor</em></li>
-              <li><span>June-Aug. 2023</span><strong>Summer Research Award 2023: Investigating Quincke Particles Electrohydrodynamics</strong><em class="experience-role">Researcher</em></li>
+              <li><span>June 2024-Aug. 2024</span><strong>Citigroup Inc</strong><em class="experience-role">Mortgage Quantitative Analysis Intern</em></li>
+              <li><span>June-Aug. 2023</span><strong>Quincke Particles Electrohydrodynamics Summer Research</strong><em class="experience-role">Researcher</em></li>
               <li><span>Sept. 2022-Jan. 2023</span><strong>Buffett Institute of Global Affairs</strong><em class="experience-role">Undergraduate Researcher</em></li>
+            </ul>
+
+            <div class="experience-divider"></div>
+
+            <h4 class="secondary-experience-title">Additional Experience</h4>
+
+            <ul class="experience-list secondary-experience-list">
+              <li><span>Sept. 2023-</span><strong>Northwestern Athletics</strong><em class="experience-role">Tutor</em></li>
               <li><span>June 2021-Aug. 2021</span><strong>Y-Sapix Global Alpha</strong><em class="experience-role">Summer Intern</em></li>
-              <li><span>June 2021-Aug. 2021</span><strong>YC&AC</strong><em class="experience-role">Private Tennis Coach</em></li>
+              <li><span>June 2021-Aug. 2021</span><strong>Yokohama Country & Athletic Club (YC&AC)</strong><em class="experience-role">Private Tennis Coach</em></li>
             </ul>
           </div>
           <div class="tab-contents" id="education">
             <ul class="education-list">
-              <li class="education-item"><span>September 2021 - December 2025</span><strong>Northwestern University M.S. Computer Science</strong></li>
-              <li class="education-item"><span>September 2021 - June 2025</span><strong>Northwestern University B.S. Applied Mathematics</strong></li>
-              <li class="education-item"><span>September 2017 - June 2021</span><strong>Deerfield Academy</strong></li>
-              <li class="education-item"><span>August 2020 - December 2020</span><strong>King's Academy</strong></li>
-              <li class="education-item"><span>August 2007 - June 2017</span><strong>Singapore American School</strong></li>
+              <li class="education-item"><span>September 2021 - December 2025</span><em>Northwestern University</em><span class="degree-line">Master of Science in Computer Science</span></li>
+              <li class="education-item"><span>September 2021 - June 2025</span><em>Northwestern University</em><span class="degree-line">Bachelor of Science in Applied Mathematics</span><em class="education-honor">summa cum laude</em></li>
+              <li class="education-item"><span>September 2017 - June 2021</span><em>Deerfield Academy</em></li>
+              <li class="education-item"><span>August 2020 - December 2020</span><em>King's Academy</em></li>
+              <li class="education-item"><span>August 2007 - June 2017</span><em>Singapore American School</em></li>
             </ul>
           </div>
           <div class="tab-contents" id="courses">
@@ -217,11 +224,13 @@
     const menuToggle = document.querySelector('.toggle')
     const showcase = document.querySelector('.showcase')
     const primnav = document.querySelector('.primary-navigation')
+    const sideMenu = document.querySelector('.menu')
 
     menuToggle.addEventListener('click', () => { // () => means funciton()
       menuToggle.classList.toggle('active')
       showcase.classList.toggle('active')
       primnav.classList.toggle('active')
+      sideMenu.classList.toggle('active')
     })
   </script>
 
