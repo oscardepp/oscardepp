@@ -12,6 +12,8 @@
     href="https://www.github.com/oscardepp/oscardepp/assets/137336589/0ca5e8d0-8f0a-4440-ac49-3d38421e6e07"
   >
   <link rel="stylesheet" href="style.css">
+  <!-- javascript -->
+  <script src="js/main.js" defer></script>
 </head>
 <body>
   <!-- ================= HOME / SHOWCASE ================= -->
@@ -136,25 +138,25 @@
           <div class="tab-titles">
             <p
               class="tab-links active-link"
-              onclick="opentab(event, 'experience')"
+              onclick="openTab(event, 'experience')"
             >
               Experience
             </p>
             <p
               class="tab-links"
-              onclick="opentab(event, 'education')"
+              onclick="openTab(event, 'education')"
             >
               Education
             </p>
             <p
               class="tab-links"
-              onclick="opentab(event, 'skills')"
+              onclick="openTab(event, 'skills')"
             >
               Skills
             </p>
             <p
               class="tab-links"
-              onclick="opentab(event, 'courses')"
+              onclick="openTab(event, 'courses')"
             >
               Course Highlights
             </p>
@@ -635,52 +637,9 @@
       </ul>
     </div>
   </section>
-  <!-- ================= TAB SCRIPT ================= -->
-  <script>
-    const tablinks =
-      document.getElementsByClassName("tab-links");
-    const tabcontents =
-      document.getElementsByClassName("tab-contents");
-    function opentab(event, tabname) {
-      for (const tablink of tablinks) {
-        tablink.classList.remove("active-link");
-      }
-      for (const tabcontent of tabcontents) {
-        tabcontent.classList.remove("active-tab");
-      }
-      event.currentTarget.classList.add("active-link");
-      document
-        .getElementById(tabname)
-        .classList.add("active-tab");
-    }
-  </script>
-  <!-- ================= MENU SCRIPT ================= -->
-  <script>
-    const menuToggle =
-      document.querySelector('.toggle');
-    const primnav =
-      document.querySelector('.primary-navigation');
-    const sideMenu =
-      document.querySelector('.menu');
-    menuToggle.addEventListener('click', () => {
-      menuToggle.classList.toggle('active');
-      primnav.classList.toggle('active');
-      sideMenu.classList.toggle('active');
-    });
-  </script>
   <!-- ================= FOOTER ================= -->
   <footer>
     <p id="p1"></p>
-    <script>
-      const date = new Date();
-      const current_date =
-        "\xa0\xa0 &copy; "
-        + date.getFullYear()
-        + " Oscar Depp | All Rights Reserved";
-      document
-        .getElementById("p1")
-        .innerHTML = current_date;
-    </script>
   </footer>
 </body>
 </html>
