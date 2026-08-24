@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
   <title> Creative </title>
   <link rel="stylesheet" href="style.css">
@@ -13,19 +12,16 @@
     * {
       box-sizing: border-box;
     }
-
     body {
       margin: 0;
       font-family: 'Poppins', sans-serif;
     }
-
     #photography .header {
       text-align: center;
       padding: 32px;
       position: relative;
       top: 100px;
     }
-
     #photography .row {
       position: relative;
       top: 100px;
@@ -37,7 +33,6 @@
       flex-wrap: wrap;
       padding: 0 4px;
     }
-
     /* Create two equal columns that sits next to each other */
     #photography .column {
       /* position: relative; */
@@ -46,19 +41,15 @@
       flex: 25%;
       padding: 0 4px;
       max-width: 25%;
-
     }
-
     #photography .column img {
       margin-top: 8px;
       vertical-align: middle;
     }
-
     #photography .column video {
       margin-top: 8px;
       vertical-align: middle;
     }
-
     /* Style the buttons */
     #photography .btn {
       border: none;
@@ -68,29 +59,23 @@
       cursor: pointer;
       font-size: 18px;
     }
-
     #photography .btn:hover {
       background-color: #ddd;
     }
-
     #photography .btn.active {
       background-color: #666;
       color: white;
     }
-
     #photography .container {
       position: relative;
       text-align: center;
       text-size-adjust: 50%;
-
       /* width: 50%; */
       /* max-width: 300px; x*/
     }
-
     #photography .container:hover .overlay {
       opacity: 1;
     }
-
     #photography .overlay {
       position: absolute;
       top: 0;
@@ -103,7 +88,6 @@
       transition: .5s ease;
       background-color: hsl(0 0% 100% / .5);
     }
-
     #photography .text {
       position: absolute;
       transform: translate(-50%, -50%);
@@ -114,15 +98,12 @@
       font-size: 2vw;
       font-weight: 600;
       color: var(--samurai-blue);
-
     }
-
     #photography .text span {
       font-size: 1.5vw;
       font-weight: 400;
       font-style: italic;
     }
-
     /* ----------navigation bar--------- */
     .nav a.icon {
         display: none;
@@ -139,7 +120,6 @@
       /* space is distributed between items of section*/
       align-items: center;
     }
-
     .nav a {
       float: left;
       color: black;
@@ -150,7 +130,6 @@
       line-height: 25px;
       border-radius: 4px;
     }
-
     .nav .tablink {
       float: left;
       color: black;
@@ -162,30 +141,24 @@
       border: none;
       border-radius: 4px;
     }
-
     .nav .tablink:hover {
       cursor: pointer;
       background-color: hsla(216, 82%, 66%, 0.75);
       transition: 0.7s;
-
     }
-
     .nav a.logo {
       font-size: 25px;
       font-weight: bold;
     }
-
     .nav a:hover {
       background-color: #ddd;
       color: black;
       cursor: pointer;
     }
-
     .header-right {
       float: right;
       display: block;
     }
-
     /* ----short story------- */
     .ttl {
       position: relative;
@@ -195,7 +168,6 @@
       font-weight: 700;
       color: var(--samurai-blue);
     }
-
     #shortstory {
       height: 60rem;
       /* padding: 100px; */
@@ -205,9 +177,7 @@
       position: relative;
       top: 100px;
       width: 100%;
-      
     }
-
     #shortstory .headabout {
       color: #fff;
       text-transform: uppercase;
@@ -216,7 +186,6 @@
       margin-left: 3%;
       position: relative;
     }
-
     #shortstory .synopsis {
       margin-right: 3%;
       margin-left: 3%;
@@ -225,16 +194,13 @@
       overflow-wrap: break-word; 
       /* width:100%; */
     }
-
     #shortstory .row {
       position: absolute;
       display: flex;
       justify-content: space-between;
       flex-wrap: wrap;
       align-items: center;
-
     }
-
     #shortstory .tab-titles {
       position: relative;
       top: 0;
@@ -246,12 +212,10 @@
       align-items: center;
       /* margin: 20rem 0 40px; top l & r bottom format */
     }
-
     #shortstory .tab-links {
       /* -ms-flex: 50%; */
       /* IE 10 */
       /* background-color: pink; */
-
       flex: 25%;
       margin: 20px 30px;
       padding: 0 4px;
@@ -260,7 +224,6 @@
       cursor: pointer;
       position: relative;
     }
-
     #shortstory .tab-links::after {
       content: '';
       width: 0;
@@ -271,15 +234,12 @@
       /* bottom: +4px; */
       transition: 0.5s;
     }
-
     #shortstory .tab-links.active-link::after {
       width: 25%;
     }
-
     #shortstory .tab-contents {
       display: none;
     }
-
     #shortstory .tab-contents.active-tab {
       width: 100%;
       margin-right: 100px;
@@ -288,7 +248,6 @@
       position: relative;
       left: 0;
     }
-
     #shortstory .book {
       position: relative;
       margin-left: auto;
@@ -303,36 +262,29 @@
       border-radius: 3px;
       border: 1px solid rgba(0, 0, 0, 0.7);
     }
-
     #shortstory .book::-webkit-scrollbar {
       width: 10px;
     }
-
     #shortstory .book::-webkit-scrollbar-track {
       background: rgba(2, 3, 1, 0.1);
     }
-
     #shortstory .book::-webkit-scrollbar-thumb {
       background: #020301;
     }
-
     #shortstory .book::-webkit-scrollbar-thumb:hover {
       background: rgba(2, 3, 1, 0.8);
     }
-
     #shortstory .book .page {
       width: 525px;
       padding: 25px;
       background-color: #fff;
       position: relative;
     }
-
     .book .page h1,
     .book .page h2,
     .book .page p {
       margin: 0;
     }
-
     #shortstory .book .page.frontcover {
       background-color: #f1faee;
       color: #020301;
@@ -346,7 +298,6 @@
       background-position: 50% 4%;
       background-blend-mode: overlay;
     }
-
     #shortstory .book .page.frontcover>div {
       position: relative;
       display: flex;
@@ -354,7 +305,6 @@
       align-items: center;
       justify-content: center;
     }
-
     #shortstory .book .page.frontcover>div h1 {
       color: #000;
       margin-bottom: 30px;
@@ -364,13 +314,11 @@
       letter-spacing: 0.5rem;
       position: relative;
     }
-
     #shortstory .book .page.frontcover>div h2 {
       font-size: 1.7rem;
       font-weight: 300;
       position: relative;
     }
-
     #shortstory .book .page.frontcover>div h2:before {
       content: "";
       position: absolute;
@@ -380,14 +328,12 @@
       height: 1px;
       background-color: rgba(2, 3, 1, 0.3);
     }
-
     .book .page h3 {
       font-size: 1.5rem;
       text-align: center;
       font-weight: 600;
       color: #000;
     }
-
     .book .page p {
       display: block;
       font-size: 1rem;
@@ -395,12 +341,10 @@
       margin-bottom: 1rem;
       color: #000;
     }
-
     .book .page p:nth-child(2)::first-letter {
       font-size: 1.5rem;
       font-weight: 600;
     }
-
     /* ------------poetry-----------  */
     .poetry {
       /* position: relative; */
@@ -412,7 +356,6 @@
       justify-content: space-between;
       align-items: center;
     }
-
     .poetry .container {
       position: relative;
       top: 0;
@@ -421,9 +364,7 @@
       width: 100%;
       min-height: 100dvh;
       height: 100%;
-
     }
-
     .poetry img {
       position: absolute;
       width: 100%;
@@ -431,7 +372,6 @@
       object-fit: cover;
       opacity: 0.9;
     }
-
     .poetry .overlay {
       position: absolute;
       top: 0;
@@ -445,7 +385,6 @@
       background: rgba(0, 0, 0, 0.5);
       /* alpha is fourth input, 1 for 0,0,0 means its total black*/
     }
-
     .poemheading {
       position: relative;
       top: 0;
@@ -457,13 +396,11 @@
       font-weight: 800;
       /* margin: 50 50; */
     }
-
     .poetry pre {
       font-family: 'Poppins', sans-serif;
       font-size: 15px;
       font-weight: 400;
     }
-
     .poetry .book {
       position: relative;
       margin-left: auto;
@@ -479,26 +416,21 @@
       color: #fff;
       /* border: 1px solid rgba(0, 0, 0, 0.7); */
     }
-
     .poetry .book::-webkit-scrollbar-track {
       background: rgba(2, 3, 1, 0.1);
     }
-
     .poetry .book::-webkit-scrollbar-thumb {
       background: rgba(2, 3, 1, 0.4);
     }
-
     .poetry .book::-webkit-scrollbar-thumb:hover {
       background: rgba(2, 3, 1, 0.6);
     }
-
     .book .page {
       width: 525px;
       padding: 25px;
       background-color: hsla(0, 0%, 100%, 0);
       position: relative;
     }
-
     .book .page h1,
     .book .page h2,
     .book .page p {
@@ -510,7 +442,6 @@
       font-weight: 600;
       color: #fff;
     }
-
     .poetry .book .page p {
       display: block;
       font-size: 1rem;
@@ -518,12 +449,10 @@
       margin-bottom: 1rem;
       color: #fff;
     }
-
     .poetry .book .page p:nth-child(2)::first-letter {
       font-size: 1.5rem;
       font-weight: 600;
     }
-
     /* Responsive layout - makes a two column-layout instead of four columns */
     @media screen and (max-width: 800px) {
       #photography .column {
@@ -532,7 +461,6 @@
         max-width: 50%;
       }
     }
-
     /* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
     @media screen and (max-width: 600px) {
       #photography .column {
@@ -555,7 +483,6 @@
       font-weight: 600;
       color: var(--samurai-blue);
     }
-
       .nav .tablink {
         float: none;
         display: block;
@@ -568,7 +495,6 @@
         right: 0;
       	top: 12px;
     	}
-
       .header-right {
         float: none;
         display: none;
@@ -582,12 +508,9 @@
       #shortstory .book .page {
         width: 500px;
       }
-
-      
     }
   </style>
 </head>
-
 <body>
   <div class="nav">
     <a href="index.html" class="logo">Oscar Depp</a>
@@ -602,12 +525,10 @@
       <i class="fa fa-bars fa-2x"></i>
     </a>
   </div>
-
   <div id="Home" class="tabcontent">
     <h3>Home</h3>
     <p>Home is where the heart is..</p>
   </div>
-
   <div id="ShortStory" class="tabcontent">
     <!---------short story---------->
     <h1 class="ttl">Short Stories</h1>
@@ -623,7 +544,6 @@
             Smith,
             and Amor Towles.
           </p>
-
           <div class="tab-titles">
             <p class="tab-links active-link" onclick="opentab('skills')">1.</p>
             <p class="tab-links" onclick="opentab('experience')">2.</p>
@@ -641,15 +561,10 @@
               </div>
               <div class="page">
                 <h3>A Short Story</h3>
-
                 <p>“What does my arm taste like?” </p>
-
                 <p> “Why don’t you taste it?”</p>
-
                 <p> “What time is it?” </p>
-
                 <p>“Half-past four.”</p>
-
                 <p>If not for the long and awkward pauses, Frank might’ve thought this girl called the wrong
                   number. Who
                   would ask anyone what their arm tastes like at five in the morning? But her voice–so
@@ -657,11 +572,8 @@
                   vibrant, so without hesitation, and so full of joy–kept him talking. Frank briefly
                   closed his eyes
                   before the peculiar girl asked another question. </p>
-
                 <p>“Will you listen?” She asked. </p>
-
                 <p>“Of course.”</p>
-
                 <p>She didn’t say anything back, but he could hear her making mouth noises against the
                   phone. He was
                   curious by the puzzling voice in his ear but also hardly listening–it was too hot and
@@ -669,17 +581,11 @@
                   answering her questions. It reminded him of a time when he also wanted to taste
                   everything in sight.
                   Her untamed voice brought him back to the call. </p>
-
                 <p>“Hey old man, where do the stars sleep?” </p>
-
                 <p>“Under the sky’s blanket,” he firmly replied. </p>
-
                 <p>“Then… where does the sky sleep?” she pressed. </p>
-
                 <p>“In the clouds,” he riposted, with a big yawn coming over his face.</p>
-
                 <p>“Well then, what does my arm taste like?”</p>
-
                 <p>Before he could answer, her voice faded into a murmur and wandered out the room. Frank’s
                   eyes started
                   drooping, and his head crumbled into the desk. Sweat from his right arm clung to his
@@ -687,13 +593,11 @@
                   drizzled down to his wrist, where it finally hit his mouth like a slap
                   in the
                   face. </p>
-
                 <p>He ended the call shortly after, left in a confused state. But at least he knew what an
                   arm tasted
                   like.
                 </p>
                 <p> <em>O.D.<br> 272 words.</em></p>
-
               </div>
             </div>
           </div>
@@ -708,7 +612,6 @@
               <div class="page">
                 <h3>A Short Story</h3>
                 <p>Beep Beep. Fifty-Five Tickity-Tock. Beep Beep. Fifty-Six Tickity Tock.</p>
-
                 <p>The door clicks its tongue and out its mouth comes the old lady next door with her broom.
                   The sunlight encroaches the window, opening my room light. Construction workers line up
                   in a haphazard line to buy breakfast at the local deli, yelling their orders at the
@@ -718,7 +621,6 @@
                   morning starts to get a character of its own, and I know it’s time to get breakfast and
                   hop on the train.</p>
                 <p><em>O.D. <br>131 words.</em></p>
-
               </div>
             </div>
           </div>
@@ -735,37 +637,27 @@
                 <p>“What’s that?” Eva asked, pointing to the dining table, as she saw a lady juggling plates
                   seeming to contain chocolate cake. Some of Eva’s school friends dropped their train
                   tracks and looked at the mother walking back & forth from the kitchen.</p>
-
                 <p>“Dinner’s ready!” she announced, as children began to flood in from all corners.</p>
-
                 <p>“I’m hungry. I want some food. I want some!” Eva repeated with more urgency. I looked at
                   her again; she was now jumping up & down.</p>
-
                 <p>“Go.”</p>
-
                 <p>From a reflection of the window, a clock showed it was a quarter to six. A man near the
                   curtains sighed while his wife went to help with the food. Strollers with three-year
                   old’s lay inert. Shadows filled creases of the parents’ faces, as they talked about fat
                   percentages in avocado.</p>
-
                 <p>Eva scurried over to the other children and raised her chin to look at the food. She
                   turned back, making sure I saw her frugal expression and heard her feet scratch the
                   ground. </p>
-
                 <p>“It’s all green. Can we go home, pappa?” It was beans & casseroles for a birthday party
                   dinner. The other children seemed ecstatic about the food, with parents smiling at their
                   creative creations.</p>
-
                 <p>“There’s cake! It’s celery though,” I said, stroking Eva’s hair. She dropped her head,
                   glancing away from the crowd she just played with. Everything parents did here always
                   seemed to blend, and everyone seemed blind to the fact that children were eating celery
                   for dessert.</p>
-
                 <p>“Let’s go.” We skipped the salad.</p>
-
                 <p> <em>O.D.<br> 250 words.</em></p>
                 </p>
-
               </div>
             </div>
           </div>
@@ -785,7 +677,6 @@
                   within the passageway suddenly feels heavier than the darkness on the ceiling. The
                   rumbling of the floor stops, and my slumber cuts short, with visitors too curious to not
                   lose themselves in the enchanted desert land.</p>
-
                 <p>I am a dead man in the Valley of Kings. Not many days ago, I lived and died. Nobody
                   significant–I died at 19. For some, 19 is enough to be significant, so much so that I’m
                   buried deep beyond any human reach. In this room, there is a deadness not familiar to
@@ -793,7 +684,6 @@
                   as a bodiless entity, in the same way there’s no life in a stone or chair. It’s me, my
                   unopened funeral presents, my unused ship into the afterlife, and my empty kitchen. The
                   uneasy atmosphere dispels with the entrance of the footsteps.</p>
-
                 <p>A pungent waft of smoky wood perfume penetrates my nostrils. Bandages weld and fasten
                   the cracked bones of what used to be my face together, revealing the grimace of another
                   man. Stones assemble painfully across my face, but I cannot feel it–my humbling servants
@@ -802,7 +692,6 @@
                   being lacking the human characteristics of perception, I must conclude I am a different
                   man and being than this rotting container–I am simply the owner of this corpse. I wear a
                   worn body and require no affirmation of existence.</p>
-
                 <p>“Come!” Yousef exclaims, peering at the outline of what appears to be valuables hidden
                   under white cloth near the altar. “A big stack of gold is here!”</p>
                 <p>A majestic purple gown, gifted by the Great Spanish King of Cordoba stood adjacent. Its
@@ -811,97 +700,61 @@
                   mast bends in half, and the hull withers away into dust, and dissipates to the ground.
                   Yousef, looking up at the gown in regretful contrast, folds the white cloth back over
                   the broken replica.</p>
-
                 <p>“Never mind. I’ve got a screw loose,” Yousef shouts out towards the soundless eternal
                   chamber. Without response, he moves on. The table, consisting of the broken boat to my
                   afterlife hidden under the same white fabric dotted with hieroglyphic script. Next to it
                   sits a clay cruet containing oils and medicine, bearing an elaborate miniature portrait
                   of my face, but he is not interested.</p>
-
                 <p>Yousef is one visitor out of many: musing and wandering through my house, taking my
                   gifts, they never touch the body that carries me. If only they did, they would see the
                   key under my armpit to the real tomb of my father. They become cautious and hesitant,
                   and rush to smaller things, like a cup or a plate in the kitchen. Death is the last
                   great horizon, that’s why it must be kept hidden–under immense boulders, in perpetual
                   darkness, and beyond life.</p>
-
                 <p>Yousef’s senses had finally accustomed to the lifeless, dry air around him. Beyond the
                   edges of the golden sarcophagus and my eyesight, the luminous hue of his torchlight
                   reveals funeral rites that adorn the wall, passages beyond my eyesight. Yousef’s voice
                   emerges:</p>
-
                 <p>Rotting flowers leave behind all the sinned,<br>
-
                   Freed from its trapping root,<br>
-
                   The ship follows the blind wind,<br>
-
                   Dowering the sea with lust and loot.</em></p>
-
                 <p>This was an unfamiliar line, the prose sounded different from the scripture on the
                   ceiling. In fact, those are the only stories I can read, as my corpse and cracked skull
                   faces upwards. I cannot look at anything; only to where the others direct light. My eye
                   sockets are unoccupied cavities, but the visitors seem to be making too much noise that
                   I can see from somewhere else, perhaps directly from my soul.</p>
-
                 <p>Who built this wretched ship?<br>
-
                   Built on fragile faith and cowering courage<br>
-
                   The ship is shattered and splintered at every golden arch.<br>
-
                   Beautiful enough to impress a dead man,<br>
-
                   But not enough to cross the river.<br>
-
                   Where are its crew, its wooden oars, and its energy?<br>
-
                   All the men wash away in dry dust.<br>
-
                   At least its furnished<br>
-
                   with food for the flood and flight,<br>
-
                   beneath the expired, loitering souls.<br>
-
                   The anchor stops at the harbor,<br>
-
                   Trying to restore its leaking vitality.<br>
-
                   Instead it falls, dropping into<br>
-
                   The dark pit of unanswered and dead prayers<br>
-
                   From the beds of beadsmen into a low damp ground,<br>
-
                   Violently shaking in their gurgling breaths. </p>
-
                 <p><em>Hold the torch higher, I cannot see the writing.</em> I could not say anything: this
                   empty
                   chamber only has room for one mouth. He was no longer looking at the writing, but rather
                   downwards to my ornamental furniture. Why were they stealing my boat? The style finally
                   sounds familiar, and I remember the rest of the poem:</p>
-
                 <p>The dark darkens still, splashing sickly tides of black waste<br>
-
                   Into where it is already dark, voices patter away,<br>
-
                   Not able to carry the already weakened ship,<br>
-
                   darkening still the silent battleground.<br>
-
                   the vessel sways without direction, rocking peacefully<br>
-
                   there is only the sound of brass bullets and moaning winds clashing<br>
-
                   against the frail hull.<br>
-
                   Oh couldn’t they have built a stronger ship?<br>
-
                   There is nothing left, there is no more here,<br>
-
                   my little ship is gone.</p>
-
                 <p>“I’m going out to smoke,” Yousef announces, flicking off his flashlight. Certain his
                   friends had abandoned him, he still declared he was going out to quell his guilt that he
                   may be leaving someone behind. I could not tell if he was a local man attempting to rob
@@ -909,45 +762,33 @@
                   hats would soon bring me warm shawarma. Every hour felt the same to me, but every
                   footstep sounded slightly different.
                   These men cower too long in the dark.</p>
-
                 <p>A fresh corpse that is dead for one day is different from a thousand-year-old corpse. I
                   had written this while my body was still fresh, before my gifted servants even had a
                   chance to adorn my life with words, before I had lost attachment to the people and
                   objects around me. Time is the cyclic procreant: it hides away the knowledge of my poem
                   in a dark cave, and digs back into the sealed cave with new meaning. Now, I am a being
                   without fruit, without organs to feel, without attachment.</p>
-
                 <p>Alas, it is time to go,<br>
-
                   With accoutrements and gifts<br>
-
                   And cooking pans and checker games<br>
-
                   Fitted for the fleeting soul.<br>
-
                   The dank frost bites, making the legs shiver,<br>
-
                   Back to the inception of the Nile river.</p>
-
                 <p>Yousef, perhaps in guilt, lingers before leaving towards the chamber door. After intense
                   sounds of scratching on what looked like smooth papyrus paper, pattering footsteps grew
                   more piercing. Yousef peered at the holes of my unopened eyes. As if directly
                   recognizing my presence, he dropped the note on my chest and sprinted towards the door.
                   Before the wavering paper landed on my body, Yousef was gone. None with life want to be
                   the only ones alone in an empty space.</p>
-
                 <p>Harder to decipher than my language, the characters were lightly marked with chalk,
                   clearly a message to his other colleagues. The symbols on the grease-stained newspaper
                   dated in 2015 read:</p>
-
                 <p>– Cinnamon Toast Crunch<br>
                   –cigarettes<br>
                   –I’m outside.</p>
-
                 <p>The broken silence replaces my uneasiness, and I embrace another slumber. The men run
                   straight home, and the dark plunged deeper into the waste of blurry city lights. Perhaps
                   the men have left to sell my teapots and cooking pans to their people.</p>
-
               </div>
             </div>
           </div>
@@ -972,7 +813,6 @@
                   artwork–a
                   daily ant trail of the daylight shadows. The city once more conquered in some worn-out
                   basketball shoes. Repeat.</p>
-
                 <p>Tick-tock. Goldfish sprinkled around his desk count the number of days left. Matt often
                   skips volunteer work in this way to stare at the ceiling. Four minutes left until 5pm. A
                   small hill of paper-airplanes sit between the desk and the wall. No, four and a couple
@@ -984,21 +824,16 @@
                 <p><em>
                     –Triple trips to Florida. Why do people have the same pair of shoes for the same
                     occasion?<br>
-
                     –Yeah I found it. 12 hours. What about gas?<br>
-
                     <p>–Cashapp? No, Venmo.
                   </em></p>
-
                 <p>He keeps a goldfish and a cookie in his mouth, and the muscles supporting his neck relax.
                   His head hurls back freely, retreating into the comforts of his chair. Lifting the
                   cookie
                   only using his lower lip, he contorts his face and sniffs the outer layer. Matt never
                   eats
                   food properly; he treats it like his dog sniffs its own dog.</p>
-
                 <p>Kindness!</p>
-
                 <p>His tongue wraps around the goldfish, feeling the small bumps of salt. He bites his lip.
                   His
                   eyes don’t know where to–Focus, the goldfish is in front of you. They’ve been pulled too
@@ -1011,9 +846,7 @@
                   uncertainty, pain is–Sometimes pain pulls you away from your own weight, from the
                   self-chosen pain. All that remains are its echoes–helping you find the real notes to
                   play.</p>
-
                 <p>Back to life.</p>
-
                 <p>Under the covers, another ray of light enters the room from the right. Had I left the
                   doors
                   open? Shuffling around the entrance and perhaps placing their shoes in the shoe rack,
@@ -1022,7 +855,6 @@
                   spread my arms and close my eyes faking absence. After they decide to intrude foreign
                   territory, another voice materializes from the left side of my room. Where were they
                   now?</p>
-
                 <p>Josephine’s cherry Jordan’s stand out when they hit the dank, granule pavement. She hates
                   the immutability of its thumping and beating flow through the streets. Sometimes
                   beautiful,
@@ -1030,7 +862,6 @@
                   automated body functions keep her from watching Kendal and Olivia and Emma and Sophia
                   and
                   Eva pass by. Sad. No cracks, a perfect circle: a bubble.</p>
-
                 <p>The designer and colored creases on her shoes had fallen off. She considered warranty,
                   but
                   Uncle Joey would tell her to buzzer off. The shoe is nothing: time and motion always
@@ -1040,7 +871,6 @@
                   art pedestal–why was he still here? Joey reaches for a damp paintbrush left on the
                   floor.
                   Guess he was skipping his four-o’clock doctor’s appointment. Slurp.</p>
-
                 <p>Their footsteps stop in front of my computer, and all light vanishes. Through my cotton
                   blanket and the curtains, the darkness illuminates the last light, the moon, with
                   greater
@@ -1048,13 +878,9 @@
                   this time with a more distinct feminine tone, this time quickly and more loudly. Who is
                   this
                   voice so quiet and violent in her ear? Who could it be?</p>
-
                 <p>Look at Thomas–he’s dancing with the wind!</p>
-
                 <p>Still no vodka. 15% off only today. Face roller for your feet.</p>
-
                 <p>More laughter. His face slumps from its peak.</p>
-
                 <p>Middle school boys care more about their sneakers soles than their souls. Clank.
                   Highschool
                   boys care about trucks. Clunka. The time between each stride takes away sound and
@@ -1064,14 +890,10 @@
                   into a melodic drum that feeds into her head. A tune to forget. Clunkaclack tap.
                   Everything
                   separates together and the absent melody stops. Then she starts dancing.</p>
-
                 <p>Take it easy, Hannah, it's okay.</p>
-
                 <p>The crows won’t come to get you, it's okay, Maria won’t hurt you.</p>
-
                 <p>Trevor on T.V. laughs. David on T.V. laughs even though he just did a minute ago. I don’t
                   need goldfish anymore.</p>
-
                 <p>No one person can walk the same line at the same place. Matt likes walking in puddles
                   because it shows his physical line where only he walks at that specific moment. Other
                   people
@@ -1079,7 +901,6 @@
                   would
                   be the same person. Could they be? Inked footsteps have vigor and life, where the motion
                   meets the shadow.</p>
-
                 <p>Why do we look up when there’s so much on the ground? You can spread your perception of
                   the
                   world outside your own comfort zone, and open your eyes to the incredible world that
@@ -1089,8 +910,6 @@
                   you can’t come out. It huddles you to its peak, and then it suddenly dies. Crowning
                   disaster
                   in a pair with shoes.</p>
-
-
                 <p>Among the voices on the other side of the door, he detailed–then strayed–between the
                   whimpers of sound his great-aunts make when they cry of sadness. And the silence of the
                   recalcitrant men holding up their emotions. His father came back, then his grandmother.
@@ -1106,16 +925,12 @@
                   the room merged with the sharp iPad light and I gently relieved the differences of the
                   outside world. Time advances and the voices fade. There’s no way to reject it, no way to
                   ever deny them.</p>
-
               </div>
             </div>
           </div>
         </div>
       </div>
     </section>
-
-
-
     <script>
       var tablinks = document.getElementsByClassName("tab-links");
       var tabcontents = document.getElementsByClassName("tab-contents");
@@ -1129,10 +944,8 @@
         event.currentTarget.classList.add("active-link")
         document.getElementById(tabname).classList.add("active-tab")
       }
-
     </script>
   </div>
-
   <div id="Poetry" class="tabcontent">
     <h1 class="ttl">Poetry</h1>
     <section class="poetry">
@@ -1145,7 +958,6 @@
           <h2 class="poemheading">Shape of things</h2>
           <div class="book">
             <div class="page">
-  
               <p>
                 Let light bend <br>
                 And leave behind<br>
@@ -1159,7 +971,6 @@
                 and window shades its holding<br>
                 A golden repair
               </p>
-  
             </div>
           </div>
         </div>
@@ -1168,60 +979,34 @@
         <img src="https://github.com/oscardepp/oscardepp/assets/137336589/cca2ad8b-6535-4a6b-ba3b-aadd8a24138e" alt="greece walkway">
         <div class="overlay">
           <h2 class="poemheading">The Spider & the Honeybee</h2>
-  
           <div class="book">
             <div class="page">
               <p class="poemtext">
               <pre>
   The ghosts have come out, the ghosts have come out! 
-  
   Hark! they are handing out
-  
   lush candy
-  
   To the young ones. 
-  
   But nobody shouts. 
-  
-  
   The ghosts have come out, the ghosts have come out! 
-  
   Hark! When the haunting nectar hangs up its drapery,
-  
   the hollow shell falls 
-  
   and claps the floor. Twisting and swirling, 
-  
   Bitter shrapnel lines
-  
   the frozen door–staining the bland sweetness
-  
    that ran its rotting halls. 
-  
-  
   The ghosts have come out, the ghosts have come out!
-  
   Hark! The ragged edges of their cement teeth
-  
   crackle louder than the children’s shrieks
-  
   Lots of hands are stirring
-  
   But no feet skittle. 
-  
-  
   The ghosts have come out! The ghosts have–When we get stuck in your 
-  
   silky, dingy nets, when you tangle 
-  
   my sought retreat, remember! My eternal hum–
   A minute of sweet buzzing. 
-  
-  
             </pre>
               </p>
             </div>
-  
           </div>
         </div>
       </div>
@@ -1231,59 +1016,35 @@
           <h2 class="poemheading">The Postman in the Red Cap</h2>
           <div class="book">
             <div class="page">
-  
               <p class="poemtext">
               <pre>
   Most people don’t 
-  
   See  				  the stork in the redcap
-  
-  
   Who writes 			
         pithy poems				 on postcards. 
-  
   a bleeding blanket 
-  
   in the wavering		 wind, 
-  
   he slices 
-  
   the envelope 
-  
   with his inked bayonet
-  
   and all the words 
-  
   come prancing				 out.
-  
   Then he snatches 
   the swinging words		 with his claws
-  
   Which he hides elegantly beneath his black-tipped wings
-  
   keeping them to himself for an instant
-  
   Then Unrolls 
-  
   his wimpled wings
-  
   leaving them
   in the layers of the mailbox
   Making sure the whirling words 
   Just slightly 		    evade his hand. 
-  
   The man’s wife 
-  
   Wanders to the mailbox 	scratching his head
-  
   Who wrote this poem? He ponders
-  
   The stork in the red cap
-  
   keeps the dancing words to himself 
-  
   Awkwardly drifting
-  
             –feathering–		into the sky. 
             </pre>
               </p>
@@ -1300,43 +1061,23 @@
               <p class="poemtext">
               <pre>
   What should I call a day as preposterous as night?
-  
   The eye of sky dews dear in divine dark,
-  
   its bloating snow sucks sight from tree’s blight,
-  
   And her woods brim with sound of shading bark.
-  
   Still time’s lease loosens in winter's sixteenth–
-  
   Light’s embers kindle when wanton bequeaths!
-  
-  
   Nobody knew of the sky’s double tongue;
-  
   More memories numb after frost forgets.
-  
   Dreams asphyxiate in chambers of lung,
-  
   And fairy’s finger’s wrap into time’s nets.
-  
   Life’s limbs illusion more than night’s liars
-  
   As stories of boundless sea drown desire.
-  
-  
   But some stories dance more temperate than eyes,
-  
   For that my mouth translates no world but thanks,
-  
   Since divine dreams chink before life’s grand prize.
-  
   For the short winter is endless with pranks,
-  
   The mind conjures more till death dies in dusk
-  
   Oh! My tempest will gust to thou under the dust.
-  
               </pre>
               </p>
             </div>
@@ -1349,37 +1090,22 @@
           <h2 class="poemheading">The Darkness of Valour in “The Church at Auvers”</h2>
           <div class="book">
             <div class="page">
-  
               <p class="poemtext">
               <pre>
   One crook’d cross pleated in parted prayer:
-  
   “Freedom beyond control!” moans dirty dirge from vain spire.
-  
   Swooning seas of stars shaft their laden share,
-  
   Though stained glass and taller choir chairs call “another!”
-  
   Now stars descend on the hooves of east earth,
-  
   Conflagrating ego and echo of deafening bells
-  
   Salve the dying heirloom of waning worth. 
-  
   From remnants of their twinkling coffin births the sky’s grain,
-  
   Blustering winds ordain clouds to deplume
-  
   Pied flower’s sun-stolen glory and bleeding bright reign.
-  
   Enthroned golden at noon, now pecked to prune,
-  
   Again hunts man’s pure ecstasy with the Great Gawain!
-  
   Convulsing with all their pomp and power, 
-  
   All wan and wry, their corpse deserts a dry wrinkled dour.
-  
              </pre>
               </p>
             </div>
@@ -1395,34 +1121,19 @@
               <p class="poemtext">
               <pre>
   He had no friends willing to tell his tale,
-  
   The plight of justice which led the assail.
-  
   He attended to harlots of criollos,
-              
   Conformed to banal tunes of orioles, 
-              
   Slashed the undulating flag across stands, 
-              
   And clenched the white priest’s fistful of commands.
-              
   Yet convictions don’t have riches volute, 
-              
   twenty years were toiled to restitute.
-              
   The economy of heavens costly,
-               
   Run on faithful sympathy for Nazis.
-              
   Hastened hymns of oriole overtures
-              
   More full than nature’s silencing features.
-              
   Butterflies can’t blossom from their bud
-              
   if caterpillars grow on glib cud.
-              
-  
              </pre>
               </p>
             </div>
@@ -1435,37 +1146,22 @@
           <h2 class="poemheading">Chocolate's Plain Secret</h2>
           <div class="book">
             <div class="page">
-  
               <p class="poemtext">
               <pre>
   Almonds under brown licour’s Possessing
-  
   Erodes my mountain’s apt to Estimate
-  
   Oh! How desert thirsts for God’s releasing!
-  
   When all thy path lay indeterminate,
-  
   Fox and Cockroach are given God’s Granting
-  
   Haunting those who sin in deserving; 
-  
   Myth stray truth for Wandering Wanting 
-  
   Send Salty Seas of Gold to tongue’s swerving!
-  
   Yet without the precipice myth’s knowing,
-  
   The Bare, the full are all but mistaking,
-  
   With Chocolate Garden of Eden growing!
-  
   Washed away are the sculptor’s first makings,
-  
   Shakespeare’s stage shadows the porter’s flatter
-  
   Gorged shadows make even empty matter.
-  
              </pre>
               </p>
             </div>
@@ -1474,7 +1170,6 @@
       </div>
     </section>
   </div>
-
   <div id="Photography" class="tabcontent">
     <!-- Header -->
     <h1 class="ttl">Photography</h1>
@@ -1483,7 +1178,6 @@
         <p><br>Collection of Photos I've taken around the world.<br>
           Hover over any image for some description. </p>
       </div>
-
       <!-- Photo Grid -->
       <div class="row">
         <div class="column">
@@ -1717,7 +1411,6 @@
             </div>
           </div>
         </div>
-
         <div class="column">
           <!-- Continue adding containers for the fourth column -->
           <div class="container">
@@ -1786,12 +1479,10 @@
               <div class="text">Back from Betty's<br> <span>Missoula, Montana. March 2022.</span></div>
             </div>
           </div>
-
         </div>
       </div>
     </section>
   </div>
-
   <!-- open up tabs for navigation  -->
   <script>
     function openPage(pageName, elmnt, color) {
@@ -1807,11 +1498,9 @@
       document.getElementById(pageName).style.display = "block";
       elmnt.style.backgroundColor = color;
     }
-
     // Get the element with id="defaultOpen" and click on it
     document.getElementById("defaultOpen").click();
   </script>
-
   <!-- -----------sidebar open and close-------- -->
   <script>
     function myFunction() {
@@ -1823,8 +1512,5 @@
       }
     }
     </script>
-
-
 </body>
-
 </html>
