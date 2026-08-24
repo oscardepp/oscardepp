@@ -21,7 +21,7 @@
         <ul id="primary-navigation" class="primary-navigation flex">
           <li><a href="#about">About</a></li>
           <li><a href="#portfolio">Portfolio</a></li>
-          <li><a href="/creative.html">Creative</a></li>
+          <li><a href="creative.html">Creative</a></li>
           <li><a href="#contact">Contact</a></li>
           <li><a href="Oscar Depp CV 2026.pdf">CV</a></li>
 
@@ -42,11 +42,11 @@
     </div>
 
     <ul class="social">
-      <li><a href="https://linkedin.com/in/oscardepp" target="_blank"><i
+      <li><a href="https://linkedin.com/in/oscardepp" target="_blank" rel="noopener noreferrer"><i
             class="fa fa-linkedin fa-3x wow bounceIn center" aria-hidden="true"></i></a></li>
-      <li><a href="mailto:oscardepp@gmail.com" target="_blank"><i
+      <li><a href="mailto:oscardepp@gmail.com"><i
             class="fa fa-envelope fa-3x wow bounceIn center"></i></a></li>
-      <li><a href="https://github.com/oscardepp" target="_blank"><i
+      <li><a href="https://github.com/oscardepp" target="_blank" rel="noopener noreferrer"><i
             class="fa fa-github fa-3x wow bounceIn center"></i></a></li>
     </ul>
   </section>
@@ -56,7 +56,7 @@
     <ul>
       <li><a href="#about">About</a></li>
       <li><a href="#portfolio">Portfolio</a></li>
-      <li><a href="/creative.html">Creative</a></li>
+      <li><a href="creative.html">Creative</a></li>
       <li><a href="#contact">Contact</a></li>
       <li><a href="Oscar Depp CV 2026.pdf">CV</a></li>
     </ul>
@@ -74,79 +74,52 @@
           <h3 class="headabout"> About Me </h3>
           <p>I am a quantitative researcher working in Europe and am a recent grad of Northwestern University.
               My research spans foundation models for robotics, signal processing, and computational fluid methods.
-              I've also designed satellite systems and aircraft wings, including projects for NASA and the U.S. State Department.
-              I welcome opportunities to collaborate on interesting research & engineering projects. 
+              I've designed satellite systems and aircraft wings, including projects for NASA and the U.S. State Department.
+              I welcome opportunities to collaborate on interesting research & engineering projects.</p>
 
           <div class="tab-titles">
-            <p class="tab-links active-link" onclick="opentab('skills')">Skills</p>
-            <p class="tab-links" onclick="opentab('experience')">Experience</p>
+            <p class="tab-links active-link" onclick="opentab('experience')">Experience</p>
             <p class="tab-links" onclick="opentab('education')">Education</p>
-            <p class="tab-links" onclick="opentab('courses')">Courses Highlights</p>
-            
+            <p class="tab-links" onclick="opentab('skills')">Skills</p>
+            <p class="tab-links" onclick="opentab('courses')">Course Highlights</p>
           </div>
 
-          <div class="tab-contents active-tab" id="skills">
-            <ul>
-              <li><span>Programming</span><br>Python<br>C/C++<br>MATLAB<br>PyTorch/TensorFlow<br>Git<br>R<br>Mathematica</li>
-              <li><span>Robotics</span><br>Machine Dynamics<br>Control & Feedback Systems</li>
-              <li><span>Mechanical Engineering</span><br>CAD(SolidWorks, Onshape)<br>Active Learning</li>
-              <li><span>Languages</span><br>English<br>Japanese<br>Chinese<br>Arabic<br>German(Intermediate)</li>
+          <div class="tab-contents" id="skills">
+            <ul class="skills-list">
+              <li class="skill-group"><span>Programming</span><div class="skill-items"><span class="skill-item">Python</span><span class="skill-item">C/C++</span><span class="skill-item">MATLAB</span><span class="skill-item">PyTorch/TensorFlow</span><span class="skill-item">Git</span><span class="skill-item">R</span><span class="skill-item">Mathematica</span></div></li>
+              <li class="skill-group"><span>Robotics</span><div class="skill-items"><span class="skill-item">Machine Dynamics</span><span class="skill-item">Control & Feedback Systems</span></div></li>
+              <li class="skill-group"><span>Mechanical Engineering</span><div class="skill-items"><span class="skill-item">CAD (SolidWorks, Onshape)</span><span class="skill-item">Active Learning</span></div></li>
+              <li class="skill-group"><span>Languages</span><div class="skill-items"><span class="skill-item">English</span><span class="skill-item">Japanese</span><span class="skill-item">Chinese</span><span class="skill-item">Arabic</span><span class="skill-item">German (Intermediate)</span></div></li>
             </ul>
           </div>
-          <div class="tab-contents" id="experience">
+          <div class="tab-contents active-tab" id="experience">
             <ul>
-              <li><span>February 2026-</span><br>Qube Research & Technologies (QRT)<br><em>Quantitative Research Analyst</em></li>
-              <li><span>June-August 2025</span><br>PanAgora Asset Management<br><em>Quantitative Research Intern</em></li>
-              <li><span>January 2025-July 2025</span><br>MAGICS Lab<br><em>Junior Deep Learning Researcher</em></li>
-              <li><span>March 2024-</span><br>Aggelos Image and Video Processing Lab<br><em>Junior Deep LearningResearcher</em></li>
-              <li><span>June 2024-Aug. 2024</span><br>Citigroup<br><em>Quantitative Analysis Intern</em></li>
-              <li><span>Sept. 2023-</span><br>Northwestern Athletic<br><em>Tutor</em></li>
-              <li><span>June-Aug. 2023</span><br>Summer Research Award 2023: Investigating Quincke Particles Electrohydrodynamics<br><em>Researcher</em></li>
-              <li><span>Sept. 2022-Jan. 2023</span><br>Buffett Institute of Global Affairs<br><em>Undergraduate Researcher</em></li>
-              <li><span>June 2021-Aug. 2021</span><br>Y-Sapix Global Alpha<br><em>Summer Intern</em></li>
-              <li><span>June 2021-Aug. 2021</span><br>YC&AC<br><em>Private Tennis Coach</em></li>
+              <li><span>February 2026-</span><strong>Qube Research & Technologies (QRT)</strong><em class="experience-role">Quantitative Research Analyst</em></li>
+              <li><span>June-August 2025</span><strong>PanAgora Asset Management</strong><em class="experience-role">Quantitative Research Intern</em></li>
+              <li><span>January 2025-July 2025</span><strong>MAGICS Lab</strong><em class="experience-role">Junior Deep Learning Researcher</em></li>
+              <li><span>March 2024-</span><strong>Aggelos Image and Video Processing Lab</strong><em class="experience-role">Junior Deep Learning Researcher</em></li>
+              <li><span>June 2024-Aug. 2024</span><strong>Citigroup</strong><em class="experience-role">Quantitative Analysis Intern</em></li>
+              <li><span>Sept. 2023-</span><strong>Northwestern Athletics</strong><em class="experience-role">Tutor</em></li>
+              <li><span>June-Aug. 2023</span><strong>Summer Research Award 2023: Investigating Quincke Particles Electrohydrodynamics</strong><em class="experience-role">Researcher</em></li>
+              <li><span>Sept. 2022-Jan. 2023</span><strong>Buffett Institute of Global Affairs</strong><em class="experience-role">Undergraduate Researcher</em></li>
+              <li><span>June 2021-Aug. 2021</span><strong>Y-Sapix Global Alpha</strong><em class="experience-role">Summer Intern</em></li>
+              <li><span>June 2021-Aug. 2021</span><strong>YC&AC</strong><em class="experience-role">Private Tennis Coach</em></li>
             </ul>
           </div>
           <div class="tab-contents" id="education">
-            <ul>
-              <li><span>September 2021 - December 2025</span><br>Northwestern University M.S. Computer Science</li>
-              <li><span>September 2021 - June 2025</span><br>Northwestern University B.S. Applied Mathematics</li>
-              <li><span>Septmeber 2017 - June 2021</span><br>Deerfield Academy</li>
-              <li><span>August 2020 - December 2020</span><br>King's Academy</li>
-              <li><span>August 2007 - June 2017</span><br>Singapore American School</li>
+            <ul class="education-list">
+              <li class="education-item"><span>September 2021 - December 2025</span><strong>Northwestern University M.S. Computer Science</strong></li>
+              <li class="education-item"><span>September 2021 - June 2025</span><strong>Northwestern University B.S. Applied Mathematics</strong></li>
+              <li class="education-item"><span>September 2017 - June 2021</span><strong>Deerfield Academy</strong></li>
+              <li class="education-item"><span>August 2020 - December 2020</span><strong>King's Academy</strong></li>
+              <li class="education-item"><span>August 2007 - June 2017</span><strong>Singapore American School</strong></li>
             </ul>
           </div>
           <div class="tab-contents" id="courses">
-            <ul>
-              <li><span>Computer Science</span><br>
-                CS 111: Imperative Programming<br>
-                CS 213: Computer Systems <br>
-                CS 214: Data Structures & Algorithms<br>
-                CS 310: Scalable Software Architecture <br>
-                CS 349: Machine Learning <br>
-                CS 449: Deep Learning  <br>
-                CS 497: Deep Learning for NLP </li>
-              <li><span>Engineering</span><br>
-                MECH_ENG 314: Lagrangian Dynamics<br>
-                MECH_ENG 455: Active Learning for Robotics<br>
-                MAT_SCI 314: Thermodynamics<br>
-                MAT_SCI 315: Phase Equilibria & Diffusion of Materials<br>
-                MECH_ENG 233: Electronics Design<br>
-                DSGN 240, 321: Advanced Solid Modeling <br>
-                ELEC_ENG 222: Signals and Systems<br>
-                ELEC_ENG 395: Adaptive Signal Processing<br>
-                ELEC_ENG 360: Feedback & Control Systems<br>
-              </li>
-              <li><span>Applied Mathematics</span><br>ES_APPM 311: Partial Differential Equations<br>
-              ES_APPM 312: Complex Analysis<br>
-              ES_APPM 322: Dynamical Systems <br>
-              ES_APPM 346: Modeling and Computation in Science & Engineering<br>
-              ES_APPM 495: Network Science & Social Systems<br>
-              IEMS 202: Probability<br>
-              IEMS 303: Statistics <br>
-              IEMS 304: Statistical Learning & Regression <br>
-              IEMS 490: Large Foundation Models 
-              </li>
+            <ul class="course-list">
+              <li class="course-group"><span>Computer Science</span><div class="course-items">CS 111: Imperative Programming<br>CS 213: Computer Systems<br>CS 214: Data Structures &amp; Algorithms<br>CS 310: Scalable Software Architecture<br>CS 349: Machine Learning<br>CS 449: Deep Learning<br>CS 497: Deep Learning for NLP</div></li>
+              <li class="course-group"><span>Engineering</span><div class="course-items">MECH_ENG 314: Lagrangian Dynamics<br>MECH_ENG 455: Active Learning for Robotics<br>MAT_SCI 314: Thermodynamics<br>MAT_SCI 315: Phase Equilibria &amp; Diffusion of Materials<br>MECH_ENG 233: Electronics Design<br>DSGN 240, 321: Advanced Solid Modeling<br>ELEC_ENG 222: Signals and Systems<br>ELEC_ENG 395: Adaptive Signal Processing<br>ELEC_ENG 360: Feedback &amp; Control Systems</div></li>
+              <li class="course-group"><span>Applied Mathematics</span><div class="course-items">ES_APPM 311: Partial Differential Equations<br>ES_APPM 312: Complex Analysis<br>ES_APPM 322: Dynamical Systems<br>ES_APPM 346: Modeling and Computation in Science &amp; Engineering<br>ES_APPM 495: Network Science &amp; Social Systems<br>IEMS 202: Probability<br>IEMS 303: Statistics<br>IEMS 304: Statistical Learning &amp; Regression<br>IEMS 490: Large Foundation Models</div></li>
             </ul>
           </div>
         </div>
@@ -176,20 +149,20 @@
             <div class="layer">
               <h3>CAD Portfolio</h3>
               <p> CAD Portfolio of Product Design, Commerical Design, and Aerospace Projects. </p>
-              <a href = "https://github.com/oscardepp/CADProjects"> <i class="fa fa-external-link fa-3x wow bounceIn center"></i></a>
+              <a href = "https://www.github.com/oscardepp/CADProjects"> <i class="fa fa-external-link fa-3x wow bounceIn center"></i></a>
             </div>
           </div>
           <div class = "work">
-            <img src="https://github.com/oscardepp/oscardepp/assets/137336589/1b171271-b87b-4bbd-bb45-94bd1c7a00cf" alt="drone image" />
+            <img src="https://www.github.com/oscardepp/oscardepp/assets/137336589/1b171271-b87b-4bbd-bb45-94bd1c7a00cf" alt="drone image" />
             <div class="layer">
               <h3>Autonomous Drone Project</h3>
               <p> Drone Project done with Robotics Club to autonomously pick up boxes.  </p>
-              <a href = "https://github.com/oscardepp/autonomousdrone"> <i class="fa fa-external-link fa-3x wow bounceIn center"></i></a>
+              <a href = "https://www.github.com/oscardepp/autonomousdrone"> <i class="fa fa-external-link fa-3x wow bounceIn center"></i></a>
             </div>
           </div>
           
         </div>
-        <a href = "https://github.com/oscardepp" class = "btn">See more</a>  
+        <a href = "https://www.github.com/oscardepp" class = "btn">See more</a>  
 
     </div>
   </section>  
@@ -202,18 +175,18 @@
     </header>
     <div class="container">
         <p>For more color, please click the B&W.</p>
-        <a title="For more color, please click." href="/top.html">
-          <img src="https://github.com/oscardepp/oscardepp/assets/137336589/4e0c4637-7572-4b50-83d8-d7f40a7fa989"
+        <a title="For more color, please click." href="top.html">
+          <img src="https://www.github.com/oscardepp/oscardepp/assets/137336589/4e0c4637-7572-4b50-83d8-d7f40a7fa989"
             id="profile" alt="fishing on bayou St John in B&W">
         </a> <br>
         <p> </p>
         <p> On this site, click copyrighted images to move back one level. </p>
         <ul class="social">
-          <li><a href="https://linkedin.com/in/oscardepp" target="_blank"><i
+          <li><a href="https://www.linkedin.com/in/oscardepp" target="_blank" rel="noopener noreferrer"><i
                 class="fa fa-linkedin fa-5x wow bounceIn center" aria-hidden="true"></i></a></li>
-          <li><a href="mailto:oscardepp  gmail.com" target="_blank"><i
+          <li><a href="mailto:oscardepp@gmail.com"><i
                 class="fa fa-envelope fa-5x wow bounceIn center"></i></a></li>
-          <li><a href="https://github.com/oscardepp" target="_blank"><i
+          <li><a href="https://www.github.com/oscardepp" target="_blank" rel="noopener noreferrer"><i
                 class="fa fa-github fa-5x wow bounceIn center"></i></a></li>
         </ul>
       </div>
@@ -221,19 +194,22 @@
   </section>
 
   <script>
-    var tablinks = document.getElementsByClassName("tab-links");
-    var tabcontents = document.getElementsByClassName("tab-contents");
-    function opentab(tabname) {
-      for (tablink of tablinks) {
-        tablink.classList.remove("active-link")
-      }
-      for (tabcontent of tabcontents) {
-        tabcontent.classList.remove("active-tab")
-      }
-      event.currentTarget.classList.add("active-link")
-      document.getElementById(tabname).classList.add("active-tab")
-    }
+    const tablinks = document.getElementsByClassName("tab-links");
+    const tabcontents = document.getElementsByClassName("tab-contents");
 
+    function opentab(tabname) {
+      for (const tablink of tablinks) {
+        tablink.classList.remove("active-link");
+      }
+
+      for (const tabcontent of tabcontents) {
+        tabcontent.classList.remove("active-tab");
+      }
+
+      const currentTab = event.currentTarget;
+      currentTab.classList.add("active-link");
+      document.getElementById(tabname).classList.add("active-tab");
+    }
   </script>
 
 
