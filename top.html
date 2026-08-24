@@ -1,24 +1,203 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Oscar Depp details</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-  </head>
-  <body>
+<html lang="en-US">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Oscar Depp Photo</title>
+
+    <style>
+        body {
+            margin: 0;
+            background: #111;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        .container {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 30px;
+            box-sizing: border-box;
+        }
+
+        .instruction {
+            margin-bottom: 22px;
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.75);
+        }
+
+        #photo {
+            width: min(900px, 92vw);
+            height: auto;
+            display: block;
+            object-fit: contain;
+
+            /* Start halfway between B&W and color */
+            filter: grayscale(50%);
+
+            /* Makes movement feel smooth */
+            transition: filter 0.08s linear;
+
+            /* Image itself doesn't move */
+            transform: none;
+        }
+
+        .back-link {
+            margin-top: 20px;
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        .color-labels {
+            width: min(900px, 92vw);
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+
+            color: rgba(255, 255, 255, 0.45);
+            font-size: 12px;
+
+            pointer-events: none;
+        }
+
+        @media screen and (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+
+            .instruction {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
     <div class="container">
-      <div class="row">
-        <div class="col-sm-12">
-          <h1>Oscar Depp</h1>
-          <p>
-          <a title="Option 1" style="color:mauve;" href="index.html">Option 1,</a>
-          <a title="Option 2" style="color:purple;" href="creative.html">Option 2,</a>
-          <a title="Option 3" style="color:lightblue;" href="index.html#contact">Option 3</a>
-          </p>
-          <a title="On this site, click the copyrighted images to move back one level." href="index.html">
-            <img src="https://github.com/oscardepp/oscardepp/assets/137336589/7e39da8e-24a6-414d-ae17-448ec72aedb9" style=width:612px; alt="fishing on bayou St John in color">
-          </a>
+
+        <p class="instruction">
+            Move your mouse from left to right to reveal the color.
+        </p>
+
+        <img
+            id="photo"
+            src="https://github.com/oscardepp/oscardepp/assets/137336589/7e39da8e-24a6-414d-ae17-448ec72aedb9"
+            alt="fishing on bayou St John"
+        >
+
+        <div class="color-labels">
+            <span>B&amp;W</span>
+            <span>Color</span>
         </div>
-      </div>
+
+        <a class="back-link" href="index.html">
+            Back to main site
+        </a>
+
     </div>
-  </body>
+
+
+    <script>
+
+        const photo = document.getElementById('photo');
+
+
+        function updatePhotoColor(clientX) {
+
+            /*
+                Horizontal mouse position as a number from 0 to 1.
+
+                Far left:
+                    position = 0
+
+                Middle:
+                    position = 0.5
+
+                Far right:
+                    position = 1
+            */
+
+            let position = clientX / window.innerWidth;
+
+
+            // Keep value safely between 0 and 1
+            position = Math.max(0, Math.min(1, position));
+
+
+            /*
+                grayscale:
+
+                100% = completely black and white
+                0%   = completely colored
+
+                Therefore we reverse the mouse position.
+            */
+
+            const grayscale = 100 - (position * 100);
+
+
+            /*
+                We also slightly change saturation.
+
+                Left  = muted
+                Right = normal/full color
+            */
+
+            const saturation = 70 + (position * 30);
+
+
+            photo.style.filter =
+                `grayscale(${grayscale}%) saturate(${saturation}%)`;
+        }
+
+
+
+        /*
+            DESKTOP:
+            Change color based on horizontal mouse position.
+        */
+
+        document.addEventListener('mousemove', function(event) {
+
+            updatePhotoColor(event.clientX);
+
+        });
+
+
+
+        /*
+            MOBILE / TOUCH:
+            Drag your finger horizontally to control the same effect.
+        */
+
+        document.addEventListener(
+            'touchmove',
+            function(event) {
+
+                if (event.touches.length > 0) {
+
+                    updatePhotoColor(event.touches[0].clientX);
+
+                }
+
+            },
+            { passive: true }
+        );
+
+    </script>
+
+</body>
+
 </html>
