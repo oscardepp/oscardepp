@@ -1,16 +1,20 @@
-const tabLinks = document.querySelectorAll(".tab-links");
-const tabContents = document.querySelectorAll(".tab-contents");
+const tabLinks = document.querySelectorAll(".about .tab-links");
+const tabContents = document.querySelectorAll(".about .tab-contents");
 
-function openTab(event, tabName) {
-    tabLinks.forEach((tabLink) => {
-        tabLink.classList.remove("active-link");
+function activateTab(tabLink) {
+    const tabName = tabLink.dataset.tab;
+
+    tabLinks.forEach((item) => {
+        item.classList.remove("active-link");
+        item.setAttribute("aria-selected", "false");
     });
 
-    tabContents.forEach((tabContent) => {
-        tabContent.classList.remove("active-tab");
+    tabContents.forEach((item) => {
+        item.classList.remove("active-tab");
     });
 
-    event.currentTarget.classList.add("active-link");
+    tabLink.classList.add("active-link");
+    tabLink.setAttribute("aria-selected", "true");
 
     const selectedTab = document.getElementById(tabName);
 
@@ -19,15 +23,31 @@ function openTab(event, tabName) {
     }
 }
 
+tabLinks.forEach((tabLink) => {
+    tabLink.addEventListener("click", () => {
+        activateTab(tabLink);
+    });
+
+    tabLink.addEventListener("keydown", (event) => {
+        if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            activateTab(tabLink);
+        }
+    });
+});
+
 const menuToggle = document.querySelector(".toggle");
 const primaryNavigation = document.querySelector(".primary-navigation");
 const sideMenu = document.querySelector(".menu");
 
 if (menuToggle) {
     menuToggle.addEventListener("click", () => {
-        menuToggle.classList.toggle("active");
-        primaryNavigation?.classList.toggle("active");
-        sideMenu?.classList.toggle("active");
+        const isActive = menuToggle.classList.toggle("active");
+
+        primaryNavigation?.classList.toggle("active", isActive);
+        sideMenu?.classList.toggle("active", isActive);
+
+        menuToggle.setAttribute("aria-expanded", String(isActive));
     });
 }
 
@@ -37,5 +57,3 @@ if (copyright) {
     copyright.innerHTML =
         `&nbsp;&nbsp; &copy; ${new Date().getFullYear()} Oscar Depp | All Rights Reserved`;
 }
-
-window.openTab = openTab;

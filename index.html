@@ -2,6 +2,11 @@
 <html lang="en-US">
 <!-- command L and command o for opening it up locally -->
 <head>
+<meta name="author" content="Oscar Depp">
+<meta property="og:title" content="Oscar Depp">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.oscardepp.com/">
+<meta name="twitter:card" content="summary">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Oscar Depp</title>
@@ -11,7 +16,14 @@
     type="image/x-icon"
     href="https://www.github.com/oscardepp/oscardepp/assets/137336589/0ca5e8d0-8f0a-4440-ac49-3d38421e6e07"
   >
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet"
+  >
   <link rel="stylesheet" href="style.css">
+  
   <!-- javascript -->
   <script src="js/main.js" defer></script>
 </head>
@@ -41,7 +53,14 @@
           </li>
         </ul>
       </nav>
-      <div class="toggle"></div>
+      <button
+      class="toggle"
+      type="button"
+      aria-label="Open navigation menu"
+      aria-expanded="false"
+      aria-controls="primary-navigation"
+      ></button>
+      
     </header>
     <video autoplay muted loop playsinline>
       <source src="waves.mp4" type="video/mp4">
@@ -138,25 +157,33 @@
           <div class="tab-titles">
             <p
               class="tab-links active-link"
-              onclick="openTab(event, 'experience')"
+              data-tab="experience"
+              role="button"
+              tabindex="0"
             >
               Experience
             </p>
             <p
               class="tab-links"
-              onclick="openTab(event, 'education')"
+              data-tab="education"
+              role="button"
+              tabindex="0"
             >
               Education
             </p>
             <p
               class="tab-links"
-              onclick="openTab(event, 'skills')"
+              data-tab="skills"
+              role="button"
+              tabindex="0"
             >
               Skills
             </p>
             <p
               class="tab-links"
-              onclick="openTab(event, 'courses')"
+              data-tab="courses"
+              role="button"
+              tabindex="0"
             >
               Course Highlights
             </p>

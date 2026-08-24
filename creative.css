@@ -94,7 +94,7 @@ body {
     font-style: italic;
 }
 /* ----------navigation bar--------- */
-.nav a.icon {
+.nav .icon {
     display: none;
 }
 .menu-icon {
@@ -484,7 +484,7 @@ mix-blend-mode: overlay;
     text-align: left;
     width: 100%;
     }
-    .nav a.icon {
+    .nav .icon {
     display: block;
     position: absolute;
     right: 0;
