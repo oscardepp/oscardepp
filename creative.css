@@ -7,6 +7,8 @@ body {
     font-family: 'Poppins', sans-serif;
 }
 
+
+
 /* ---------- Photography ---------- */
 #photography .header {
     position: relative;
@@ -138,6 +140,11 @@ body {
     font-size: 18px;
     line-height: 25px;
     cursor: pointer;
+}
+
+.nav .tablink.active-page-tab {
+    background-color: hsla(236, 92%, 15%, 0.631);
+    color: #000;
 }
 
 .nav .tablink:hover {
@@ -511,6 +518,10 @@ body {
     .header-right {
         float: none;
         display: none;
+    }
+
+    .header-right.mobile-open {
+        display: block;
     }
 
     .ttl {
