@@ -3,24 +3,25 @@ const tabContents = document.querySelectorAll(".about .tab-contents");
 
 function activateTab(tabLink) {
     const tabName = tabLink.dataset.tab;
+    const selectedTab = document.getElementById(tabName);
+
+    if (!selectedTab) {
+        return;
+    }
 
     tabLinks.forEach((item) => {
-        item.classList.remove("active-link");
-        item.setAttribute("aria-selected", "false");
+        const isSelected = item === tabLink;
+
+        item.classList.toggle("active-link", isSelected);
+        item.setAttribute("aria-selected", String(isSelected));
     });
 
     tabContents.forEach((item) => {
-        item.classList.remove("active-tab");
+        const isSelected = item === selectedTab;
+
+        item.classList.toggle("active-tab", isSelected);
+        item.setAttribute("aria-hidden", String(!isSelected));
     });
-
-    tabLink.classList.add("active-link");
-    tabLink.setAttribute("aria-selected", "true");
-
-    const selectedTab = document.getElementById(tabName);
-
-    if (selectedTab) {
-        selectedTab.classList.add("active-tab");
-    }
 }
 
 tabLinks.forEach((tabLink) => {
@@ -41,8 +42,27 @@ if (menuToggle) {
         sideMenu?.classList.toggle("active", isActive);
 
         menuToggle.setAttribute("aria-expanded", String(isActive));
+        menuToggle.setAttribute(
+            "aria-label",
+            isActive ? "Close navigation menu" : "Open navigation menu"
+        );
     });
 }
+
+const mobileNavigationLinks = document.querySelectorAll(
+    ".primary-navigation a, .menu a"
+);
+
+mobileNavigationLinks.forEach((link) => {
+    link.addEventListener("click", () => {
+        menuToggle?.classList.remove("active");
+        primaryNavigation?.classList.remove("active");
+        sideMenu?.classList.remove("active");
+
+        menuToggle?.setAttribute("aria-expanded", "false");
+        menuToggle?.setAttribute("aria-label", "Open navigation menu");
+    });
+});
 
 const copyright = document.getElementById("p1");
 

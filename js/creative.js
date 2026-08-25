@@ -3,24 +3,25 @@ const creativeTabContents = document.querySelectorAll("#shortstory .tab-contents
 
 function activateStoryTab(tabLink) {
     const tabName = tabLink.dataset.tab;
+    const target = document.getElementById(tabName);
+
+    if (!target) {
+        return;
+    }
 
     creativeTabLinks.forEach((item) => {
-        item.classList.remove("active-link");
-        item.setAttribute("aria-selected", "false");
+        const isSelected = item === tabLink;
+
+        item.classList.toggle("active-link", isSelected);
+        item.setAttribute("aria-selected", String(isSelected));
     });
 
     creativeTabContents.forEach((item) => {
-        item.classList.remove("active-tab");
+        const isSelected = item === target;
+
+        item.classList.toggle("active-tab", isSelected);
+        item.setAttribute("aria-hidden", String(!isSelected));
     });
-
-    tabLink.classList.add("active-link");
-    tabLink.setAttribute("aria-selected", "true");
-
-    const target = document.getElementById(tabName);
-
-    if (target) {
-        target.classList.add("active-tab");
-    }
 }
 
 creativeTabLinks.forEach((tabLink) => {
@@ -39,40 +40,52 @@ creativeTabLinks.forEach((tabLink) => {
     });
 });
 
+/* Press 1, 2, 3, 4, or 5 to open that story. */
 document.addEventListener("keydown", (event) => {
-    const storyTabs = [...document.querySelectorAll("#shortstory .tab-links")];
+    const activeElement = document.activeElement;
+    const isTyping =
+        activeElement instanceof HTMLInputElement ||
+        activeElement instanceof HTMLTextAreaElement ||
+        activeElement?.isContentEditable;
+
+    if (isTyping) {
+        return;
+    }
+
     const index = Number(event.key) - 1;
 
-    if (index >= 0 && index < storyTabs.length) {
-        storyTabs[index].click();
+    if (
+        Number.isInteger(index) &&
+        index >= 0 &&
+        index < creativeTabLinks.length
+    ) {
+        creativeTabLinks[index].click();
     }
 });
 
-const pageTabs = document.querySelectorAll(".tablink");
+const pageTabs = document.querySelectorAll(".nav .tablink");
 const pageContents = document.querySelectorAll(".tabcontent");
 
 function openPage(pageName, selectedTab) {
+    const selectedPage = document.getElementById(pageName);
+
+    if (!selectedPage) {
+        return;
+    }
+
     pageContents.forEach((content) => {
-        content.style.display = "none";
+        const isSelected = content === selectedPage;
+
+        content.style.display = isSelected ? "block" : "none";
+        content.setAttribute("aria-hidden", String(!isSelected));
     });
 
     pageTabs.forEach((tab) => {
-        tab.style.backgroundColor = "";
-        tab.style.color = "";
-        tab.setAttribute("aria-selected", "false");
+        const isSelected = tab === selectedTab;
+
+        tab.classList.toggle("active-page-tab", isSelected);
+        tab.setAttribute("aria-selected", String(isSelected));
     });
-
-    const selectedPage = document.getElementById(pageName);
-
-    if (selectedPage) {
-        selectedPage.style.display = "block";
-    }
-
-    if (selectedTab) {
-        selectedTab.style.backgroundColor = "hsla(236, 92%, 15%, 0.631)";
-        selectedTab.style.color = "black";
-        selectedTab.setAttribute("aria-selected", "true");
-    }
 }
 
 pageTabs.forEach((tab) => {
@@ -86,10 +99,13 @@ const navigation = document.getElementById("hr");
 
 if (mobileMenuButton && navigation) {
     mobileMenuButton.addEventListener("click", () => {
-        const isOpen = navigation.style.display === "block";
+        const isOpen = navigation.classList.toggle("mobile-open");
 
-        navigation.style.display = isOpen ? "none" : "block";
-        mobileMenuButton.setAttribute("aria-expanded", String(!isOpen));
+        mobileMenuButton.setAttribute("aria-expanded", String(isOpen));
+        mobileMenuButton.setAttribute(
+            "aria-label",
+            isOpen ? "Close navigation menu" : "Open navigation menu"
+        );
     });
 }
 
