@@ -176,6 +176,11 @@ html {
     padding: clamp(40px, 7vw, 100px);
     color: var(--color-muted);
 }
+.about .tab-links {
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+}
 .about .headabout {
     color: var(--color-text);
     text-transform: uppercase;
