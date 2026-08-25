@@ -448,6 +448,13 @@ mix-blend-mode: overlay;
     font-size: 1.5rem;
     font-weight: 600;
 }
+/* ---------- keyboard accessibility ---------- */
+.nav a:focus-visible,
+.nav button:focus-visible,
+#shortstory .tab-links:focus-visible {
+    outline: 3px solid var(--samurai-blue);
+    outline-offset: 4px;
+}
 /* Responsive layout - makes a two column-layout instead of four columns */
 @media screen and (max-width: 800px) {
     #photography .column {

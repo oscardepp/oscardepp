@@ -116,6 +116,7 @@ html {
     background-position: center;
     cursor: pointer;
 }
+.text h1,
 .text h2 {
     font-size: clamp(3rem, 7vw, 5rem);
     font-weight: 800;
@@ -220,6 +221,11 @@ html {
 }
 .tab-links {
     margin-right: 0;
+    padding: 0;
+    border: 0;
+    background: none;
+    appearance: none;
+    font: inherit;
     font-size: 18px;
     font-weight: 500;
     color: #d9d9d9;
@@ -638,6 +644,13 @@ html {
     text-align: center;
     justify-content: center;
     align-items: center;
+}
+/* ---------- keyboard accessibility ---------- */
+a:focus-visible,
+button:focus-visible,
+[role="button"]:focus-visible {
+    outline: 3px solid var(--lavender);
+    outline-offset: 4px;
 }
 @media screen and (max-width: 60rem) and (min-width: 51rem) {
     #portfolio {

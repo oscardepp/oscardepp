@@ -27,13 +27,6 @@ tabLinks.forEach((tabLink) => {
     tabLink.addEventListener("click", () => {
         activateTab(tabLink);
     });
-
-    tabLink.addEventListener("keydown", (event) => {
-        if (event.key === "Enter" || event.key === " ") {
-            event.preventDefault();
-            activateTab(tabLink);
-        }
-    });
 });
 
 const menuToggle = document.querySelector(".toggle");
