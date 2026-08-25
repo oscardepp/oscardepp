@@ -39,6 +39,15 @@ creativeTabLinks.forEach((tabLink) => {
     });
 });
 
+document.addEventListener("keydown", (event) => {
+    const storyTabs = [...document.querySelectorAll("#shortstory .tab-links")];
+    const index = Number(event.key) - 1;
+
+    if (index >= 0 && index < storyTabs.length) {
+        storyTabs[index].click();
+    }
+});
+
 const pageTabs = document.querySelectorAll(".tablink");
 const pageContents = document.querySelectorAll(".tabcontent");
 

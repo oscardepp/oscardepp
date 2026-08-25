@@ -220,14 +220,18 @@ html {
     margin: 0 0 var(--space-sm);
 }
 .tab-links {
-    margin-right: 0;
+    margin: 0;
     padding: 0;
     border: 0;
-    background: none;
+    border-radius: 0;
+    background: transparent;
     appearance: none;
-    font: inherit;
+    -webkit-appearance: none;
+    box-shadow: none;
+    font-family: inherit;
     font-size: 18px;
     font-weight: 500;
+    line-height: normal;
     color: #d9d9d9;
     cursor: pointer;
     position: relative;
