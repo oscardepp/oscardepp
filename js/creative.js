@@ -11,32 +11,20 @@ function activateStoryTab(tabLink) {
 
     creativeTabLinks.forEach((item) => {
         const isSelected = item === tabLink;
-
         item.classList.toggle("active-link", isSelected);
         item.setAttribute("aria-selected", String(isSelected));
     });
 
     creativeTabContents.forEach((item) => {
         const isSelected = item === target;
-
         item.classList.toggle("active-tab", isSelected);
         item.setAttribute("aria-hidden", String(!isSelected));
     });
 }
 
 creativeTabLinks.forEach((tabLink) => {
-    tabLink.setAttribute("role", "button");
-    tabLink.setAttribute("tabindex", "0");
-
     tabLink.addEventListener("click", () => {
         activateStoryTab(tabLink);
-    });
-
-    tabLink.addEventListener("keydown", (event) => {
-        if (event.key === "Enter" || event.key === " ") {
-            event.preventDefault();
-            activateStoryTab(tabLink);
-        }
     });
 });
 
@@ -47,13 +35,10 @@ document.addEventListener("keydown", (event) => {
         activeElement instanceof HTMLInputElement ||
         activeElement instanceof HTMLTextAreaElement ||
         activeElement?.isContentEditable;
-
     if (isTyping) {
         return;
     }
-
     const index = Number(event.key) - 1;
-
     if (
         Number.isInteger(index) &&
         index >= 0 &&
