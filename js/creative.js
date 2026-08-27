@@ -79,13 +79,15 @@ pageTabs.forEach((tab) => {
     });
 });
 
-const mobileMenuButton = document.querySelector(".nav .icon");
+// const mobileMenuButton = document.querySelector(".nav .icon");
+const mobileMenuButton = document.querySelector(".nav .creative-toggle");
 const navigation = document.getElementById("hr");
 
 if (mobileMenuButton && navigation) {
     mobileMenuButton.addEventListener("click", () => {
         const isOpen = navigation.classList.toggle("mobile-open");
 
+        mobileMenuButton.classList.toggle("active", isOpen);
         mobileMenuButton.setAttribute("aria-expanded", String(isOpen));
         mobileMenuButton.setAttribute(
             "aria-label",
@@ -93,6 +95,22 @@ if (mobileMenuButton && navigation) {
         );
     });
 }
+
+const creativeMenuItems = document.querySelectorAll(
+    ".header-right a, .header-right .tablink"
+);
+
+creativeMenuItems.forEach((item) => {
+    item.addEventListener("click", () => {
+        navigation?.classList.remove("mobile-open");
+        mobileMenuButton?.classList.remove("active");
+        mobileMenuButton?.setAttribute("aria-expanded", "false");
+        mobileMenuButton?.setAttribute(
+            "aria-label",
+            "Open navigation menu"
+        );
+    });
+});
 
 const defaultTab = document.getElementById("defaultOpen");
 
