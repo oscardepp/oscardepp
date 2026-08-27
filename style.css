@@ -148,31 +148,50 @@ html {
 }
 
 .toggle::before,
-.toggle::after {
-    content: '';
+.toggle::after,
+.toggle span {
     position: absolute;
     left: 5px;
+
     width: 50px;
     height: 4px;
+
     background: #fff;
+
     transition:
         transform var(--transition-normal),
-        top var(--transition-normal);
+        top var(--transition-normal),
+        opacity var(--transition-normal);
 }
 
+/* top line */
 .toggle::before {
+    content: '';
     top: 20px;
-    box-shadow: 0 16px 0 #fff;
 }
 
+/* middle line */
+.toggle span {
+    top: 28px;
+}
+
+/* bottom line */
 .toggle::after {
+    content: '';
     top: 36px;
 }
+
+
+/* ---------- ACTIVE ---------- */
 
 .toggle.active::before {
     top: 28px;
     transform: rotate(45deg);
-    box-shadow: none;
+}
+
+.toggle.active span {
+    opacity: 0;
+    transform: scaleX(0);
 }
 
 .toggle.active::after {
