@@ -136,25 +136,48 @@ html {
     color: var(--lavender);
 }
 .toggle {
+    position: relative;
     z-index: 9999;
     width: 60px;
     height: 60px;
     flex-shrink: 0;
     border: 0;
-    background: url('https://github.com/oscardepp/oscardepp/assets/137336589/92e02de5-afa0-4ba7-b573-2bd9728a39d8');
-    background-repeat: no-repeat;
-    background-size: 50px;
-    filter: invert(1);
-    background-position: center;
+    padding: 0;
+    background: transparent;
     cursor: pointer;
 }
-.toggle.active {
-    background: url('https://github.com/oscardepp/oscardepp/assets/137336589/a35ee31d-1818-43cc-be0c-fad41bd7a0d5');
-    background-repeat: no-repeat;
-    background-size: 35px;
-    filter: invert(1);
-    background-position: center;
-    cursor: pointer;
+
+.toggle::before,
+.toggle::after {
+    content: '';
+    position: absolute;
+    left: 5px;
+    width: 50px;
+    height: 4px;
+    background: #fff;
+    transition:
+        transform var(--transition-normal),
+        top var(--transition-normal);
+}
+
+.toggle::before {
+    top: 20px;
+    box-shadow: 0 16px 0 #fff;
+}
+
+.toggle::after {
+    top: 36px;
+}
+
+.toggle.active::before {
+    top: 28px;
+    transform: rotate(45deg);
+    box-shadow: none;
+}
+
+.toggle.active::after {
+    top: 28px;
+    transform: rotate(-45deg);
 }
 .text h1,
 .text h2 {
