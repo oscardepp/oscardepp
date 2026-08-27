@@ -363,7 +363,7 @@ body {
     margin-bottom: 30px;
     color: #000;
     font-size: 3rem;
-    font-weight: 900;
+    font-weight: 800;
     font-style: italic;
     letter-spacing: 0.5rem;
 }
@@ -371,7 +371,7 @@ body {
 #shortstory .book .page.frontcover > div h2 {
     position: relative;
     font-size: 1.7rem;
-    font-weight: 300;
+    font-weight: 400;
 }
 
 #shortstory .book .page.frontcover > div h2::before {
