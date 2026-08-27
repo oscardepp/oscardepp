@@ -138,17 +138,19 @@ html {
 .toggle {
     position: relative;
     z-index: 9999;
+
     width: 60px;
     height: 60px;
+
     flex-shrink: 0;
+
     border: 0;
     padding: 0;
+
     background: transparent;
     cursor: pointer;
 }
 
-.toggle::before,
-.toggle::after,
 .toggle span {
     position: absolute;
     left: 5px;
@@ -158,43 +160,40 @@ html {
 
     background: #fff;
 
+    transform-origin: center;
+
     transition:
         transform var(--transition-normal),
         top var(--transition-normal),
         opacity var(--transition-normal);
 }
 
-/* top line */
-.toggle::before {
-    content: '';
-    top: 20px;
+/* Three visible lines */
+.toggle span:nth-child(1) {
+    top: 18px;
 }
 
-/* middle line */
-.toggle span {
+.toggle span:nth-child(2) {
     top: 28px;
 }
 
-/* bottom line */
-.toggle::after {
-    content: '';
-    top: 36px;
+.toggle span:nth-child(3) {
+    top: 38px;
 }
 
 
-/* ---------- ACTIVE ---------- */
-
-.toggle.active::before {
+/* X state */
+.toggle.active span:nth-child(1) {
     top: 28px;
     transform: rotate(45deg);
 }
 
-.toggle.active span {
+.toggle.active span:nth-child(2) {
     opacity: 0;
     transform: scaleX(0);
 }
 
-.toggle.active::after {
+.toggle.active span:nth-child(3) {
     top: 28px;
     transform: rotate(-45deg);
 }
