@@ -350,7 +350,7 @@ body {
     color: #020301;
 }
 
-#shortstory .book .page.frontcover > div {
+#shortstory .book .page.frontcover>div {
     position: relative;
     display: flex;
     flex-direction: column;
@@ -358,7 +358,7 @@ body {
     justify-content: center;
 }
 
-#shortstory .book .page.frontcover > div h1 {
+#shortstory .book .page.frontcover>div h1 {
     position: relative;
     margin-bottom: 30px;
     color: #000;
@@ -368,13 +368,13 @@ body {
     letter-spacing: 0.5rem;
 }
 
-#shortstory .book .page.frontcover > div h2 {
+#shortstory .book .page.frontcover>div h2 {
     position: relative;
     font-size: 1.7rem;
     font-weight: 400;
 }
 
-#shortstory .book .page.frontcover > div h2::before {
+#shortstory .book .page.frontcover>div h2::before {
     content: "";
     position: absolute;
     top: -15px;
