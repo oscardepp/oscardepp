@@ -453,7 +453,7 @@ body {
 
 .poetry .book {
     position: relative;
-    width: min(528px,100%);
+    width: min(528px, 100%);
     height: 656px;
     margin: auto;
     overflow-x: hidden;
@@ -584,47 +584,68 @@ body {
 
     /* ---------- Poetry mobile ---------- */
 
-    .poetry {
-        width: 100%;
-        margin-top: 0;
-    }
+    @media screen and (max-width: 700px) {
+        .poetry {
+            width: 100%;
+            margin-top: 0;
+        }
 
-    .poetry .container {
-        width: 100%;
-        overflow: hidden;
-    }
+        .poetry .container {
+            position: relative;
+            width: 100%;
+            min-height: 100dvh;
+            height: auto;
+            overflow: visible;
+        }
 
-    .poetry .book {
-        width: 100%;
-        height: auto;
-        min-height: 0;
-        margin: 0;
-        padding: 0 24px;
-        overflow: visible;
-    }
+        .poetry img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
 
-    .poetry .book .page {
-        width: 100%;
-        padding: 20px 0;
-    }
+        .poetry .overlay {
+            position: relative;
+            inset: auto;
+            width: 100%;
+            min-height: 100dvh;
+            height: auto;
+            padding-bottom: 40px;
+        }
 
-    .poetry pre {
-        width: 100%;
-        margin: 0;
-        white-space: pre-wrap;
-        overflow-wrap: anywhere;
-        word-break: normal;
-        font-size: 15px;
-        line-height: 1.55;
-    }
+        .poetry .book {
+            width: 100%;
+            height: auto;
+            margin: 0;
+            padding: 0 24px;
+            overflow: visible;
+        }
 
-    .poemheading {
-        width: 100%;
-        margin: 0;
-        padding: 28px 20px 12px;
-        transform: none;
-        font-size: clamp(2rem, 10vw, 3rem);
-        line-height: 1.15;
+        .poetry .book .page {
+            width: 100%;
+            padding: 20px 0;
+        }
+
+        .poetry pre {
+            width: 100%;
+            margin: 0;
+            white-space: pre-wrap;
+            overflow-wrap: anywhere;
+            word-break: normal;
+            font-size: 15px;
+            line-height: 1.55;
+        }
+
+        .poemheading {
+            width: 100%;
+            margin: 0;
+            padding: 28px 20px 12px;
+            transform: none;
+            font-size: clamp(2rem, 10vw, 3rem);
+            line-height: 1.15;
+        }
     }
 
     .header-right {
