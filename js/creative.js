@@ -124,3 +124,96 @@ if (creativeCopyright) {
     creativeCopyright.innerHTML =
         `&copy; ${new Date().getFullYear()} Oscar Depp | All Rights Reserved`;
 }
+
+async function loadPhotography() {
+    const grid = document.getElementById("photo-grid");
+
+    if (!grid) {
+        return;
+    }
+
+    try {
+        const response = await fetch("photos.json");
+
+        if (!response.ok) {
+            throw new Error(`Could not load photos.json: ${response.status}`);
+        }
+
+        const photos = await response.json();
+
+        const columns = Array.from({ length: 4 }, () => {
+            const column = document.createElement("div");
+            column.className = "column";
+            grid.appendChild(column);
+            return column;
+        });
+
+        photos.forEach((photo, index) => {
+            const container = document.createElement("div");
+            container.className = "container";
+
+            let media;
+
+            if (photo.type === "video") {
+                media = document.createElement("video");
+
+                media.muted = true;
+                media.loop = true;
+                media.autoplay = true;
+                media.playsInline = true;
+            } else {
+                media = document.createElement("img");
+
+                media.loading = "lazy";
+                media.decoding = "async";
+
+                // Remove any HTML tags from the title for alt text.
+                media.alt = photo.title.replace(/<[^>]*>/g, "");
+            }
+
+            media.src = photo.src;
+            media.style.width = "100%";
+
+            const overlay = document.createElement("div");
+            overlay.className = "overlay";
+
+            const text = document.createElement("div");
+            text.className = "text";
+
+            const title = document.createElement("div");
+            title.textContent = photo.title;
+
+            const details = document.createElement("span");
+            details.textContent = photo.details || "";
+
+            text.appendChild(title);
+            text.appendChild(document.createElement("br"));
+            text.appendChild(details);
+
+            overlay.appendChild(text);
+            container.appendChild(media);
+            container.appendChild(overlay);
+
+            // Existing photos keep their current column.
+            // Future photos can omit "column" and will be
+            // distributed automatically.
+            const columnNumber =
+                photo.column ?? ((index % columns.length) + 1);
+
+            const columnIndex = Math.max(
+                0,
+                Math.min(columns.length - 1, columnNumber - 1)
+            );
+
+            columns[columnIndex].appendChild(container);
+        });
+    } catch (error) {
+        console.error("Photography could not be loaded:", error);
+
+        const message = document.createElement("p");
+        message.textContent = "Photography could not be loaded.";
+        grid.appendChild(message);
+    }
+}
+
+loadPhotography();
