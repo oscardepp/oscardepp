@@ -150,15 +150,15 @@ html {
     background: transparent;
     cursor: pointer;
 }
-
 .toggle span {
     position: absolute;
-    left: 5px;
+    left: 10px;
 
-    width: 50px;
+    width: 40px;
     height: 4px;
 
     background: #fff;
+    border-radius: 2px;
 
     transform-origin: center;
 
@@ -180,7 +180,6 @@ html {
 .toggle span:nth-child(3) {
     top: 38px;
 }
-
 
 /* X state */
 .toggle.active span:nth-child(1) {
