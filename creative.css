@@ -180,7 +180,8 @@ body {
 
 .ttl {
     position: relative;
-    top: 100px;
+    margin: 0;
+    padding-top: 100px;
     color: var(--samurai-blue);
     text-align: center;
     font-size: 4rem;
@@ -188,12 +189,13 @@ body {
 }
 
 /* ---------- Short Stories ---------- */
-
 #shortstory {
     position: relative;
-    top: 100px;
     width: 100%;
-    height: 60rem;
+    min-height: 60rem;
+    height: auto;
+    /* margin-top: 100px; */
+    padding-bottom: 40px;
     background-color: #a8dadc;
     color: #fff;
     font-family: "Source Serif Pro", serif;
@@ -216,7 +218,7 @@ body {
 }
 
 #shortstory .row {
-    position: absolute;
+    position: relative;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -226,22 +228,26 @@ body {
 #shortstory .tab-titles {
     position: relative;
     display: flex;
-    width: 75%;
+    width: 100%;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
+    gap: clamp(24px, 8vw, 90px);
+    flex-wrap: nowrap;
 }
 
 #shortstory .tab-links {
     position: relative;
-    flex: 25%;
-    margin: 20px 30px;
+    flex: 0 0 auto;
+    margin: 20px 0;
     padding: 0 4px;
+
     border: 0;
     border-radius: 0;
     background: transparent;
     appearance: none;
     -webkit-appearance: none;
     box-shadow: none;
+
     color: inherit;
     font-family: inherit;
     font-size: 20px;
@@ -487,6 +493,29 @@ body {
     outline-offset: 4px;
 }
 
+/* ---------- Footer ---------- */
+.footer {
+    position: relative;
+    clear: both;
+    width: 100%;
+    max-width: none;
+    margin: 20px 0 0;
+    padding: 6px 16px;
+
+    background: #f1f1f1;
+    color: var(--samurai-blue);
+
+    text-align: center;
+    font-size: 13px;
+
+    border-radius: 0;
+    z-index: 1;
+}
+
+.footer p {
+    margin: 0;
+}
+
 /* ---------- Responsive ---------- */
 
 @media screen and (max-width: 800px) {
@@ -552,5 +581,37 @@ body {
         display: block;
         width: 100%;
         text-align: left;
+    }
+
+    #shortstory .synopsis {
+        width: auto;
+        margin-left: 7%;
+        margin-right: 7%;
+    }
+
+    #shortstory .book {
+        width: calc(100vw - 32px);
+        height: 656px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    #shortstory .book .page {
+        width: 100%;
+        padding: 20px;
+    }
+
+    #shortstory .tab-contents.active-tab {
+        width: 100%;
+        margin-right: 0;
+    }
+
+    #shortstory .tab-titles {
+        justify-content: space-evenly;
+        gap: 0;
+    }
+
+    #shortstory .tab-links {
+        font-size: 18px;
     }
 }

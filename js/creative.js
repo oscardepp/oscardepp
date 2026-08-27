@@ -117,3 +117,10 @@ const defaultTab = document.getElementById("defaultOpen");
 if (defaultTab) {
     openPage(defaultTab.dataset.page, defaultTab);
 }
+
+const creativeCopyright = document.getElementById("creative-copyright");
+
+if (creativeCopyright) {
+    creativeCopyright.innerHTML =
+        `&copy; ${new Date().getFullYear()} Oscar Depp | All Rights Reserved`;
+}
