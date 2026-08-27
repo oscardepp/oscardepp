@@ -125,6 +125,37 @@ if (creativeCopyright) {
         `&copy; ${new Date().getFullYear()} Oscar Depp | All Rights Reserved`;
 }
 
+function getPhotoMetadata(photo) {
+    if (photo.location || photo.date) {
+        return {
+            location: photo.location || "",
+            date: photo.date || ""
+        };
+    }
+
+    const details = (photo.details || "").trim();
+
+    const months =
+        "January|February|March|April|May|June|" +
+        "July|August|September|October|November|December";
+
+    const match = details.match(
+        new RegExp(`^(.*?)\\.?\\s*(${months}\\s+\\d{4})\\.?$`, "i")
+    );
+
+    if (match) {
+        return {
+            location: match[1].trim(),
+            date: match[2].trim()
+        };
+    }
+
+    return {
+        location: details,
+        date: ""
+    };
+}
+
 async function loadPhotography() {
     const grid = document.getElementById("photo-grid");
 
@@ -181,14 +212,33 @@ async function loadPhotography() {
             text.className = "text";
 
             const title = document.createElement("div");
+            title.className = "photo-title";
             title.textContent = photo.title;
 
-            const details = document.createElement("span");
-            details.textContent = photo.details || "";
+            const metadata = getPhotoMetadata(photo);
+
+            const meta = document.createElement("div");
+            meta.className = "photo-meta";
+
+            if (metadata.location) {
+                const location = document.createElement("span");
+                location.className = "photo-location";
+                location.textContent = metadata.location;
+                meta.appendChild(location);
+            }
+
+            if (metadata.date) {
+                const date = document.createElement("span");
+                date.className = "photo-date";
+                date.textContent = metadata.date;
+                meta.appendChild(date);
+            }
 
             text.appendChild(title);
-            text.appendChild(document.createElement("br"));
-            text.appendChild(details);
+
+            if (metadata.location || metadata.date) {
+                text.appendChild(meta);
+            }
 
             overlay.appendChild(text);
             container.appendChild(media);

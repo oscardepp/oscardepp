@@ -80,17 +80,37 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 2vw;
-    font-weight: 600;
+    width: 88%;
+    text-align: center;
     color: var(--samurai-blue);
+    line-height: 1;
 }
 
-#photography .text span {
-    font-size: 1.5vw;
+#photography .text .photo-title {
+    margin: 0;
+    font-size: clamp(1.4rem, 2.2vw, 2.5rem);
+    font-weight: 700;
+    line-height: 1.05;
+}
+
+#photography .text .photo-meta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    margin-top: 2px;
+
+    font-size: clamp(0.7rem, 1vw, 1.1rem);
     font-weight: 400;
     font-style: italic;
+    line-height: 1.1;
 }
 
+#photography .text .photo-location,
+#photography .text .photo-date {
+    display: block;
+    width: 100%;
+}
 /* ---------- Navigation ---------- */
 
 
