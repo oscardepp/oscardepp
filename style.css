@@ -5,9 +5,9 @@
     --dark-red: #B31312;
     --color-bg: #111;
     --color-text: #fff;
-    --color-muted: #ababab;
+    --color-muted: #c2c2c2;
     --color-soft-text: #dcdcdc;
-    --color-tab-accent: #b54769;
+    --color-tab-accent: #d76587;
     --space-xs: 0.5rem;
     --space-sm: 1rem;
     --space-md: 2rem;
@@ -417,6 +417,8 @@ html {
     height: 100%;
     z-index: 2;
 }
+
+
 #portfolio .container .text {
     position: relative;
     overflow-wrap: break-word;
@@ -500,7 +502,8 @@ html {
     border: 1px solid var(--cream);
     padding: 10px 1rem;
     text-decoration: none;
-    color: var(--color-bg);
+    color: #111;
+    background: var(--cream);
     transition: background var(--transition-normal);
 }
 .btn:hover {
@@ -518,8 +521,12 @@ html {
     justify-content: space-between;
     align-items: center;
     background: powderblue;
-    color: var(--color-text);
+    color: #17365d;
     z-index: 0;
+}
+.contact .text h2,
+.contact p {
+    color: #17365d;
 }
 .contact header {
     position: absolute;
