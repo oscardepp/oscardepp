@@ -9,21 +9,22 @@ body {
 
 /* ---------- Photography ---------- */
 
+#photography {
+    padding-top: 100px;
+}
+
 #photography .header {
     position: relative;
-    top: 100px;
     padding: 32px;
     text-align: center;
 }
 
 #photography .row {
     position: relative;
-    top: 100px;
     display: flex;
     flex-wrap: wrap;
     padding: 0 4px;
 }
-
 #photography .column {
     flex: 25%;
     max-width: 25%;
@@ -403,7 +404,7 @@ body {
 
 .poetry {
     position: relative;
-    top: 100px;
+    margin-top: 100px;
     right: 0;
     display: flex;
     flex-direction: column;
@@ -499,15 +500,12 @@ body {
     clear: both;
     width: 100%;
     max-width: none;
-    margin: 20px 0 0;
+    margin: 0;
     padding: 6px 16px;
-
     background: #f1f1f1;
     color: var(--samurai-blue);
-
     text-align: center;
     font-size: 13px;
-
     border-radius: 0;
     z-index: 1;
 }
