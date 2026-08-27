@@ -502,6 +502,7 @@ body {
         max-width: 100%;
     }
 }
+
 @media screen and (max-width: 700px) {
     .nav {
         min-height: 100px;
@@ -511,7 +512,7 @@ body {
         overflow: visible;
     }
 
-    .nav > a.logo {
+    .nav>a.logo {
         float: none;
         display: inline-block;
         width: auto;
