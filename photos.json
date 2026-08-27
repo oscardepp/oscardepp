@@ -78,7 +78,6 @@
     "details": "Paris, France. December 2021.",
     "column": 1
   },
-
   {
     "src": "https://github.com/oscardepp/oscardepp/assets/137336589/0fee1c0e-af35-42bf-b724-3f6ca9baade5",
     "title": "Building Bones, literally.",
@@ -157,7 +156,6 @@
     "details": "Paris, France. December 2021.",
     "column": 2
   },
-
   {
     "src": "https://github.com/oscardepp/oscardepp/assets/137336589/320b8beb-8dd6-4844-b6c7-e55a6f963aa0",
     "title": "Waiting for Crepes",
@@ -224,7 +222,6 @@
     "details": "Paris, France. December 2021.",
     "column": 3
   },
-
   {
     "src": "https://github.com/oscardepp/oscardepp/assets/137336589/e01c7f11-ac75-4046-acb1-065bc2132ae4",
     "title": "Scarfed Conductor",
@@ -290,5 +287,11 @@
     "title": "Back from Betty's",
     "details": "Missoula, Montana. March 2022.",
     "column": 4
+  },
+  {
+    "src": "assets/photos/2026-08-27-dark-knighted-glare-05ee6069.jpg",
+    "title": "Dark Knighted Glare",
+    "location": "",
+    "date": "August 2026"
   }
 ]
