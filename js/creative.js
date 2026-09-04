@@ -182,7 +182,7 @@ async function loadPhotography() {
                 : new Date(0);
 
             return dateB - dateA;
-        }); Ï
+        });
 
         const columns = Array.from({ length: 4 }, () => {
             const column = document.createElement("div");
@@ -256,16 +256,8 @@ async function loadPhotography() {
             container.appendChild(media);
             container.appendChild(overlay);
 
-            // Existing photos keep their current column.
-            // Future photos can omit "column" and will be
-            // distributed automatically.
-            const columnNumber =
-                (index % columns.length) + 1;
 
-            const columnIndex = Math.max(
-                0,
-                Math.min(columns.length - 1, columnNumber - 1)
-            );
+            const columnIndex = index % columns.length;
 
             columns[columnIndex].appendChild(container);
         });
