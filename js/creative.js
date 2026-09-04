@@ -172,6 +172,18 @@ async function loadPhotography() {
 
         const photos = await response.json();
 
+        photos.sort((a, b) => {
+            const dateA = a.date
+                ? new Date(`1 ${a.date}`)
+                : new Date(0);
+
+            const dateB = b.date
+                ? new Date(`1 ${b.date}`)
+                : new Date(0);
+
+            return dateB - dateA;
+        }); Ï
+
         const columns = Array.from({ length: 4 }, () => {
             const column = document.createElement("div");
             column.className = "column";
@@ -248,7 +260,7 @@ async function loadPhotography() {
             // Future photos can omit "column" and will be
             // distributed automatically.
             const columnNumber =
-                photo.column ?? ((index % columns.length) + 1);
+                (index % columns.length) + 1;
 
             const columnIndex = Math.max(
                 0,
