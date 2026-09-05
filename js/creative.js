@@ -360,7 +360,7 @@ function getPhotoMonth(photo) {
     if (match) {
         const month =
             monthNumbers[
-                match[1].toLowerCase()
+            match[1].toLowerCase()
             ];
 
         const year =
@@ -749,10 +749,10 @@ function updateTileCounter(tile) {
 /* =========================================================
    Change image smoothly
    ========================================================= */
-
 async function changeTilePhoto(
     tile,
-    direction = 1
+    direction = 1,
+    wrap = true
 ) {
     if (
         tile.classList.contains(
@@ -762,37 +762,47 @@ async function changeTilePhoto(
         return;
     }
 
-
     const photos =
         tile._photos || [];
 
-
-    if (
-        photos.length <= 1
-    ) {
+    if (photos.length <= 1) {
         return;
     }
 
-
     const currentIndex =
         Number(
-            tile.dataset.photoIndex ||
-            0
+            tile.dataset.photoIndex || 0
         );
 
+    let nextIndex =
+        currentIndex + direction;
 
-    const nextIndex =
-        (
-            currentIndex +
-            direction +
-            photos.length
-        ) %
-        photos.length;
+
+    /*
+        MOBILE:
+        stop at first / last image.
+
+        DESKTOP:
+        wrap around if wrap === true.
+    */
+    if (wrap) {
+        nextIndex =
+            (
+                nextIndex +
+                photos.length
+            ) % photos.length;
+    } else {
+        if (
+            nextIndex < 0 ||
+            nextIndex >= photos.length
+        ) {
+            return;
+        }
+    }
 
 
     const nextPhoto =
         photos[nextIndex];
-
 
     tile.classList.add(
         "is-changing"
@@ -800,36 +810,24 @@ async function changeTilePhoto(
 
 
     try {
-        /*
-            Wait until next image is fully
-            loaded and decoded.
-        */
         const cachedMedia =
             await preloadPhoto(
                 nextPhoto
             );
 
-
-        /*
-            Clone cached element so it can be
-            inserted safely into this tile.
-        */
         const nextMedia =
             cachedMedia.cloneNode(
                 true
             );
-
 
         prepareMedia(
             nextMedia,
             nextPhoto
         );
 
-
         nextMedia.classList.add(
             "incoming-media"
         );
-
 
         nextMedia.classList.add(
             direction > 0
@@ -843,18 +841,15 @@ async function changeTilePhoto(
                 ":scope > .current-media"
             );
 
-
         const currentOverlay =
             tile.querySelector(
                 ":scope > .overlay:not(.incoming-overlay)"
             );
 
-
         const nextOverlay =
             createOverlay(
                 nextPhoto
             );
-
 
         nextOverlay.classList.add(
             "incoming-overlay"
@@ -867,15 +862,11 @@ async function changeTilePhoto(
             tile.firstChild
         );
 
-
         tile.appendChild(
             nextOverlay
         );
 
 
-        /*
-            Let browser paint starting state.
-        */
         requestAnimationFrame(
             () => {
                 requestAnimationFrame(
@@ -885,10 +876,7 @@ async function changeTilePhoto(
                             "is-entering"
                         );
 
-
-                        if (
-                            currentMedia
-                        ) {
+                        if (currentMedia) {
                             currentMedia.classList.add(
                                 direction > 0
                                     ? "exit-left"
@@ -896,10 +884,7 @@ async function changeTilePhoto(
                             );
                         }
 
-
-                        if (
-                            currentOverlay
-                        ) {
+                        if (currentOverlay) {
                             currentOverlay.classList.add(
                                 "is-exiting"
                             );
@@ -915,9 +900,7 @@ async function changeTilePhoto(
             () => {
 
                 currentMedia?.remove();
-
                 currentOverlay?.remove();
-
 
                 nextMedia.classList.remove(
                     "incoming-media",
@@ -926,27 +909,20 @@ async function changeTilePhoto(
                     "is-entering"
                 );
 
-
                 nextMedia.classList.add(
                     "current-media"
                 );
-
 
                 nextOverlay.classList.remove(
                     "incoming-overlay"
                 );
 
-
                 tile.dataset.photoIndex =
-                    String(
-                        nextIndex
-                    );
-
+                    String(nextIndex);
 
                 updateTileCounter(
                     tile
                 );
-
 
                 tile.classList.remove(
                     "is-changing"
@@ -954,29 +930,28 @@ async function changeTilePhoto(
 
 
                 /*
-                    Preload whichever image
-                    comes next.
+                    Preload the next valid image.
                 */
-                const followingIndex =
-                    (
-                        nextIndex +
-                        1
-                    ) %
-                    photos.length;
+                let preloadIndex =
+                    nextIndex + 1;
 
+                if (
+                    preloadIndex <
+                    photos.length
+                ) {
+                    preloadPhoto(
+                        photos[preloadIndex]
+                    ).catch(() => { });
 
-                preloadPhoto(
-                    photos[
-                        followingIndex
-                    ]
-                ).catch(
-                    () => {}
-                );
+                } else if (wrap) {
+                    preloadPhoto(
+                        photos[0]
+                    ).catch(() => { });
+                }
 
             },
             300
         );
-
 
     } catch (error) {
 
@@ -985,13 +960,11 @@ async function changeTilePhoto(
             error
         );
 
-
         tile.classList.remove(
             "is-changing"
         );
     }
 }
-
 
 /* =========================================================
    Subtle mouse tilt
@@ -1067,7 +1040,6 @@ function resetTileTilt(tile) {
 /* =========================================================
    Interactive month tile
    ========================================================= */
-
 function createInteractiveTile(
     photos
 ) {
@@ -1077,45 +1049,41 @@ function createInteractiveTile(
             getPrecisePhotoDate(a)
     );
 
-
     const tile =
         document.createElement(
             "div"
         );
 
-
     tile.className =
         "container photo-tile";
 
-
     tile._photos =
         photos;
-
 
     tile.dataset.photoIndex =
         "0";
 
 
+    /* =====================================================
+       First photo
+       ===================================================== */
+
     const firstPhoto =
         photos[0];
-
 
     const firstMedia =
         createMedia(
             firstPhoto
         );
 
-
     firstMedia.classList.add(
         "tile-media",
         "current-media"
     );
 
-
     tile.appendChild(
         firstMedia
     );
-
 
     tile.appendChild(
         createOverlay(
@@ -1124,35 +1092,36 @@ function createInteractiveTile(
     );
 
 
+    /* =====================================================
+       Counter
+       ===================================================== */
+
     const counter =
         document.createElement(
             "div"
         );
 
-
     counter.className =
         "photo-stack-counter";
-
 
     counter.setAttribute(
         "aria-hidden",
         "true"
     );
 
-
     tile.appendChild(
         counter
     );
-
 
     updateTileCounter(
         tile
     );
 
 
-    /*
-        Preload the next image immediately.
-    */
+    /* =====================================================
+       Preload next image
+       ===================================================== */
+
     if (
         photos.length > 1
     ) {
@@ -1164,13 +1133,166 @@ function createInteractiveTile(
     }
 
 
-    /*
-        Click left half -> previous
-        Click right half -> next
-    */
+    /* =====================================================
+       Mobile touch handling
+       ===================================================== */
+
+    let touchStartX =
+        null;
+
+    let touchStartY =
+        null;
+
+    let lastTouchTime =
+        0;
+
+
+    tile.addEventListener(
+        "pointerdown",
+        (event) => {
+
+            if (
+                event.pointerType !==
+                "touch"
+            ) {
+                return;
+            }
+
+            touchStartX =
+                event.clientX;
+
+            touchStartY =
+                event.clientY;
+        }
+    );
+
+
+    tile.addEventListener(
+        "pointerup",
+        (event) => {
+
+            if (
+                event.pointerType !==
+                "touch"
+            ) {
+                return;
+            }
+
+            lastTouchTime =
+                Date.now();
+
+
+            if (
+                touchStartX === null ||
+                touchStartY === null
+            ) {
+                return;
+            }
+
+
+            const deltaX =
+                event.clientX -
+                touchStartX;
+
+            const deltaY =
+                event.clientY -
+                touchStartY;
+
+
+            touchStartX =
+                null;
+
+            touchStartY =
+                null;
+
+
+            /*
+                If user is scrolling vertically,
+                do not change the photo.
+            */
+            if (
+                Math.abs(deltaY) >
+                    Math.abs(deltaX) &&
+                Math.abs(deltaY) >
+                    20
+            ) {
+                return;
+            }
+
+
+            /*
+                Swipe:
+                swipe left  -> next
+                swipe right -> previous
+            */
+            if (
+                Math.abs(deltaX) >=
+                35
+            ) {
+                changeTilePhoto(
+                    tile,
+
+                    deltaX > 0
+                        ? -1
+                        : 1,
+
+                    false
+                );
+
+                return;
+            }
+
+
+            /*
+                Tap:
+                left half  -> previous
+                right half -> next
+
+                On mobile we DO NOT wrap.
+            */
+            const rect =
+                tile.getBoundingClientRect();
+
+            const tapX =
+                event.clientX -
+                rect.left;
+
+            const direction =
+                tapX <
+                rect.width / 2
+                    ? -1
+                    : 1;
+
+            changeTilePhoto(
+                tile,
+                direction,
+                false
+            );
+        }
+    );
+
+
+    /* =====================================================
+       Desktop click
+       ===================================================== */
+
     tile.addEventListener(
         "click",
         (event) => {
+
+            /*
+                Safari/iPhone may fire a click
+                immediately after pointerup.
+                Ignore that duplicate click.
+            */
+            if (
+                Date.now() -
+                    lastTouchTime <
+                600
+            ) {
+                return;
+            }
+
 
             if (
                 photos.length <= 1
@@ -1182,11 +1304,9 @@ function createInteractiveTile(
             const rect =
                 tile.getBoundingClientRect();
 
-
             const clickX =
                 event.clientX -
                 rect.left;
-
 
             const direction =
                 clickX <
@@ -1195,17 +1315,24 @@ function createInteractiveTile(
                     : 1;
 
 
+            /*
+                Desktop keeps wrapping:
+                last -> first
+                first -> last
+            */
             changeTilePhoto(
                 tile,
-                direction
+                direction,
+                true
             );
         }
     );
 
 
-    /*
-        Mouse tilt.
-    */
+    /* =====================================================
+       Desktop mouse tilt
+       ===================================================== */
+
     tile.addEventListener(
         "pointermove",
         (event) => {
@@ -1226,68 +1353,9 @@ function createInteractiveTile(
     tile.addEventListener(
         "pointerleave",
         () => {
+
             resetTileTilt(
                 tile
-            );
-        }
-    );
-
-
-    /*
-        Mobile swipe.
-    */
-    let startX =
-        null;
-
-
-    tile.addEventListener(
-        "pointerdown",
-        (event) => {
-
-            if (
-                event.pointerType ===
-                "touch"
-            ) {
-                startX =
-                    event.clientX;
-            }
-        }
-    );
-
-
-    tile.addEventListener(
-        "pointerup",
-        (event) => {
-
-            if (
-                startX === null
-            ) {
-                return;
-            }
-
-
-            const delta =
-                event.clientX -
-                startX;
-
-
-            startX =
-                null;
-
-
-            if (
-                Math.abs(delta) <
-                35
-            ) {
-                return;
-            }
-
-
-            changeTilePhoto(
-                tile,
-                delta > 0
-                    ? -1
-                    : 1
             );
         }
     );
