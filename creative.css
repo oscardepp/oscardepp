@@ -258,6 +258,36 @@ body {
     }
 }
 
+@media (hover: none) and (pointer: coarse) {
+
+    #photography
+    #photo-grid
+    .photo-tile
+    > .overlay {
+        opacity: 0;
+
+        pointer-events: none;
+
+        transition:
+            opacity 0.25s ease;
+    }
+
+    #photography
+    #photo-grid
+    .photo-tile.show-overlay
+    > .overlay:not(.incoming-overlay):not(.is-exiting) {
+        opacity: 1;
+    }
+
+    #photography
+    #photo-grid
+    .photo-tile {
+        -webkit-tap-highlight-color: transparent;
+
+        touch-action: pan-y;
+    }
+}
+
 
 /* ---------------------------------------------------------
    Photography text

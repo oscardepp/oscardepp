@@ -1128,7 +1128,7 @@ function createInteractiveTile(
         preloadPhoto(
             photos[1]
         ).catch(
-            () => {}
+            () => { }
         );
     }
 
@@ -1212,9 +1212,9 @@ function createInteractiveTile(
             */
             if (
                 Math.abs(deltaY) >
-                    Math.abs(deltaX) &&
+                Math.abs(deltaX) &&
                 Math.abs(deltaY) >
-                    20
+                20
             ) {
                 return;
             }
@@ -1227,7 +1227,7 @@ function createInteractiveTile(
             */
             if (
                 Math.abs(deltaX) >=
-                35
+                50
             ) {
                 changeTilePhoto(
                     tile,
@@ -1243,30 +1243,8 @@ function createInteractiveTile(
             }
 
 
-            /*
-                Tap:
-                left half  -> previous
-                right half -> next
-
-                On mobile we DO NOT wrap.
-            */
-            const rect =
-                tile.getBoundingClientRect();
-
-            const tapX =
-                event.clientX -
-                rect.left;
-
-            const direction =
-                tapX <
-                rect.width / 2
-                    ? -1
-                    : 1;
-
-            changeTilePhoto(
-                tile,
-                direction,
-                false
+            tile.classList.toggle(
+                "show-overlay"
             );
         }
     );
@@ -1287,7 +1265,7 @@ function createInteractiveTile(
             */
             if (
                 Date.now() -
-                    lastTouchTime <
+                lastTouchTime <
                 600
             ) {
                 return;
@@ -1310,7 +1288,7 @@ function createInteractiveTile(
 
             const direction =
                 clickX <
-                rect.width / 2
+                    rect.width / 2
                     ? -1
                     : 1;
 
