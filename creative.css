@@ -7,7 +7,10 @@ body {
     font-family: 'Poppins', sans-serif;
 }
 
-/* ---------- Photography ---------- */
+
+/* =========================================================
+   Photography
+   ========================================================= */
 
 #photography {
     padding-top: 10px;
@@ -19,135 +22,453 @@ body {
     text-align: center;
 }
 
-#photography .row {
+
+/* ---------------------------------------------------------
+   Masonry grid
+   --------------------------------------------------------- */
+
+#photography #photo-grid.row {
     position: relative;
+
     display: flex;
     flex-wrap: wrap;
+
+    width: 100%;
+
     padding: 0 4px;
 }
 
-#photography .column {
+#photography #photo-grid > .column {
     flex: 25%;
     max-width: 25%;
+
     padding: 0 4px;
 }
 
-#photography .column img,
-#photography .column video {
-    margin-top: 8px;
-    vertical-align: middle;
-}
 
-#photography .btn {
-    border: none;
-    outline: none;
-    padding: 10px 16px;
-    background-color: #f1f1f1;
-    cursor: pointer;
-    font-size: 18px;
-}
+/* ---------------------------------------------------------
+   Interactive tile
+   --------------------------------------------------------- */
 
-#photography .btn:hover {
-    background-color: #ddd;
-}
-
-#photography .btn.active {
-    background-color: #666;
-    color: #fff;
-}
-
-#photography .container {
+#photography #photo-grid .photo-tile {
     position: relative;
+
+    display: block;
+
+    width: 100%;
+
+    margin-top: 8px;
+
+    overflow: hidden;
+
+    background: transparent;
+
     text-align: center;
+
+    cursor: pointer;
+
+    isolation: isolate;
+
+    touch-action: pan-y;
+
+    transform:
+        rotateX(
+            var(--tile-rotate-x, 0deg)
+        )
+        rotateY(
+            var(--tile-rotate-y, 0deg)
+        );
+
+    transform-origin: center center;
+
+    transition:
+        transform 160ms ease;
 }
 
-#photography .container:hover .overlay {
+
+/* ---------------------------------------------------------
+   Current image / video
+   --------------------------------------------------------- */
+
+#photography
+#photo-grid
+.photo-tile
+> .tile-media {
+    display: block;
+
+    width: 100%;
+    height: auto;
+
+    margin: 0;
+
+    vertical-align: middle;
+
+    object-fit: cover;
+
     opacity: 1;
+
+    transform: translateX(0);
+
+    transition:
+        transform 300ms cubic-bezier(.22, .61, .36, 1),
+        opacity 260ms ease;
+
+    will-change:
+        transform,
+        opacity;
 }
 
-#photography .overlay {
+
+/* ---------------------------------------------------------
+   Incoming image
+   --------------------------------------------------------- */
+
+#photography
+#photo-grid
+.photo-tile
+> .incoming-media {
     position: absolute;
+
     inset: 0;
+
+    z-index: 2;
+
     width: 100%;
     height: 100%;
+
+    margin: 0;
+
+    object-fit: cover;
+
     opacity: 0;
-    background-color: hsl(0 0% 100% / 0.5);
-    transition: opacity 0.5s ease;
 }
 
-#photography .text {
+#photography
+#photo-grid
+.photo-tile
+> .incoming-media.from-right {
+    transform: translateX(6%);
+}
+
+#photography
+#photo-grid
+.photo-tile
+> .incoming-media.from-left {
+    transform: translateX(-6%);
+}
+
+#photography
+#photo-grid
+.photo-tile
+> .incoming-media.is-entering {
+    opacity: 1;
+
+    transform: translateX(0);
+}
+
+
+/* ---------------------------------------------------------
+   Outgoing image
+   --------------------------------------------------------- */
+
+#photography
+#photo-grid
+.photo-tile
+> .current-media.exit-left {
+    opacity: 0;
+
+    transform: translateX(-6%);
+}
+
+#photography
+#photo-grid
+.photo-tile
+> .current-media.exit-right {
+    opacity: 0;
+
+    transform: translateX(6%);
+}
+
+
+/* ---------------------------------------------------------
+   Photography overlay
+   --------------------------------------------------------- */
+
+#photography
+#photo-grid
+.photo-tile
+> .overlay {
     position: absolute;
+
+    inset: 0;
+
+    z-index: 5;
+
+    width: 100%;
+    height: 100%;
+
+    margin: 0;
+
+    opacity: 0;
+
+    background-color:
+        hsl(0 0% 100% / 0.5);
+
+    transition:
+        opacity 220ms ease;
+
+    pointer-events: none;
+}
+
+
+/*
+    Overlay belonging to the next photo remains
+    hidden while the image transition occurs.
+*/
+
+#photography
+#photo-grid
+.photo-tile
+> .incoming-overlay {
+    z-index: 6;
+
+    opacity: 0 !important;
+}
+
+#photography
+#photo-grid
+.photo-tile
+> .overlay.is-exiting {
+    opacity: 0 !important;
+}
+
+
+/*
+    Desktop hover:
+    reveal only the currently active description.
+*/
+
+@media (hover: hover) and (pointer: fine) {
+
+    #photography
+    #photo-grid
+    .photo-tile:hover
+    > .overlay:not(.incoming-overlay):not(.is-exiting) {
+        opacity: 1;
+    }
+}
+
+
+/* ---------------------------------------------------------
+   Photography text
+   --------------------------------------------------------- */
+
+#photography
+#photo-grid
+.photo-tile
+.text {
+    position: absolute;
+
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+
     width: 88%;
+
+    transform:
+        translate(
+            -50%,
+            -50%
+        );
+
     text-align: center;
+
     color: var(--samurai-blue);
+
     line-height: 1;
 }
 
-#photography .text .photo-title {
+#photography
+#photo-grid
+.photo-tile
+.photo-title {
     margin: 0;
-    font-size: clamp(1.4rem, 2.2vw, 2.5rem);
+
+    font-size:
+        clamp(
+            1.4rem,
+            2.2vw,
+            2.5rem
+        );
+
     font-weight: 700;
+
     line-height: 1.05;
 }
 
-#photography .text .photo-meta {
+#photography
+#photo-grid
+.photo-tile
+.photo-meta {
     display: flex;
+
     flex-direction: column;
+
     align-items: center;
+
     gap: 0;
+
     margin-top: 2px;
 
-    font-size: clamp(0.7rem, 1vw, 1.1rem);
+    font-size:
+        clamp(
+            0.7rem,
+            1vw,
+            1.1rem
+        );
+
     font-weight: 400;
+
     font-style: italic;
+
     line-height: 1.1;
 }
 
-#photography .text .photo-location,
-#photography .text .photo-date {
+#photography
+#photo-grid
+.photo-tile
+.photo-location,
+
+#photography
+#photo-grid
+.photo-tile
+.photo-date {
     display: block;
+
     width: 100%;
 }
-/* ---------- Navigation ---------- */
 
+
+/* ---------------------------------------------------------
+   1 / N counter
+   --------------------------------------------------------- */
+
+#photography
+#photo-grid
+.photo-stack-counter {
+    position: absolute;
+
+    right: 8px;
+    bottom: 8px;
+
+    z-index: 20;
+
+    display: block;
+
+    padding: 3px 7px;
+
+    border-radius: 999px;
+
+    background:
+        rgba(0, 0, 0, 0.45);
+
+    color: #fff;
+
+    font-size: 10px;
+
+    font-weight: 500;
+
+    line-height: 1.2;
+
+    letter-spacing: 0.04em;
+
+    opacity: 0;
+
+    transform:
+        translateY(3px);
+
+    transition:
+        opacity 180ms ease,
+        transform 180ms ease;
+
+    pointer-events: none;
+}
+
+#photography
+#photo-grid
+.photo-stack-counter[hidden] {
+    display: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+
+    #photography
+    #photo-grid
+    .photo-tile:hover
+    .photo-stack-counter {
+        opacity: 0.8;
+
+        transform:
+            translateY(0);
+    }
+}
+
+
+/* =========================================================
+   Navigation
+   ========================================================= */
 
 .nav {
     position: fixed;
+
     z-index: 10;
+
     width: 100%;
+
     overflow: hidden;
+
     padding: 20px 30px;
+
     background-color: #f1f1f1;
 }
 
 .nav a {
     float: left;
+
     padding: 12px;
+
     border-radius: 4px;
+
     color: #000;
+
     text-align: center;
+
     text-decoration: none;
+
     font-size: 18px;
+
     line-height: 25px;
 }
 
 .nav a.logo {
     font-size: 25px;
+
     font-weight: 700;
+
     color: var(--samurai-blue);
-    transition: color var(--transition-fast) ease;
+
+    transition:
+        color var(--transition-fast) ease;
 }
 
 .nav a.logo:hover {
     background: transparent;
+
     color: var(--lavender);
 }
 
 .nav .creative-toggle span {
     background: var(--samurai-blue);
+
     transition:
         transform var(--transition-fast) ease,
         top var(--transition-fast) ease,
@@ -159,138 +480,218 @@ body {
     background: var(--lavender);
 }
 
-/* .nav a:hover {
-    background-color: #ddd;
-    color: #000;
-} */
-
 .nav .creative-toggle {
     display: none;
 }
 
 .header-right {
     float: right;
+
     display: block;
 }
 
 .nav .tablink {
     float: left;
+
     padding: 12px;
+
     border: none;
+
     border-radius: 4px;
+
     background: transparent;
+
     color: #000;
+
     text-align: center;
+
     text-decoration: none;
+
     font-family: inherit;
+
     font-size: 18px;
+
     line-height: 25px;
+
     cursor: pointer;
 }
 
 .nav .tablink.active-page-tab {
     background-color: var(--samurai-blue);
+
     color: #fff;
 }
 
 .nav .tablink:hover {
-    background-color: hsla(216, 82%, 66%, 0.75);
-    transition: background-color 0.7s;
+    background-color:
+        hsla(216, 82%, 66%, 0.75);
+
+    transition:
+        background-color 0.7s;
 }
 
-/* ---------- Page Titles ---------- */
+
+/* =========================================================
+   Page titles
+   ========================================================= */
 
 .ttl {
     position: relative;
+
     margin: 0;
+
     padding-top: 100px;
+
     color: var(--samurai-blue);
+
     text-align: center;
+
     font-size: 4rem;
+
     font-weight: 700;
 }
 
-/* ---------- Short Stories ---------- */
+
+/* =========================================================
+   Short Stories
+   ========================================================= */
+
 #shortstory {
     position: relative;
+
     width: 100%;
+
     min-height: 60rem;
+
     height: auto;
-    /* margin-top: 100px; */
+
     padding-bottom: 40px;
+
     background-color: #a8dadc;
+
     color: #fff;
-    font-family: "Source Serif Pro", serif;
+
+    font-family:
+        "Source Serif Pro",
+        serif;
 }
 
 #shortstory .headabout {
     position: relative;
+
     margin-left: 3%;
+
     color: #fff;
+
     text-transform: uppercase;
+
     font-size: 40px;
+
     font-weight: 600;
 }
 
 #shortstory .synopsis {
     height: 100%;
+
     margin-left: 3%;
     margin-right: 3%;
+
     overflow-wrap: break-word;
 }
 
 #shortstory .row {
     position: relative;
+
     display: flex;
+
     flex-wrap: wrap;
+
     align-items: center;
-    justify-content: space-between;
+
+    justify-content:
+        space-between;
 }
 
 #shortstory .tab-titles {
     position: relative;
+
     display: flex;
+
     width: 100%;
+
     align-items: center;
+
     justify-content: center;
-    gap: clamp(24px, 8vw, 90px);
+
+    gap:
+        clamp(
+            24px,
+            8vw,
+            90px
+        );
+
     flex-wrap: nowrap;
 }
 
 #shortstory .tab-links {
     position: relative;
+
     flex: 0 0 auto;
+
     margin: 20px 0;
+
     padding: 0 4px;
 
     border: 0;
+
     border-radius: 0;
+
     background: transparent;
+
     appearance: none;
+
     -webkit-appearance: none;
+
     box-shadow: none;
 
     color: inherit;
+
     font-family: inherit;
+
     font-size: 20px;
+
     font-weight: 500;
+
     line-height: normal;
+
     cursor: pointer;
 }
 
 #shortstory .tab-links::after {
     content: '';
+
     position: absolute;
+
     left: 50%;
+
     bottom: -4px;
+
     width: 0;
+
     height: 3px;
-    background: var(--samurai-blue);
-    transform: translateX(-50%);
-    transition: width 0.5s;
+
+    background:
+        var(--samurai-blue);
+
+    transform:
+        translateX(-50%);
+
+    transition:
+        width 0.5s;
 }
 
-#shortstory .tab-links.active-link::after {
+#shortstory
+.tab-links.active-link::after {
     width: 40px;
 }
 
@@ -298,46 +699,71 @@ body {
     display: none;
 }
 
-#shortstory .tab-contents.active-tab {
+#shortstory
+.tab-contents.active-tab {
     position: relative;
+
     left: 0;
+
     display: block;
+
     width: 100%;
+
     margin-right: 100px;
 }
 
 #shortstory .book {
     position: relative;
+
     width: 528px;
+
     height: 656px;
+
     margin: auto;
+
     overflow-x: hidden;
+
     overflow-y: auto;
-    border: 1px solid rgba(0, 0, 0, 0.7);
+
+    border:
+        1px solid
+        rgba(0, 0, 0, 0.7);
+
     border-radius: 3px;
 }
 
-#shortstory .book::-webkit-scrollbar {
+#shortstory
+.book::-webkit-scrollbar {
     width: 10px;
 }
 
-#shortstory .book::-webkit-scrollbar-track {
-    background: rgba(2, 3, 1, 0.1);
+#shortstory
+.book::-webkit-scrollbar-track {
+    background:
+        rgba(2, 3, 1, 0.1);
 }
 
-#shortstory .book::-webkit-scrollbar-thumb {
+#shortstory
+.book::-webkit-scrollbar-thumb {
     background: #020301;
 }
 
-#shortstory .book::-webkit-scrollbar-thumb:hover {
-    background: rgba(2, 3, 1, 0.8);
+#shortstory
+.book::-webkit-scrollbar-thumb:hover {
+    background:
+        rgba(2, 3, 1, 0.8);
 }
 
-/* ---------- Shared Book Styles ---------- */
+
+/* =========================================================
+   Shared Book Styles
+   ========================================================= */
 
 .book .page {
     position: relative;
+
     width: 525px;
+
     padding: 25px;
 }
 
@@ -349,185 +775,331 @@ body {
 
 .book .page h3 {
     color: #000;
+
     text-align: center;
+
     font-size: 1.5rem;
+
     font-weight: 600;
 }
 
 .book .page p {
     display: block;
+
     margin-bottom: 1rem;
+
     color: #000;
+
     font-size: 1rem;
+
     line-height: 2rem;
 }
 
-.book .page p:nth-child(2)::first-letter {
+.book
+.page
+p:nth-child(2)::first-letter {
     font-size: 1.5rem;
+
     font-weight: 600;
 }
 
-/* ---------- Short Story Pages ---------- */
 
-#shortstory .book .page {
+/* =========================================================
+   Short Story Pages
+   ========================================================= */
+
+#shortstory
+.book
+.page {
     background-color: #fff;
 }
 
-#shortstory .book .page.frontcover {
+#shortstory
+.book
+.page.frontcover {
     display: flex;
+
     height: 606px;
+
     flex-direction: column;
+
     align-items: center;
+
     justify-content: center;
+
     overflow: hidden;
+
     background-color: #f1faee;
+
     background-size: 140%;
-    background-position: 50% 4%;
-    background-blend-mode: overlay;
+
+    background-position:
+        50% 4%;
+
+    background-blend-mode:
+        overlay;
+
     color: #020301;
 }
 
-#shortstory .book .page.frontcover>div {
+#shortstory
+.book
+.page.frontcover
+> div {
     position: relative;
+
     display: flex;
+
     flex-direction: column;
+
     align-items: center;
+
     justify-content: center;
 }
 
-#shortstory .book .page.frontcover>div h1 {
+#shortstory
+.book
+.page.frontcover
+> div
+h1 {
     position: relative;
+
     margin-bottom: 30px;
+
     color: #000;
+
     font-size: 3rem;
+
     font-weight: 800;
+
     font-style: italic;
-    letter-spacing: 0.5rem;
+
+    letter-spacing:
+        0.5rem;
 }
 
-#shortstory .book .page.frontcover>div h2 {
+#shortstory
+.book
+.page.frontcover
+> div
+h2 {
     position: relative;
+
     font-size: 1.7rem;
+
     font-weight: 400;
 }
 
-#shortstory .book .page.frontcover>div h2::before {
+#shortstory
+.book
+.page.frontcover
+> div
+h2::before {
     content: "";
+
     position: absolute;
+
     top: -15px;
+
     left: -10%;
+
     right: -10%;
+
     height: 1px;
-    background-color: rgba(2, 3, 1, 0.3);
+
+    background-color:
+        rgba(2, 3, 1, 0.3);
 }
 
-/* ---------- Poetry ---------- */
+
+/* =========================================================
+   Poetry
+   ========================================================= */
 
 .poetry {
     position: relative;
-    margin-top: 100px;
+
     right: 0;
+
     display: flex;
+
     flex-direction: column;
+
     align-items: center;
-    justify-content: space-between;
+
+    justify-content:
+        space-between;
+
+    margin-top: 100px;
 }
 
 .poetry .container {
     position: relative;
+
     display: block;
+
     width: 100%;
+
     min-height: 100dvh;
+
     height: 100%;
 }
 
 .poetry img {
     position: absolute;
+
     width: 100%;
+
     height: 100%;
+
     object-fit: cover;
+
     opacity: 0.9;
 }
 
 .poetry .overlay {
     position: absolute;
+
     inset: 0;
+
     width: 100%;
+
     height: 100%;
-    background: rgba(0, 0, 0, 0.5);
+
+    background:
+        rgba(0, 0, 0, 0.5);
 }
 
 .poemheading {
     position: relative;
-    transform: translate(2%, 0);
+
+    transform:
+        translate(2%, 0);
+
     color: #fff;
+
     font-size: 40px;
+
     font-weight: 800;
 }
 
 .poetry pre {
-    font-family: 'Poppins', sans-serif;
+    font-family:
+        'Poppins',
+        sans-serif;
+
     font-size: 15px;
+
     font-weight: 400;
 }
 
 .poetry .book {
     position: relative;
-    width: min(528px, 100%);
+
+    width:
+        min(
+            528px,
+            100%
+        );
+
     height: 656px;
+
     margin: auto;
+
     overflow-x: hidden;
+
     overflow-y: auto;
+
     border-radius: 3px;
+
     color: #fff;
 }
 
-.poetry .book::-webkit-scrollbar-track {
-    background: rgba(2, 3, 1, 0.1);
+.poetry
+.book::-webkit-scrollbar-track {
+    background:
+        rgba(2, 3, 1, 0.1);
 }
 
-.poetry .book::-webkit-scrollbar-thumb {
-    background: rgba(2, 3, 1, 0.4);
+.poetry
+.book::-webkit-scrollbar-thumb {
+    background:
+        rgba(2, 3, 1, 0.4);
 }
 
-.poetry .book::-webkit-scrollbar-thumb:hover {
-    background: rgba(2, 3, 1, 0.6);
+.poetry
+.book::-webkit-scrollbar-thumb:hover {
+    background:
+        rgba(2, 3, 1, 0.6);
 }
 
-.poetry .book .page {
-    background-color: transparent;
+.poetry
+.book
+.page {
+    background-color:
+        transparent;
 }
 
-.poetry .book .page h3 {
+.poetry
+.book
+.page
+h3 {
     color: #fff;
 }
 
-.poetry .book .page p {
+.poetry
+.book
+.page
+p {
     color: #fff;
 }
 
-/* ---------- Keyboard Accessibility ---------- */
+
+/* =========================================================
+   Keyboard Accessibility
+   ========================================================= */
 
 .nav a:focus-visible,
 .nav button:focus-visible,
-#shortstory .tab-links:focus-visible {
-    outline: 3px solid var(--samurai-blue);
+#shortstory
+.tab-links:focus-visible {
+    outline:
+        3px solid
+        var(--samurai-blue);
+
     outline-offset: 4px;
 }
 
-/* ---------- Footer ---------- */
+
+/* =========================================================
+   Footer
+   ========================================================= */
+
 .footer {
     position: relative;
+
     clear: both;
+
     width: 100%;
+
     max-width: none;
+
     margin: 0;
-    padding: 6px 16px;
+
+    padding:
+        6px 16px;
+
     background: #f1f1f1;
-    color: var(--samurai-blue);
+
+    color:
+        var(--samurai-blue);
+
     text-align: center;
+
     font-size: 13px;
+
     border-radius: 0;
+
     z-index: 1;
 }
 
@@ -535,56 +1107,112 @@ body {
     margin: 0;
 }
 
-/* ---------- Responsive ---------- */
+
+/* =========================================================
+   Tablet Photography
+   ========================================================= */
 
 @media screen and (max-width: 800px) {
-    #photography .column {
+
+    #photography
+    #photo-grid
+    > .column {
         flex: 50%;
+
         max-width: 50%;
     }
 }
 
+
+/* =========================================================
+   Mobile Photography
+   ========================================================= */
+
 @media screen and (max-width: 600px) {
-    #photography .column {
+
+    #photography
+    #photo-grid
+    > .column {
         flex: 100%;
+
         max-width: 100%;
+    }
+
+    #photography
+    #photo-grid
+    .photo-stack-counter {
+        opacity: 0.65;
+
+        transform: none;
     }
 }
 
+
+/* =========================================================
+   General Mobile
+   ========================================================= */
+
 @media screen and (max-width: 700px) {
+
     .nav {
-        min-height: 100px;
         display: flex;
+
         align-items: center;
-        justify-content: space-between;
+
+        justify-content:
+            space-between;
+
+        min-height: 100px;
+
         overflow: visible;
     }
 
-    .nav>a.logo {
+    .nav > a.logo {
         float: none;
+
         display: inline-block;
+
         width: auto;
+
         margin: 0;
+
         padding: 0;
+
         text-align: left;
     }
 
     .nav .creative-toggle {
         position: relative;
+
         display: block;
+
         width: 60px;
+
         height: 60px;
+
         margin: 0;
+
         flex-shrink: 0;
     }
 
     .ttl {
         width: 100%;
+
         padding-top: 120px;
+
         padding-left: 16px;
+
         padding-right: 16px;
-        font-size: clamp(2.5rem, 11vw, 4rem);
+
+        font-size:
+            clamp(
+                2.5rem,
+                11vw,
+                4rem
+            );
+
         line-height: 1.1;
+
         text-align: center;
     }
 
@@ -593,88 +1221,35 @@ body {
     }
 
     #photography .header {
-        padding: 24px 20px 40px;
+        padding:
+            24px 20px 40px;
     }
 
-    #photography .header p {
+    #photography
+    .header
+    p {
         margin: 0;
+
         font-size: 18px;
+
         line-height: 1.5;
-    }
-
-    /* ---------- Poetry mobile ---------- */
-
-    @media screen and (max-width: 700px) {
-        .poetry {
-            width: 100%;
-            margin-top: 0;
-        }
-
-        .poetry .container {
-            position: relative;
-            width: 100%;
-            min-height: 100dvh;
-            height: auto;
-            overflow: visible;
-        }
-
-        .poetry img {
-            position: absolute;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .poetry .overlay {
-            position: relative;
-            inset: auto;
-            width: 100%;
-            min-height: 100dvh;
-            height: auto;
-            padding-bottom: 40px;
-        }
-
-        .poetry .book {
-            width: 100%;
-            height: auto;
-            margin: 0;
-            padding: 0 24px;
-            overflow: visible;
-        }
-
-        .poetry .book .page {
-            width: 100%;
-            padding: 20px 0;
-        }
-
-        .poetry pre {
-            width: 100%;
-            margin: 0;
-            white-space: pre-wrap;
-            overflow-wrap: anywhere;
-            word-break: normal;
-            font-size: 15px;
-            line-height: 1.55;
-        }
-
-        .poemheading {
-            width: 100%;
-            margin: 0;
-            padding: 28px 20px 12px;
-            transform: none;
-            font-size: clamp(2rem, 10vw, 3rem);
-            line-height: 1.15;
-        }
     }
 
     .header-right {
         position: absolute;
+
         top: 100%;
+
         right: 0;
-        width: min(70vw, 320px);
+
+        width:
+            min(
+                70vw,
+                320px
+            );
 
         display: none;
+
         padding: 20px;
 
         background: #f1f1f1;
@@ -687,40 +1262,197 @@ body {
     .header-right a,
     .nav .tablink {
         float: none;
+
         display: block;
+
         width: 100%;
+
         text-align: left;
     }
 
     #shortstory .synopsis {
         width: auto;
+
         margin-left: 7%;
+
         margin-right: 7%;
     }
 
     #shortstory .book {
-        width: calc(100vw - 32px);
+        width:
+            calc(
+                100vw - 32px
+            );
+
         height: 656px;
+
         margin-left: auto;
+
         margin-right: auto;
     }
 
-    #shortstory .book .page {
+    #shortstory
+    .book
+    .page {
         width: 100%;
+
         padding: 20px;
     }
 
-    #shortstory .tab-contents.active-tab {
+    #shortstory
+    .tab-contents.active-tab {
         width: 100%;
+
         margin-right: 0;
     }
 
-    #shortstory .tab-titles {
-        justify-content: space-evenly;
+    #shortstory
+    .tab-titles {
+        justify-content:
+            space-evenly;
+
         gap: 0;
     }
 
-    #shortstory .tab-links {
+    #shortstory
+    .tab-links {
         font-size: 18px;
+    }
+
+
+    /* ---------------------------------------------------------
+       Poetry mobile
+       --------------------------------------------------------- */
+
+    .poetry {
+        width: 100%;
+
+        margin-top: 0;
+    }
+
+    .poetry .container {
+        position: relative;
+
+        width: 100%;
+
+        min-height: 100dvh;
+
+        height: auto;
+
+        overflow: visible;
+    }
+
+    .poetry img {
+        position: absolute;
+
+        inset: 0;
+
+        width: 100%;
+
+        height: 100%;
+
+        object-fit: cover;
+    }
+
+    .poetry .overlay {
+        position: relative;
+
+        inset: auto;
+
+        width: 100%;
+
+        min-height: 100dvh;
+
+        height: auto;
+
+        padding-bottom: 40px;
+    }
+
+    .poetry .book {
+        width: 100%;
+
+        height: auto;
+
+        margin: 0;
+
+        padding:
+            0 24px;
+
+        overflow: visible;
+    }
+
+    .poetry
+    .book
+    .page {
+        width: 100%;
+
+        padding:
+            20px 0;
+    }
+
+    .poetry pre {
+        width: 100%;
+
+        margin: 0;
+
+        white-space:
+            pre-wrap;
+
+        overflow-wrap:
+            anywhere;
+
+        word-break: normal;
+
+        font-size: 15px;
+
+        line-height: 1.55;
+    }
+
+    .poemheading {
+        width: 100%;
+
+        margin: 0;
+
+        padding:
+            28px
+            20px
+            12px;
+
+        transform: none;
+
+        font-size:
+            clamp(
+                2rem,
+                10vw,
+                3rem
+            );
+
+        line-height: 1.15;
+    }
+}
+
+
+/* =========================================================
+   Reduced Motion
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    #photography
+    #photo-grid
+    .photo-tile,
+
+    #photography
+    #photo-grid
+    .tile-media,
+
+    #photography
+    #photo-grid
+    .overlay,
+
+    #photography
+    #photo-grid
+    .photo-stack-counter {
+        transition: none !important;
     }
 }
