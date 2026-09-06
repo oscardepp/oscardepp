@@ -448,9 +448,9 @@ body {
     display: flex;
     width: 230px;
     flex-direction: column;
-    padding: 8px;
+    padding: 3px 8px 8px;
     border-radius: 0 0 7px 7px;
-    background: rgba(241, 241, 241, 0.97);
+    background: rgba(241, 241, 241, 0.3);
     box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
     opacity: 0;
     visibility: hidden;
@@ -893,7 +893,9 @@ body {
     transform: translateY(-50%);
   }
   .nav .creative-toggle span {
-    left: 4px;
+    left: 7px;
+    width: 34px;
+    height: 3px;
   }
   .nav .creative-toggle span:nth-child(1) {
     top: 12px;
