@@ -1036,6 +1036,362 @@ function resetTileTilt(tile) {
     );
 }
 
+/* =========================================================
+   Mobile full-screen photo viewer
+   ========================================================= */
+
+let mobileViewer = null;
+let mobileViewerPhotos = [];
+let mobileViewerIndex = 0;
+
+function ensureMobileViewer() {
+    if (mobileViewer) {
+        return mobileViewer;
+    }
+
+    const viewer = document.createElement("div");
+    viewer.className = "mobile-photo-viewer";
+    viewer.setAttribute("aria-hidden", "true");
+
+    viewer.innerHTML = `
+        <button
+            class="mobile-viewer-close"
+            type="button"
+            aria-label="Close photo"
+        >
+            ×
+        </button>
+
+        <div class="mobile-viewer-stage"></div>
+
+        <div class="mobile-viewer-info"></div>
+
+        <div class="mobile-viewer-counter"></div>
+    `;
+
+    document.body.appendChild(viewer);
+
+    const closeButton =
+        viewer.querySelector(".mobile-viewer-close");
+
+    const stage =
+        viewer.querySelector(".mobile-viewer-stage");
+
+    closeButton.addEventListener("click", (event) => {
+        event.stopPropagation();
+        closeMobileViewer();
+    });
+
+    let startX = null;
+    let startY = null;
+
+    stage.addEventListener("pointerdown", (event) => {
+        if (event.pointerType !== "touch") {
+            return;
+        }
+
+        startX = event.clientX;
+        startY = event.clientY;
+    });
+
+    stage.addEventListener("pointerup", (event) => {
+        if (
+            event.pointerType !== "touch" ||
+            startX === null ||
+            startY === null
+        ) {
+            return;
+        }
+
+        const deltaX =
+            event.clientX - startX;
+
+        const deltaY =
+            event.clientY - startY;
+
+        startX = null;
+        startY = null;
+
+        /*
+            Swipe down -> close
+        */
+        if (
+            deltaY > 80 &&
+            Math.abs(deltaY) >
+            Math.abs(deltaX)
+        ) {
+            closeMobileViewer();
+            return;
+        }
+
+        /*
+            Swipe left/right
+        */
+        if (
+            Math.abs(deltaX) >= 50 &&
+            Math.abs(deltaX) >
+            Math.abs(deltaY)
+        ) {
+            if (deltaX < 0) {
+                changeMobileViewerPhoto(1);
+            } else {
+                changeMobileViewerPhoto(-1);
+            }
+
+            return;
+        }
+
+        /*
+            Small movement = tap.
+            Toggle description.
+        */
+        if (
+            Math.abs(deltaX) < 15 &&
+            Math.abs(deltaY) < 15
+        ) {
+            viewer.classList.toggle(
+                "show-info"
+            );
+        }
+    });
+
+    /*
+        Desktop/testing Escape support.
+    */
+    document.addEventListener("keydown", (event) => {
+        if (
+            event.key === "Escape" &&
+            viewer.classList.contains("active")
+        ) {
+            closeMobileViewer();
+        }
+    });
+
+    mobileViewer = viewer;
+
+    return viewer;
+}
+
+
+function openMobileViewer(
+    photos,
+    startingIndex = 0
+) {
+    /*
+        Only use this viewer on touch/mobile
+        devices. Desktop behavior stays as-is.
+    */
+    if (
+        !window.matchMedia(
+            "(hover: none) and (pointer: coarse)"
+        ).matches
+    ) {
+        return;
+    }
+
+    if (
+        !Array.isArray(photos) ||
+        photos.length === 0
+    ) {
+        return;
+    }
+
+    mobileViewerPhotos = photos;
+    mobileViewerIndex = Math.max(
+        0,
+        Math.min(
+            startingIndex,
+            photos.length - 1
+        )
+    );
+
+    const viewer =
+        ensureMobileViewer();
+
+    viewer.classList.add("active");
+    viewer.classList.remove("show-info");
+
+    viewer.setAttribute(
+        "aria-hidden",
+        "false"
+    );
+
+    document.body.classList.add(
+        "mobile-viewer-open"
+    );
+
+    renderMobileViewerPhoto();
+}
+
+
+function closeMobileViewer() {
+    if (!mobileViewer) {
+        return;
+    }
+
+    mobileViewer.classList.remove(
+        "active",
+        "show-info"
+    );
+
+    mobileViewer.setAttribute(
+        "aria-hidden",
+        "true"
+    );
+
+    document.body.classList.remove(
+        "mobile-viewer-open"
+    );
+
+    const stage =
+        mobileViewer.querySelector(
+            ".mobile-viewer-stage"
+        );
+
+    if (stage) {
+        stage.innerHTML = "";
+    }
+}
+
+
+function changeMobileViewerPhoto(direction) {
+    if (mobileViewerPhotos.length <= 1) {
+        return;
+    }
+
+    mobileViewerIndex =
+        (
+            mobileViewerIndex +
+            direction +
+            mobileViewerPhotos.length
+        ) %
+        mobileViewerPhotos.length;
+
+    /*
+        Hide description whenever we move
+        to another image.
+    */
+    mobileViewer?.classList.remove(
+        "show-info"
+    );
+
+    renderMobileViewerPhoto();
+}
+
+
+function renderMobileViewerPhoto() {
+    if (
+        !mobileViewer ||
+        mobileViewerPhotos.length === 0
+    ) {
+        return;
+    }
+
+    const photo =
+        mobileViewerPhotos[
+        mobileViewerIndex
+        ];
+
+    const stage =
+        mobileViewer.querySelector(
+            ".mobile-viewer-stage"
+        );
+
+    const info =
+        mobileViewer.querySelector(
+            ".mobile-viewer-info"
+        );
+
+    const counter =
+        mobileViewer.querySelector(
+            ".mobile-viewer-counter"
+        );
+
+    stage.innerHTML = "";
+    info.innerHTML = "";
+
+    /*
+        Full-screen image / video
+    */
+    const media =
+        createMedia(photo);
+
+    media.classList.add(
+        "mobile-viewer-media"
+    );
+
+    stage.appendChild(media);
+
+    /*
+        Description
+    */
+    const metadata =
+        getPhotoMetadata(photo);
+
+    const title =
+        document.createElement("div");
+
+    title.className =
+        "mobile-viewer-title";
+
+    title.textContent =
+        photo.title || "";
+
+    info.appendChild(title);
+
+    if (metadata.location) {
+        const location =
+            document.createElement("div");
+
+        location.className =
+            "mobile-viewer-location";
+
+        location.textContent =
+            metadata.location;
+
+        info.appendChild(location);
+    }
+
+    if (metadata.date) {
+        const date =
+            document.createElement("div");
+
+        date.className =
+            "mobile-viewer-date";
+
+        date.textContent =
+            metadata.date;
+
+        info.appendChild(date);
+    }
+
+    /*
+        Example: 2 / 5
+    */
+    if (mobileViewerPhotos.length > 1) {
+        counter.textContent =
+            `${mobileViewerIndex + 1} / ${mobileViewerPhotos.length}`;
+
+        counter.hidden = false;
+    } else {
+        counter.hidden = true;
+    }
+
+    /*
+        Preload next image.
+    */
+    if (mobileViewerPhotos.length > 1) {
+        const nextIndex =
+            (
+                mobileViewerIndex + 1
+            ) %
+            mobileViewerPhotos.length;
+
+        preloadPhoto(
+            mobileViewerPhotos[nextIndex]
+        ).catch(() => { });
+    }
+}
 
 /* =========================================================
    Interactive month tile
@@ -1132,28 +1488,20 @@ function createInteractiveTile(
         );
     }
 
-
     /* =====================================================
        Mobile touch handling
        ===================================================== */
 
-    let touchStartX =
-        null;
-
-    let touchStartY =
-        null;
-
-    let lastTouchTime =
-        0;
-
+    let touchStartX = null;
+    let touchStartY = null;
+    let lastTouchTime = 0;
 
     tile.addEventListener(
         "pointerdown",
         (event) => {
 
             if (
-                event.pointerType !==
-                "touch"
+                event.pointerType !== "touch"
             ) {
                 return;
             }
@@ -1172,8 +1520,7 @@ function createInteractiveTile(
         (event) => {
 
             if (
-                event.pointerType !==
-                "touch"
+                event.pointerType !== "touch"
             ) {
                 return;
             }
@@ -1181,14 +1528,12 @@ function createInteractiveTile(
             lastTouchTime =
                 Date.now();
 
-
             if (
                 touchStartX === null ||
                 touchStartY === null
             ) {
                 return;
             }
-
 
             const deltaX =
                 event.clientX -
@@ -1198,58 +1543,42 @@ function createInteractiveTile(
                 event.clientY -
                 touchStartY;
 
-
-            touchStartX =
-                null;
-
-            touchStartY =
-                null;
-
+            touchStartX = null;
+            touchStartY = null;
 
             /*
-                If user is scrolling vertically,
-                do not change the photo.
+                If the user was scrolling down
+                the page, don't open the viewer.
             */
             if (
+                Math.abs(deltaY) > 20 &&
                 Math.abs(deltaY) >
-                Math.abs(deltaX) &&
-                Math.abs(deltaY) >
-                20
+                Math.abs(deltaX)
             ) {
                 return;
             }
 
-
             /*
-                Swipe:
-                swipe left  -> next
-                swipe right -> previous
+                Only a normal tap opens the
+                full-screen viewer.
             */
             if (
-                Math.abs(deltaX) >=
-                50
+                Math.abs(deltaX) < 20 &&
+                Math.abs(deltaY) < 20
             ) {
-                changeTilePhoto(
-                    tile,
+                const currentIndex =
+                    Number(
+                        tile.dataset.photoIndex ||
+                        0
+                    );
 
-                    deltaX > 0
-                        ? -1
-                        : 1,
-
-                    false
+                openMobileViewer(
+                    tile._photos || [],
+                    currentIndex
                 );
-
-                return;
             }
-
-
-            tile.classList.toggle(
-                "show-overlay"
-            );
         }
     );
-
-
     /* =====================================================
        Desktop click
        ===================================================== */
