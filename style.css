@@ -959,3 +959,153 @@ button:focus-visible,
     height: 40px;
   }
 }
+
+/* =========================================================
+   Mobile About section - stable full-width layout
+   ========================================================= */
+
+@media screen and (max-width: 700px) {
+  /*
+   * Give the About section more usable horizontal room.
+   * Current mobile padding is 40px on each side.
+   */
+  .about {
+    padding: 36px 22px;
+  }
+
+  /*
+   * Remove the extra .container narrowing inside About.
+   */
+  .about > .container {
+    width: 100%;
+    max-width: none;
+
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  /*
+   * Critical fix:
+   * stop this row behaving like the desktop flex layout.
+   */
+  .about .row {
+    display: block;
+
+    width: 100%;
+  }
+
+  /*
+   * Remove inherited desktop 35% / 60% flex bases.
+   */
+  .about-col-1,
+  .about-col-2 {
+    width: 100%;
+    max-width: none;
+
+    flex-basis: auto;
+
+    margin-left: 0;
+    margin-right: 0;
+
+    min-width: 0;
+  }
+
+  /*
+   * Keep image reasonably sized even though
+   * its column is now full width.
+   */
+  .about-col-1 {
+    display: flex;
+
+    justify-content: center;
+  }
+
+  .about-col-1 img {
+    width: min(78vw, 330px);
+
+    height: auto;
+  }
+
+  .about-col-2 {
+    padding-right: 0;
+  }
+
+  /* =========================================
+     About Me paragraph
+     ========================================= */
+
+  .about-col-2 > p {
+    width: 100%;
+
+    /*
+     * Override desktop max-width: 64ch
+     * and your existing mobile margin-right.
+     */
+    max-width: none;
+
+    margin: 0 0 1.4rem;
+
+    padding: 0;
+
+    font-size: clamp(0.96rem, 4vw, 1.08rem);
+
+    line-height: 1.65;
+  }
+
+  /* =========================================
+     Tab controls
+     ========================================= */
+
+  .about .tab-titles {
+    width: 100%;
+
+    justify-content: center;
+
+    gap: 12px 20px;
+  }
+
+  /* =========================================
+     All tab panels get EXACT same width
+     ========================================= */
+
+  .about .tab-contents {
+    width: 100%;
+    max-width: 100%;
+
+    min-width: 0;
+
+    margin: 0;
+    padding: 0;
+
+    /*
+     * Keeps Experience / Education /
+     * Skills / Courses visually anchored
+     * to exactly the same left edge.
+     */
+    text-align: left;
+  }
+
+  .about .tab-contents ul {
+    width: 100%;
+    max-width: 100%;
+
+    margin: 0;
+    padding: 0;
+
+    min-width: 0;
+  }
+
+  /*
+   * Prevent long course names / technical
+   * strings from forcing the panel wider.
+   */
+  .about .tab-contents li,
+  .about .tab-contents span,
+  .about .tab-contents strong,
+  .about .tab-contents em,
+  .about .tab-contents div {
+    max-width: 100%;
+
+    overflow-wrap: anywhere;
+  }
+}
