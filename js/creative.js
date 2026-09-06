@@ -1043,6 +1043,9 @@ function resetTileTilt(tile) {
 let mobileViewer = null;
 let mobileViewerPhotos = [];
 let mobileViewerIndex = 0;
+let scale = 1;
+let translateX = 0;
+let translateY = 0;
 
 function ensureMobileViewer() {
     if (mobileViewer) {
@@ -1084,76 +1087,284 @@ function ensureMobileViewer() {
 
     let startX = null;
     let startY = null;
+    let lastTapTime = 0;
 
-    stage.addEventListener("pointerdown", (event) => {
-        if (event.pointerType !== "touch") {
+    const activePointers = new Map();
+
+    function getViewerMedia() {
+        return stage.querySelector(
+            ".mobile-viewer-media"
+        );
+    }
+
+    function applyTransform() {
+        const media = getViewerMedia();
+
+        if (!media) {
             return;
         }
 
-        startX = event.clientX;
-        startY = event.clientY;
-    });
+        media.style.transform =
+            `translate(${translateX}px, ${translateY}px) scale(${scale})`;
+    }
 
-    stage.addEventListener("pointerup", (event) => {
-        if (
-            event.pointerType !== "touch" ||
-            startX === null ||
-            startY === null
-        ) {
-            return;
-        }
+    function resetZoom() {
+        scale = 1;
+        translateX = 0;
+        translateY = 0;
 
-        const deltaX =
-            event.clientX - startX;
+        applyTransform();
+    }
 
-        const deltaY =
-            event.clientY - startY;
+    function clampScale(value) {
+        return Math.min(
+            4,
+            Math.max(1, value)
+        );
+    }
 
-        startX = null;
-        startY = null;
+    function getDistance(a, b) {
+        const dx = a.x - b.x;
+        const dy = a.y - b.y;
 
-        /*
-            Swipe down -> close
-        */
-        if (
-            deltaY > 80 &&
-            Math.abs(deltaY) >
-            Math.abs(deltaX)
-        ) {
-            closeMobileViewer();
-            return;
-        }
+        return Math.hypot(dx, dy);
+    }
 
-        /*
-            Swipe left/right
-        */
-        if (
-            Math.abs(deltaX) >= 50 &&
-            Math.abs(deltaX) >
-            Math.abs(deltaY)
-        ) {
-            if (deltaX < 0) {
-                changeMobileViewerPhoto(1);
-            } else {
-                changeMobileViewerPhoto(-1);
+    let pinchStartDistance = null;
+    let pinchStartScale = 1;
+
+    stage.addEventListener(
+        "pointerdown",
+        (event) => {
+            if (event.pointerType !== "touch") {
+                return;
             }
 
-            return;
-        }
-
-        /*
-            Small movement = tap.
-            Toggle description.
-        */
-        if (
-            Math.abs(deltaX) < 15 &&
-            Math.abs(deltaY) < 15
-        ) {
-            viewer.classList.toggle(
-                "show-info"
+            stage.setPointerCapture?.(
+                event.pointerId
             );
+
+            activePointers.set(
+                event.pointerId,
+                {
+                    x: event.clientX,
+                    y: event.clientY
+                }
+            );
+
+            if (activePointers.size === 1) {
+                startX = event.clientX;
+                startY = event.clientY;
+            }
+
+            if (activePointers.size === 2) {
+                const points =
+                    Array.from(
+                        activePointers.values()
+                    );
+
+                pinchStartDistance =
+                    getDistance(
+                        points[0],
+                        points[1]
+                    );
+
+                pinchStartScale =
+                    scale;
+            }
         }
-    });
+    );
+
+    stage.addEventListener(
+        "pointermove",
+        (event) => {
+            if (
+                event.pointerType !== "touch" ||
+                !activePointers.has(
+                    event.pointerId
+                )
+            ) {
+                return;
+            }
+
+            const previous =
+                activePointers.get(
+                    event.pointerId
+                );
+
+            activePointers.set(
+                event.pointerId,
+                {
+                    x: event.clientX,
+                    y: event.clientY
+                }
+            );
+
+            if (activePointers.size === 2) {
+                const points =
+                    Array.from(
+                        activePointers.values()
+                    );
+
+                const currentDistance =
+                    getDistance(
+                        points[0],
+                        points[1]
+                    );
+
+                if (
+                    pinchStartDistance &&
+                    pinchStartDistance > 0
+                ) {
+                    const ratio =
+                        currentDistance /
+                        pinchStartDistance;
+
+                    scale =
+                        clampScale(
+                            pinchStartScale *
+                            ratio
+                        );
+
+                    applyTransform();
+                }
+
+                return;
+            }
+
+            if (
+                activePointers.size === 1 &&
+                scale > 1 &&
+                previous
+            ) {
+                translateX +=
+                    event.clientX - previous.x;
+
+                translateY +=
+                    event.clientY - previous.y;
+
+                applyTransform();
+            }
+        }
+    );
+
+    stage.addEventListener(
+        "pointerup",
+        (event) => {
+            if (event.pointerType !== "touch") {
+                return;
+            }
+
+            const endX = event.clientX;
+            const endY = event.clientY;
+
+            activePointers.delete(
+                event.pointerId
+            );
+
+            if (activePointers.size < 2) {
+                pinchStartDistance = null;
+            }
+
+            if (scale > 1.01) {
+                return;
+            }
+
+            if (scale <= 1.01) {
+                resetZoom();
+            }
+
+            if (
+                startX === null ||
+                startY === null
+            ) {
+                return;
+            }
+
+            const deltaX = endX - startX;
+            const deltaY = endY - startY;
+
+            startX = null;
+            startY = null;
+
+            if (
+                deltaY > 80 &&
+                Math.abs(deltaY) >
+                Math.abs(deltaX)
+            ) {
+                closeMobileViewer();
+                return;
+            }
+
+            if (
+                Math.abs(deltaX) >= 50 &&
+                Math.abs(deltaX) >
+                Math.abs(deltaY)
+            ) {
+                if (deltaX < 0) {
+                    changeMobileViewerPhoto(1);
+                } else {
+                    changeMobileViewerPhoto(-1);
+                }
+
+                return;
+            }
+
+            if (
+                Math.abs(deltaX) < 15 &&
+                Math.abs(deltaY) < 15
+            ) {
+                const now = Date.now();
+                const isDoubleTap =
+                    now - lastTapTime < 300;
+
+                lastTapTime = now;
+
+                if (isDoubleTap) {
+                    if (scale > 1) {
+                        resetZoom();
+                    } else {
+                        scale = 2.5;
+                        translateX = 0;
+                        translateY = 0;
+                        applyTransform();
+                    }
+
+                    return;
+                }
+
+                window.setTimeout(
+                    () => {
+                        if (
+                            Date.now() -
+                            lastTapTime >= 280 &&
+                            scale === 1
+                        ) {
+                            viewer.classList.toggle(
+                                "show-info"
+                            );
+                        }
+                    },
+                    300
+                );
+            }
+        }
+    );
+
+    stage.addEventListener(
+        "pointercancel",
+        (event) => {
+            activePointers.delete(
+                event.pointerId
+            );
+
+            if (activePointers.size === 0) {
+                startX = null;
+                startY = null;
+                pinchStartDistance = null;
+            }
+        }
+    );
 
     /*
         Desktop/testing Escape support.
@@ -1225,6 +1436,9 @@ function openMobileViewer(
 
 
 function closeMobileViewer() {
+    scale = 1;
+    translateX = 0;
+    translateY = 0;
     if (!mobileViewer) {
         return;
     }
@@ -1274,7 +1488,9 @@ function changeMobileViewerPhoto(direction) {
     mobileViewer?.classList.remove(
         "show-info"
     );
-
+    scale = 1;
+    translateX = 0;
+    translateY = 0;
     renderMobileViewerPhoto();
 }
 
@@ -1797,11 +2013,18 @@ async function loadPhotography() {
             }
         );
 
+        const isMobile =
+            window.matchMedia(
+                "(max-width: 700px)"
+            ).matches;
+
+        const columnCount =
+            isMobile ? 1 : 4;
 
         const columns =
             Array.from(
                 {
-                    length: 4
+                    length: columnCount
                 },
                 () => {
 
@@ -1810,15 +2033,12 @@ async function loadPhotography() {
                             "div"
                         );
 
-
                     column.className =
                         "column";
-
 
                     grid.appendChild(
                         column
                     );
-
 
                     return column;
                 }
