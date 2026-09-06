@@ -790,12 +790,14 @@ body {
   font-weight: 800;
   font-style: italic;
   letter-spacing: 0.5rem;
+  text-align: center;
 }
 
 #shortstory .book .page.frontcover > div h2 {
   position: relative;
   font-size: 1.7rem;
   font-weight: 400;
+  text-align: center;
 }
 
 #shortstory .book .page.frontcover > div h2::before {
