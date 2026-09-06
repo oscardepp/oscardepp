@@ -1039,22 +1039,30 @@ function resetTileTilt(tile) {
 /* =========================================================
    Mobile full-screen photo viewer
    ========================================================= */
-
 let mobileViewer = null;
 let mobileViewerPhotos = [];
 let mobileViewerIndex = 0;
+
 let scale = 1;
 let translateX = 0;
 let translateY = 0;
+
 
 function ensureMobileViewer() {
     if (mobileViewer) {
         return mobileViewer;
     }
 
-    const viewer = document.createElement("div");
-    viewer.className = "mobile-photo-viewer";
-    viewer.setAttribute("aria-hidden", "true");
+    const viewer =
+        document.createElement("div");
+
+    viewer.className =
+        "mobile-photo-viewer";
+
+    viewer.setAttribute(
+        "aria-hidden",
+        "true"
+    );
 
     viewer.innerHTML = `
         <button
@@ -1074,22 +1082,30 @@ function ensureMobileViewer() {
 
     document.body.appendChild(viewer);
 
-    const closeButton =
-        viewer.querySelector(".mobile-viewer-close");
-
     const stage =
-        viewer.querySelector(".mobile-viewer-stage");
+        viewer.querySelector(
+            ".mobile-viewer-stage"
+        );
 
-    closeButton.addEventListener("click", (event) => {
-        event.stopPropagation();
-        closeMobileViewer();
-    });
+    const closeButton =
+        viewer.querySelector(
+            ".mobile-viewer-close"
+        );
 
-    let startX = null;
-    let startY = null;
+
+    /* =====================================================
+       Viewer helpers
+       ===================================================== */
+
+    const activePointers =
+        new Map();
+
+    let gesture = null;
+    let pinch = null;
+
     let lastTapTime = 0;
+    let tapTimer = null;
 
-    const activePointers = new Map();
 
     function getViewerMedia() {
         return stage.querySelector(
@@ -1097,48 +1113,291 @@ function ensureMobileViewer() {
         );
     }
 
-    function applyTransform() {
-        const media = getViewerMedia();
+
+    function clamp(value, min, max) {
+        return Math.min(
+            max,
+            Math.max(min, value)
+        );
+    }
+
+
+    function clampScale(value) {
+        return clamp(
+            value,
+            1,
+            4
+        );
+    }
+
+
+    function clampPan() {
+        if (scale <= 1) {
+            translateX = 0;
+            translateY = 0;
+
+            return;
+        }
+
+        /*
+            Prevent the photo from being dragged
+            infinitely away from the screen.
+        */
+        const maxX =
+            (
+                stage.clientWidth *
+                (scale - 1)
+            ) / 2;
+
+        const maxY =
+            (
+                stage.clientHeight *
+                (scale - 1)
+            ) / 2;
+
+        translateX =
+            clamp(
+                translateX,
+                -maxX,
+                maxX
+            );
+
+        translateY =
+            clamp(
+                translateY,
+                -maxY,
+                maxY
+            );
+    }
+
+
+    function applyTransform(
+        animate = false
+    ) {
+        const media =
+            getViewerMedia();
 
         if (!media) {
             return;
         }
 
+        media.classList.toggle(
+            "zoom-settling",
+            animate
+        );
+
         media.style.transform =
-            `translate(${translateX}px, ${translateY}px) scale(${scale})`;
+            `translate3d(${translateX}px, ${translateY}px, 0) scale(${scale})`;
+
+        if (animate) {
+            window.setTimeout(
+                () => {
+                    media.classList.remove(
+                        "zoom-settling"
+                    );
+                },
+                180
+            );
+        }
     }
 
-    function resetZoom() {
+
+    function resetZoom(
+        animate = false
+    ) {
         scale = 1;
         translateX = 0;
         translateY = 0;
 
-        applyTransform();
-    }
-
-    function clampScale(value) {
-        return Math.min(
-            4,
-            Math.max(1, value)
+        applyTransform(
+            animate
         );
     }
 
-    function getDistance(a, b) {
-        const dx = a.x - b.x;
-        const dy = a.y - b.y;
 
-        return Math.hypot(dx, dy);
+    function getDistance(
+        a,
+        b
+    ) {
+        return Math.hypot(
+            b.x - a.x,
+            b.y - a.y
+        );
     }
 
-    let pinchStartDistance = null;
-    let pinchStartScale = 1;
+
+    function getMidpoint(
+        a,
+        b
+    ) {
+        return {
+            x:
+                (a.x + b.x) / 2,
+
+            y:
+                (a.y + b.y) / 2
+        };
+    }
+
+
+    /*
+        Zoom around the point that was tapped
+        instead of always zooming around the
+        exact middle of the screen.
+    */
+    function zoomToPoint(
+        targetScale,
+        clientX,
+        clientY
+    ) {
+        const nextScale =
+            clampScale(
+                targetScale
+            );
+
+        if (nextScale <= 1) {
+            resetZoom(true);
+            return;
+        }
+
+        const rect =
+            stage.getBoundingClientRect();
+
+        const focalX =
+            clientX -
+            rect.left -
+            rect.width / 2;
+
+        const focalY =
+            clientY -
+            rect.top -
+            rect.height / 2;
+
+        const ratio =
+            nextScale / scale;
+
+        translateX =
+            ratio * translateX +
+            (1 - ratio) *
+            focalX;
+
+        translateY =
+            ratio * translateY +
+            (1 - ratio) *
+            focalY;
+
+        scale =
+            nextScale;
+
+        clampPan();
+        applyTransform(true);
+    }
+
+
+    /* =====================================================
+       Single tap / double tap
+       ===================================================== */
+
+    function handleTap(
+        clientX,
+        clientY
+    ) {
+        const now =
+            Date.now();
+
+        const isDoubleTap =
+            now - lastTapTime <
+            280;
+
+        if (isDoubleTap) {
+            window.clearTimeout(
+                tapTimer
+            );
+
+            tapTimer = null;
+            lastTapTime = 0;
+
+            /*
+                Double tap:
+                1x -> 2.5x
+                zoomed -> 1x
+            */
+            if (scale > 1.01) {
+                resetZoom(true);
+            } else {
+                zoomToPoint(
+                    2.5,
+                    clientX,
+                    clientY
+                );
+            }
+
+            return;
+        }
+
+        lastTapTime =
+            now;
+
+        /*
+            Wait briefly to see whether this
+            becomes a double tap.
+
+            IMPORTANT:
+            caption toggling is intentionally
+            independent of zoom level.
+        */
+        tapTimer =
+            window.setTimeout(
+                () => {
+                    viewer.classList.toggle(
+                        "show-info"
+                    );
+
+                    lastTapTime = 0;
+                    tapTimer = null;
+                },
+                280
+            );
+    }
+
+
+    /* =====================================================
+       Close button
+       ===================================================== */
+
+    closeButton.addEventListener(
+        "click",
+        (event) => {
+            event.stopPropagation();
+
+            closeMobileViewer();
+        }
+    );
+
+
+    /* =====================================================
+       Touch start
+       ===================================================== */
 
     stage.addEventListener(
         "pointerdown",
         (event) => {
-            if (event.pointerType !== "touch") {
+            if (
+                event.pointerType !==
+                "touch"
+            ) {
                 return;
             }
+
+            /*
+                A live gesture should never
+                inherit the double-tap easing.
+            */
+            getViewerMedia()
+                ?.classList
+                .remove(
+                    "zoom-settling"
+                );
 
             stage.setPointerCapture?.(
                 event.pointerId
@@ -1152,34 +1411,88 @@ function ensureMobileViewer() {
                 }
             );
 
-            if (activePointers.size === 1) {
-                startX = event.clientX;
-                startY = event.clientY;
+
+            /*
+                First finger.
+            */
+            if (
+                activePointers.size === 1
+            ) {
+                gesture = {
+                    startX:
+                        event.clientX,
+
+                    startY:
+                        event.clientY,
+
+                    moved:
+                        false,
+
+                    wasPinch:
+                        false
+                };
+
+                return;
             }
 
-            if (activePointers.size === 2) {
+
+            /*
+                Second finger begins a pinch.
+
+                From this point onward this
+                entire gesture can NEVER be
+                interpreted as a page swipe.
+            */
+            if (
+                activePointers.size === 2
+            ) {
                 const points =
                     Array.from(
                         activePointers.values()
                     );
 
-                pinchStartDistance =
-                    getDistance(
+                const midpoint =
+                    getMidpoint(
                         points[0],
                         points[1]
                     );
 
-                pinchStartScale =
-                    scale;
+                gesture.wasPinch =
+                    true;
+
+                pinch = {
+                    distance:
+                        getDistance(
+                            points[0],
+                            points[1]
+                        ),
+
+                    scale,
+
+                    translateX,
+                    translateY,
+
+                    centerX:
+                        midpoint.x,
+
+                    centerY:
+                        midpoint.y
+                };
             }
         }
     );
+
+
+    /* =====================================================
+       Touch movement
+       ===================================================== */
 
     stage.addEventListener(
         "pointermove",
         (event) => {
             if (
-                event.pointerType !== "touch" ||
+                event.pointerType !==
+                "touch" ||
                 !activePointers.has(
                     event.pointerId
                 )
@@ -1200,156 +1513,351 @@ function ensureMobileViewer() {
                 }
             );
 
-            if (activePointers.size === 2) {
+
+            /* -------------------------------------------------
+               PINCH ZOOM
+               ------------------------------------------------- */
+
+            if (
+                activePointers.size >= 2 &&
+                pinch
+            ) {
+                event.preventDefault();
+
+                gesture.wasPinch =
+                    true;
+
                 const points =
                     Array.from(
                         activePointers.values()
                     );
 
-                const currentDistance =
+                const distance =
                     getDistance(
                         points[0],
                         points[1]
                     );
 
+                const midpoint =
+                    getMidpoint(
+                        points[0],
+                        points[1]
+                    );
+
                 if (
-                    pinchStartDistance &&
-                    pinchStartDistance > 0
+                    pinch.distance <= 0
                 ) {
-                    const ratio =
-                        currentDistance /
-                        pinchStartDistance;
-
-                    scale =
-                        clampScale(
-                            pinchStartScale *
-                            ratio
-                        );
-
-                    applyTransform();
+                    return;
                 }
+
+                const nextScale =
+                    clampScale(
+                        pinch.scale *
+                        (
+                            distance /
+                            pinch.distance
+                        )
+                    );
+
+                const ratio =
+                    nextScale /
+                    pinch.scale;
+
+
+                /*
+                    Keep the point between the
+                    fingers visually anchored.
+
+                    Moving both fingers together
+                    therefore naturally pans
+                    while pinching too.
+                */
+                translateX =
+                    (
+                        midpoint.x -
+                        pinch.centerX
+                    ) +
+                    ratio *
+                    pinch.translateX +
+                    (
+                        1 - ratio
+                    ) *
+                    (
+                        pinch.centerX -
+                        stage.clientWidth / 2
+                    );
+
+                translateY =
+                    (
+                        midpoint.y -
+                        pinch.centerY
+                    ) +
+                    ratio *
+                    pinch.translateY +
+                    (
+                        1 - ratio
+                    ) *
+                    (
+                        pinch.centerY -
+                        stage.clientHeight / 2
+                    );
+
+                scale =
+                    nextScale;
+
+                clampPan();
+
+                /*
+                    NO transition here.
+
+                    Image follows fingers
+                    directly.
+                */
+                applyTransform(false);
 
                 return;
             }
 
+
+            /* -------------------------------------------------
+               ONE-FINGER PAN WHILE ZOOMED
+               ------------------------------------------------- */
+
             if (
                 activePointers.size === 1 &&
-                scale > 1 &&
+                scale > 1.01 &&
                 previous
             ) {
+                event.preventDefault();
+
+                const dx =
+                    event.clientX -
+                    previous.x;
+
+                const dy =
+                    event.clientY -
+                    previous.y;
+
+                if (
+                    Math.abs(dx) > 1 ||
+                    Math.abs(dy) > 1
+                ) {
+                    gesture.moved =
+                        true;
+                }
+
                 translateX +=
-                    event.clientX - previous.x;
+                    dx;
 
                 translateY +=
-                    event.clientY - previous.y;
+                    dy;
 
-                applyTransform();
+                clampPan();
+                applyTransform(false);
+
+                return;
             }
+
+
+            /*
+                At 1x we do not move the image.
+
+                We merely measure the gesture
+                so pointerup can decide whether
+                it was a tap / swipe / close.
+            */
+            if (
+                gesture &&
+                (
+                    Math.abs(
+                        event.clientX -
+                        gesture.startX
+                    ) > 8 ||
+                    Math.abs(
+                        event.clientY -
+                        gesture.startY
+                    ) > 8
+                )
+            ) {
+                gesture.moved =
+                    true;
+            }
+        },
+        {
+            passive: false
         }
     );
+
+
+    /* =====================================================
+       Touch end
+       ===================================================== */
 
     stage.addEventListener(
         "pointerup",
         (event) => {
-            if (event.pointerType !== "touch") {
+            if (
+                event.pointerType !==
+                "touch"
+            ) {
                 return;
             }
-
-            const endX = event.clientX;
-            const endY = event.clientY;
 
             activePointers.delete(
                 event.pointerId
             );
 
-            if (activePointers.size < 2) {
-                pinchStartDistance = null;
-            }
 
-            if (scale > 1.01) {
+            /*
+                If this gesture EVER contained
+                two fingers, do not allow the
+                final finger lifting to become:
+
+                - a caption tap
+                - a left/right photo swipe
+                - a swipe-down close
+
+                This fixes the accidental
+                next-photo jump after zooming.
+            */
+            if (
+                gesture?.wasPinch
+            ) {
+                if (
+                    activePointers.size === 0
+                ) {
+                    pinch = null;
+
+                    if (
+                        scale <= 1.02
+                    ) {
+                        resetZoom(false);
+                    } else {
+                        clampPan();
+                        applyTransform(false);
+                    }
+
+                    gesture = null;
+                }
+
                 return;
             }
 
-            if (scale <= 1.01) {
-                resetZoom();
+
+            if (!gesture) {
+                return;
             }
+
+            const deltaX =
+                event.clientX -
+                gesture.startX;
+
+            const deltaY =
+                event.clientY -
+                gesture.startY;
+
+            const absX =
+                Math.abs(deltaX);
+
+            const absY =
+                Math.abs(deltaY);
+
+            const isTap =
+                absX < 14 &&
+                absY < 14;
+
+            const currentGesture =
+                gesture;
+
+            gesture = null;
+
+
+            /* -------------------------------------------------
+               ZOOMED:
+               tap toggles caption,
+               drag pans,
+               NEVER change photo.
+               ------------------------------------------------- */
 
             if (
-                startX === null ||
-                startY === null
+                scale > 1.01
             ) {
+                if (
+                    isTap &&
+                    !currentGesture.moved
+                ) {
+                    handleTap(
+                        event.clientX,
+                        event.clientY
+                    );
+                }
+
                 return;
             }
 
-            const deltaX = endX - startX;
-            const deltaY = endY - startY;
 
-            startX = null;
-            startY = null;
+            /*
+                Normalize tiny floating-point
+                zoom leftovers back to 1x.
+            */
+            if (
+                scale !== 1
+            ) {
+                resetZoom(false);
+            }
+
+
+            /* -------------------------------------------------
+               Swipe down closes viewer
+               ------------------------------------------------- */
 
             if (
                 deltaY > 80 &&
-                Math.abs(deltaY) >
-                Math.abs(deltaX)
+                absY > absX
             ) {
                 closeMobileViewer();
-                return;
-            }
-
-            if (
-                Math.abs(deltaX) >= 50 &&
-                Math.abs(deltaX) >
-                Math.abs(deltaY)
-            ) {
-                if (deltaX < 0) {
-                    changeMobileViewerPhoto(1);
-                } else {
-                    changeMobileViewerPhoto(-1);
-                }
 
                 return;
             }
 
+
+            /* -------------------------------------------------
+               Horizontal navigation at 1x only
+               ------------------------------------------------- */
+
             if (
-                Math.abs(deltaX) < 15 &&
-                Math.abs(deltaY) < 15
+                absX >= 50 &&
+                absX > absY
             ) {
-                const now = Date.now();
-                const isDoubleTap =
-                    now - lastTapTime < 300;
+                changeMobileViewerPhoto(
+                    deltaX < 0
+                        ? 1
+                        : -1
+                );
 
-                lastTapTime = now;
+                return;
+            }
 
-                if (isDoubleTap) {
-                    if (scale > 1) {
-                        resetZoom();
-                    } else {
-                        scale = 2.5;
-                        translateX = 0;
-                        translateY = 0;
-                        applyTransform();
-                    }
 
-                    return;
-                }
+            /* -------------------------------------------------
+               Normal tap:
+               ALWAYS toggle caption,
+               including after zooming back out.
+               ------------------------------------------------- */
 
-                window.setTimeout(
-                    () => {
-                        if (
-                            Date.now() -
-                            lastTapTime >= 280 &&
-                            scale === 1
-                        ) {
-                            viewer.classList.toggle(
-                                "show-info"
-                            );
-                        }
-                    },
-                    300
+            if (isTap) {
+                handleTap(
+                    event.clientX,
+                    event.clientY
                 );
             }
         }
     );
+
+
+    /* =====================================================
+       Cancelled gesture
+       ===================================================== */
 
     stage.addEventListener(
         "pointercancel",
@@ -1358,27 +1866,38 @@ function ensureMobileViewer() {
                 event.pointerId
             );
 
-            if (activePointers.size === 0) {
-                startX = null;
-                startY = null;
-                pinchStartDistance = null;
+            if (
+                activePointers.size === 0
+            ) {
+                gesture = null;
+                pinch = null;
             }
         }
     );
 
-    /*
-        Desktop/testing Escape support.
-    */
-    document.addEventListener("keydown", (event) => {
-        if (
-            event.key === "Escape" &&
-            viewer.classList.contains("active")
-        ) {
-            closeMobileViewer();
-        }
-    });
 
-    mobileViewer = viewer;
+    /* =====================================================
+       Escape for desktop testing
+       ===================================================== */
+
+    document.addEventListener(
+        "keydown",
+        (event) => {
+            if (
+                event.key ===
+                "Escape" &&
+                viewer.classList.contains(
+                    "active"
+                )
+            ) {
+                closeMobileViewer();
+            }
+        }
+    );
+
+
+    mobileViewer =
+        viewer;
 
     return viewer;
 }

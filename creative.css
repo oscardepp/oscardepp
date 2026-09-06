@@ -38,7 +38,7 @@ body {
     padding: 0 4px;
 }
 
-#photography #photo-grid > .column {
+#photography #photo-grid>.column {
     flex: 25%;
     max-width: 25%;
 
@@ -72,12 +72,7 @@ body {
     touch-action: pan-y;
 
     transform:
-        rotateX(
-            var(--tile-rotate-x, 0deg)
-        )
-        rotateY(
-            var(--tile-rotate-y, 0deg)
-        );
+        rotateX(var(--tile-rotate-x, 0deg)) rotateY(var(--tile-rotate-y, 0deg));
 
     transform-origin: center center;
 
@@ -90,10 +85,7 @@ body {
    Current image / video
    --------------------------------------------------------- */
 
-#photography
-#photo-grid
-.photo-tile
-> .tile-media {
+#photography #photo-grid .photo-tile>.tile-media {
     display: block;
 
     width: 100%;
@@ -123,10 +115,7 @@ body {
    Incoming image
    --------------------------------------------------------- */
 
-#photography
-#photo-grid
-.photo-tile
-> .incoming-media {
+#photography #photo-grid .photo-tile>.incoming-media {
     position: absolute;
 
     inset: 0;
@@ -143,24 +132,15 @@ body {
     opacity: 0;
 }
 
-#photography
-#photo-grid
-.photo-tile
-> .incoming-media.from-right {
+#photography #photo-grid .photo-tile>.incoming-media.from-right {
     transform: translateX(6%);
 }
 
-#photography
-#photo-grid
-.photo-tile
-> .incoming-media.from-left {
+#photography #photo-grid .photo-tile>.incoming-media.from-left {
     transform: translateX(-6%);
 }
 
-#photography
-#photo-grid
-.photo-tile
-> .incoming-media.is-entering {
+#photography #photo-grid .photo-tile>.incoming-media.is-entering {
     opacity: 1;
 
     transform: translateX(0);
@@ -171,19 +151,13 @@ body {
    Outgoing image
    --------------------------------------------------------- */
 
-#photography
-#photo-grid
-.photo-tile
-> .current-media.exit-left {
+#photography #photo-grid .photo-tile>.current-media.exit-left {
     opacity: 0;
 
     transform: translateX(-6%);
 }
 
-#photography
-#photo-grid
-.photo-tile
-> .current-media.exit-right {
+#photography #photo-grid .photo-tile>.current-media.exit-right {
     opacity: 0;
 
     transform: translateX(6%);
@@ -194,10 +168,7 @@ body {
    Photography overlay
    --------------------------------------------------------- */
 
-#photography
-#photo-grid
-.photo-tile
-> .overlay {
+#photography #photo-grid .photo-tile>.overlay {
     position: absolute;
 
     inset: 0;
@@ -226,19 +197,13 @@ body {
     hidden while the image transition occurs.
 */
 
-#photography
-#photo-grid
-.photo-tile
-> .incoming-overlay {
+#photography #photo-grid .photo-tile>.incoming-overlay {
     z-index: 6;
 
     opacity: 0 !important;
 }
 
-#photography
-#photo-grid
-.photo-tile
-> .overlay.is-exiting {
+#photography #photo-grid .photo-tile>.overlay.is-exiting {
     opacity: 0 !important;
 }
 
@@ -250,20 +215,14 @@ body {
 
 @media (hover: hover) and (pointer: fine) {
 
-    #photography
-    #photo-grid
-    .photo-tile:hover
-    > .overlay:not(.incoming-overlay):not(.is-exiting) {
+    #photography #photo-grid .photo-tile:hover>.overlay:not(.incoming-overlay):not(.is-exiting) {
         opacity: 1;
     }
 }
 
 @media (hover: none) and (pointer: coarse) {
 
-    #photography
-    #photo-grid
-    .photo-tile
-    > .overlay {
+    #photography #photo-grid .photo-tile>.overlay {
         opacity: 0;
 
         pointer-events: none;
@@ -272,16 +231,11 @@ body {
             opacity 0.25s ease;
     }
 
-    #photography
-    #photo-grid
-    .photo-tile.show-overlay
-    > .overlay:not(.incoming-overlay):not(.is-exiting) {
+    #photography #photo-grid .photo-tile.show-overlay>.overlay:not(.incoming-overlay):not(.is-exiting) {
         opacity: 1;
     }
 
-    #photography
-    #photo-grid
-    .photo-tile {
+    #photography #photo-grid .photo-tile {
         -webkit-tap-highlight-color: transparent;
 
         touch-action: pan-y;
@@ -293,10 +247,7 @@ body {
    Photography text
    --------------------------------------------------------- */
 
-#photography
-#photo-grid
-.photo-tile
-.text {
+#photography #photo-grid .photo-tile .text {
     position: absolute;
 
     top: 50%;
@@ -305,10 +256,8 @@ body {
     width: 88%;
 
     transform:
-        translate(
-            -50%,
-            -50%
-        );
+        translate(-50%,
+            -50%);
 
     text-align: center;
 
@@ -317,28 +266,20 @@ body {
     line-height: 1;
 }
 
-#photography
-#photo-grid
-.photo-tile
-.photo-title {
+#photography #photo-grid .photo-tile .photo-title {
     margin: 0;
 
     font-size:
-        clamp(
-            1.4rem,
+        clamp(1.4rem,
             2.2vw,
-            2.5rem
-        );
+            2.5rem);
 
     font-weight: 700;
 
     line-height: 1.05;
 }
 
-#photography
-#photo-grid
-.photo-tile
-.photo-meta {
+#photography #photo-grid .photo-tile .photo-meta {
     display: flex;
 
     flex-direction: column;
@@ -350,11 +291,9 @@ body {
     margin-top: 2px;
 
     font-size:
-        clamp(
-            0.7rem,
+        clamp(0.7rem,
             1vw,
-            1.1rem
-        );
+            1.1rem);
 
     font-weight: 400;
 
@@ -363,15 +302,9 @@ body {
     line-height: 1.1;
 }
 
-#photography
-#photo-grid
-.photo-tile
-.photo-location,
+#photography #photo-grid .photo-tile .photo-location,
 
-#photography
-#photo-grid
-.photo-tile
-.photo-date {
+#photography #photo-grid .photo-tile .photo-date {
     display: block;
 
     width: 100%;
@@ -382,9 +315,7 @@ body {
    1 / N counter
    --------------------------------------------------------- */
 
-#photography
-#photo-grid
-.photo-stack-counter {
+#photography #photo-grid .photo-stack-counter {
     position: absolute;
 
     right: 8px;
@@ -423,18 +354,13 @@ body {
     pointer-events: none;
 }
 
-#photography
-#photo-grid
-.photo-stack-counter[hidden] {
+#photography #photo-grid .photo-stack-counter[hidden] {
     display: none;
 }
 
 @media (hover: hover) and (pointer: fine) {
 
-    #photography
-    #photo-grid
-    .photo-tile:hover
-    .photo-stack-counter {
+    #photography #photo-grid .photo-tile:hover .photo-stack-counter {
         opacity: 0.8;
 
         transform:
@@ -654,11 +580,9 @@ body {
     justify-content: center;
 
     gap:
-        clamp(
-            24px,
+        clamp(24px,
             8vw,
-            90px
-        );
+            90px);
 
     flex-wrap: nowrap;
 }
@@ -720,8 +644,7 @@ body {
         width 0.5s;
 }
 
-#shortstory
-.tab-links.active-link::after {
+#shortstory .tab-links.active-link::after {
     width: 40px;
 }
 
@@ -729,8 +652,7 @@ body {
     display: none;
 }
 
-#shortstory
-.tab-contents.active-tab {
+#shortstory .tab-contents.active-tab {
     position: relative;
 
     left: 0;
@@ -756,30 +678,25 @@ body {
     overflow-y: auto;
 
     border:
-        1px solid
-        rgba(0, 0, 0, 0.7);
+        1px solid rgba(0, 0, 0, 0.7);
 
     border-radius: 3px;
 }
 
-#shortstory
-.book::-webkit-scrollbar {
+#shortstory .book::-webkit-scrollbar {
     width: 10px;
 }
 
-#shortstory
-.book::-webkit-scrollbar-track {
+#shortstory .book::-webkit-scrollbar-track {
     background:
         rgba(2, 3, 1, 0.1);
 }
 
-#shortstory
-.book::-webkit-scrollbar-thumb {
+#shortstory .book::-webkit-scrollbar-thumb {
     background: #020301;
 }
 
-#shortstory
-.book::-webkit-scrollbar-thumb:hover {
+#shortstory .book::-webkit-scrollbar-thumb:hover {
     background:
         rgba(2, 3, 1, 0.8);
 }
@@ -825,9 +742,7 @@ body {
     line-height: 2rem;
 }
 
-.book
-.page
-p:nth-child(2)::first-letter {
+.book .page p:nth-child(2)::first-letter {
     font-size: 1.5rem;
 
     font-weight: 600;
@@ -838,15 +753,11 @@ p:nth-child(2)::first-letter {
    Short Story Pages
    ========================================================= */
 
-#shortstory
-.book
-.page {
+#shortstory .book .page {
     background-color: #fff;
 }
 
-#shortstory
-.book
-.page.frontcover {
+#shortstory .book .page.frontcover {
     display: flex;
 
     height: 606px;
@@ -872,10 +783,7 @@ p:nth-child(2)::first-letter {
     color: #020301;
 }
 
-#shortstory
-.book
-.page.frontcover
-> div {
+#shortstory .book .page.frontcover>div {
     position: relative;
 
     display: flex;
@@ -887,11 +795,7 @@ p:nth-child(2)::first-letter {
     justify-content: center;
 }
 
-#shortstory
-.book
-.page.frontcover
-> div
-h1 {
+#shortstory .book .page.frontcover>div h1 {
     position: relative;
 
     margin-bottom: 30px;
@@ -908,11 +812,7 @@ h1 {
         0.5rem;
 }
 
-#shortstory
-.book
-.page.frontcover
-> div
-h2 {
+#shortstory .book .page.frontcover>div h2 {
     position: relative;
 
     font-size: 1.7rem;
@@ -920,11 +820,7 @@ h2 {
     font-weight: 400;
 }
 
-#shortstory
-.book
-.page.frontcover
-> div
-h2::before {
+#shortstory .book .page.frontcover>div h2::before {
     content: "";
 
     position: absolute;
@@ -1027,10 +923,8 @@ h2::before {
     position: relative;
 
     width:
-        min(
-            528px,
-            100%
-        );
+        min(528px,
+            100%);
 
     height: 656px;
 
@@ -1045,42 +939,31 @@ h2::before {
     color: #fff;
 }
 
-.poetry
-.book::-webkit-scrollbar-track {
+.poetry .book::-webkit-scrollbar-track {
     background:
         rgba(2, 3, 1, 0.1);
 }
 
-.poetry
-.book::-webkit-scrollbar-thumb {
+.poetry .book::-webkit-scrollbar-thumb {
     background:
         rgba(2, 3, 1, 0.4);
 }
 
-.poetry
-.book::-webkit-scrollbar-thumb:hover {
+.poetry .book::-webkit-scrollbar-thumb:hover {
     background:
         rgba(2, 3, 1, 0.6);
 }
 
-.poetry
-.book
-.page {
+.poetry .book .page {
     background-color:
         transparent;
 }
 
-.poetry
-.book
-.page
-h3 {
+.poetry .book .page h3 {
     color: #fff;
 }
 
-.poetry
-.book
-.page
-p {
+.poetry .book .page p {
     color: #fff;
 }
 
@@ -1091,11 +974,9 @@ p {
 
 .nav a:focus-visible,
 .nav button:focus-visible,
-#shortstory
-.tab-links:focus-visible {
+#shortstory .tab-links:focus-visible {
     outline:
-        3px solid
-        var(--samurai-blue);
+        3px solid var(--samurai-blue);
 
     outline-offset: 4px;
 }
@@ -1144,9 +1025,7 @@ p {
 
 @media screen and (max-width: 800px) {
 
-    #photography
-    #photo-grid
-    > .column {
+    #photography #photo-grid>.column {
         flex: 50%;
 
         max-width: 50%;
@@ -1158,19 +1037,15 @@ p {
    Mobile Photography
    ========================================================= */
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 700px) {
 
-    #photography
-    #photo-grid
-    > .column {
+    #photography #photo-grid>.column {
         flex: 100%;
 
         max-width: 100%;
     }
 
-    #photography
-    #photo-grid
-    .photo-stack-counter {
+    #photography #photo-grid .photo-stack-counter {
         opacity: 0.65;
 
         transform: none;
@@ -1197,7 +1072,7 @@ p {
         overflow: visible;
     }
 
-    .nav > a.logo {
+    .nav>a.logo {
         float: none;
 
         display: inline-block;
@@ -1235,11 +1110,9 @@ p {
         padding-right: 16px;
 
         font-size:
-            clamp(
-                2.5rem,
+            clamp(2.5rem,
                 11vw,
-                4rem
-            );
+                4rem);
 
         line-height: 1.1;
 
@@ -1255,9 +1128,7 @@ p {
             24px 20px 40px;
     }
 
-    #photography
-    .header
-    p {
+    #photography .header p {
         margin: 0;
 
         font-size: 18px;
@@ -1273,10 +1144,8 @@ p {
         right: 0;
 
         width:
-            min(
-                70vw,
-                320px
-            );
+            min(70vw,
+                320px);
 
         display: none;
 
@@ -1310,9 +1179,7 @@ p {
 
     #shortstory .book {
         width:
-            calc(
-                100vw - 32px
-            );
+            calc(100vw - 32px);
 
         height: 656px;
 
@@ -1321,31 +1188,26 @@ p {
         margin-right: auto;
     }
 
-    #shortstory
-    .book
-    .page {
+    #shortstory .book .page {
         width: 100%;
 
         padding: 20px;
     }
 
-    #shortstory
-    .tab-contents.active-tab {
+    #shortstory .tab-contents.active-tab {
         width: 100%;
 
         margin-right: 0;
     }
 
-    #shortstory
-    .tab-titles {
+    #shortstory .tab-titles {
         justify-content:
             space-evenly;
 
         gap: 0;
     }
 
-    #shortstory
-    .tab-links {
+    #shortstory .tab-links {
         font-size: 18px;
     }
 
@@ -1411,9 +1273,7 @@ p {
         overflow: visible;
     }
 
-    .poetry
-    .book
-    .page {
+    .poetry .book .page {
         width: 100%;
 
         padding:
@@ -1444,18 +1304,14 @@ p {
         margin: 0;
 
         padding:
-            28px
-            20px
-            12px;
+            28px 20px 12px;
 
         transform: none;
 
         font-size:
-            clamp(
-                2rem,
+            clamp(2rem,
                 10vw,
-                3rem
-            );
+                3rem);
 
         line-height: 1.15;
     }
@@ -1468,21 +1324,13 @@ p {
 
 @media (prefers-reduced-motion: reduce) {
 
-    #photography
-    #photo-grid
-    .photo-tile,
+    #photography #photo-grid .photo-tile,
 
-    #photography
-    #photo-grid
-    .tile-media,
+    #photography #photo-grid .tile-media,
 
-    #photography
-    #photo-grid
-    .overlay,
+    #photography #photo-grid .overlay,
 
-    #photography
-    #photo-grid
-    .photo-stack-counter {
+    #photography #photo-grid .photo-stack-counter {
         transition: none !important;
     }
 }
@@ -1533,14 +1381,12 @@ p {
     .mobile-viewer-stage {
         position: absolute;
         inset: 0;
-
         display: flex;
         align-items: center;
         justify-content: center;
-
-        overflow: hidden;
-
+        overflow: hidden
         touch-action: none;
+        overscroll-behavior: none;
     }
 
     .mobile-viewer-media {
@@ -1554,20 +1400,45 @@ p {
         user-select: none;
         -webkit-user-select: none;
         -webkit-user-drag: none;
+        -webkit-touch-callout: none;
 
         transform-origin: center center;
 
-        transition: transform 0.18s ease;
+        /*
+        Critical:
+        pinch and pan must follow the fingers
+        directly rather than easing toward them.
+    */
+        transition: none;
+
         will-change: transform;
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
+    }
+
+
+    /*
+    Only deliberate double-tap zoom/reset
+    receives an animation.
+*/
+    .mobile-viewer-media.zoom-settling {
+        transition:
+            transform 160ms cubic-bezier(.22,
+                .61,
+                .36,
+                1);
+    }
+
+    body.mobile-viewer-open,
+    .mobile-viewer-stage {
+        overscroll-behavior: none;
     }
 
     .mobile-viewer-close {
         position: absolute;
 
-        top: max(
-            18px,
-            env(safe-area-inset-top)
-        );
+        top: max(18px,
+                env(safe-area-inset-top));
 
         right: 18px;
 
@@ -1608,26 +1479,17 @@ p {
         z-index: 4;
 
         padding:
-            80px
-            24px
-            max(
-                28px,
-                calc(
-                    18px +
-                    env(safe-area-inset-bottom)
-                )
-            );
+            80px 24px max(28px,
+                calc(18px + env(safe-area-inset-bottom)));
 
         color: white;
 
         text-align: center;
 
         background:
-            linear-gradient(
-                to bottom,
+            linear-gradient(to bottom,
                 transparent,
-                rgba(0, 0, 0, 0.85)
-            );
+                rgba(0, 0, 0, 0.85));
 
         opacity: 0;
         transform:
@@ -1640,8 +1502,7 @@ p {
             transform 0.2s ease;
     }
 
-    .mobile-photo-viewer.show-info
-    .mobile-viewer-info {
+    .mobile-photo-viewer.show-info .mobile-viewer-info {
         opacity: 1;
         transform:
             translateY(0);
@@ -1672,13 +1533,8 @@ p {
     .mobile-viewer-counter {
         position: absolute;
 
-        top: max(
-            30px,
-            calc(
-                env(safe-area-inset-top) +
-                12px
-            )
-        );
+        top: max(30px,
+                calc(env(safe-area-inset-top) + 12px));
 
         left: 50%;
 
