@@ -312,12 +312,12 @@ body {
       minmax(300px, 2fr)
       minmax(180px, 1fr);
     align-items: center;
-    min-height: 78px;
-    padding: 4px 16px;
+    height: 72px;
+    min-height: 72px;
+    padding: 7px 18px;
     overflow: visible;
   }
-  .creative-nav > .logo,
-  .creative-nav .header-right {
+  .creative-nav > .logo {
     display: none;
   }
   .creative-nav-center {
@@ -328,37 +328,79 @@ body {
     justify-content: center;
     min-width: 0;
     text-align: center;
-    transform: translateY(2px);
+    transform: none;
   }
   .creative-current-section {
-    color: var(--samurai-blue);
-    font-size: clamp(2rem, 3.3vw, 3.2rem);
-    font-weight: 700;
-    line-height: 1;
-    text-transform: uppercase;
-  }
-  .creative-author {
-    position: relative;
-    margin-top: 0;
-    padding: 0;
-    color: #666;
-    font-family: inherit;
-    font-size: 14px;
+    color: #777;
+    font-size: 0.82rem;
     font-weight: 400;
     line-height: 1;
-    letter-spacing: 0.08em;
-    opacity: 0.58;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+  .creative-nav .creative-author {
+    float: none;
+    margin-top: 0;
+    padding: 0;
+    color: var(--samurai-blue);
+    font-family: inherit;
+    font-size: clamp(1.55rem, 2vw, 2rem);
+    font-weight: 700;
+    line-height: 0.8;
+    letter-spacing: -0.025em;
+    opacity: 1;
     text-decoration: none;
     transition:
       color 180ms ease,
-      opacity 180ms ease,
-      transform 220ms cubic-bezier(0.22, 0.61, 0.36, 1);
+      opacity 180ms ease;
   }
   .creative-author:hover {
     background: transparent;
     color: var(--lavender);
-    opacity: 1;
-    transform: translateY(-2px);
+  }
+  .creative-section-line {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 11px;
+  }
+  .creative-section-menu-toggle {
+    position: absolute;
+    top: 50%;
+    left: 100%;
+    width: 20px;
+    height: 30px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    transform: translateY(-50%);
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 180ms ease;
+  }
+  .creative-section-line:hover .creative-section-menu-toggle,
+  .creative-section-menu-toggle:hover,
+  .creative-section-menu-toggle:focus-visible,
+  .creative-section-menu-toggle[aria-expanded="true"] {
+    opacity: 0.55;
+  }
+  .creative-chevron {
+    position: absolute;
+    top: 9px;
+    left: 5px;
+    width: 8px;
+    height: 8px;
+    border-right: 1.5px solid var(--samurai-blue);
+    border-bottom: 1.5px solid var(--samurai-blue);
+    transform: rotate(45deg);
+    transition:
+      transform 220ms cubic-bezier(0.22, 0.61, 0.36, 1),
+      top 220ms ease;
+  }
+  .creative-section-menu-toggle[aria-expanded="true"] .creative-chevron {
+    top: 12px;
+    transform: rotate(-135deg);
   }
   .creative-nav-edge {
     display: flex;
@@ -398,11 +440,56 @@ body {
     font-size: 19px;
     font-weight: 300;
   }
+  .creative-nav .header-right {
+    position: absolute;
+    top: calc(100% - 1px);
+    left: 50%;
+    float: none;
+    display: flex;
+    width: 230px;
+    flex-direction: column;
+    padding: 8px;
+    border-radius: 0 0 7px 7px;
+    background: rgba(241, 241, 241, 0.97);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translate(-50%, -7px);
+    transition:
+      opacity 160ms ease,
+      transform 220ms cubic-bezier(0.22, 0.61, 0.36, 1),
+      visibility 160ms;
+  }
+  .creative-nav .header-right.desktop-open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translate(-50%, 0);
+  }
+  .creative-nav .header-right a,
+  .creative-nav .header-right .tablink {
+    float: none;
+    display: block;
+    width: 100%;
+    padding: 9px 12px;
+    border-radius: 4px;
+    text-align: center;
+    font-size: 13px;
+    line-height: 1.2;
+  }
+  .creative-nav .header-right .tablink.active-page-tab {
+    background: rgba(43, 42, 76, 0.08);
+    color: var(--samurai-blue);
+  }
   .creative-nav ~ .tabcontent {
-    padding-top: 120px;
+    padding-top: 76px;
   }
   .creative-nav ~ .tabcontent > .ttl {
     display: none;
+  }
+  #photography #photo-grid > .column > .photo-tile:first-child {
+    margin-top: 8px;
   }
 }
 /* =========================================================
@@ -638,8 +725,10 @@ body {
 }
 .poemheading {
   position: relative;
-  transform: translate(2%, 0);
+  width: 100%;
+  margin: 0;
   color: #fff;
+  text-align: center;
   font-size: 40px;
   font-weight: 800;
 }

@@ -52,10 +52,6 @@ const pageTabs = document.querySelectorAll(".nav .tablink");
 const pageContents = document.querySelectorAll(".tabcontent");
 const creativeSections = [
   {
-    label: "Home",
-    href: "index.html",
-  },
-  {
     label: "Short Stories",
     page: "ShortStory",
   },
@@ -180,6 +176,10 @@ function openPage(pageName, selectedTab) {
   }
 
   currentCreativePage = pageName;
+  window.scrollTo({
+    top: 0,
+    behavior: "auto",
+  });
   pageContents.forEach((content) => {
     const isSelected = content === selectedPage;
     content.style.display = isSelected ? "block" : "none";
@@ -261,6 +261,36 @@ document.addEventListener("keydown", (event) => {
    ========================================================= */
 const mobileMenuButton = document.querySelector(".nav .creative-toggle");
 const navigation = document.getElementById("hr");
+const desktopCreativeMenuButton = document.querySelector(
+  ".creative-section-menu-toggle",
+);
+
+function closeDesktopCreativeMenu() {
+  navigation?.classList.remove("desktop-open");
+  desktopCreativeMenuButton?.setAttribute("aria-expanded", "false");
+}
+
+desktopCreativeMenuButton?.addEventListener("click", (event) => {
+  event.stopPropagation();
+  const isOpen = navigation?.classList.toggle("desktop-open") ?? false;
+  desktopCreativeMenuButton.setAttribute("aria-expanded", String(isOpen));
+});
+
+document.addEventListener("click", (event) => {
+  if (
+    !navigation?.contains(event.target) &&
+    !desktopCreativeMenuButton?.contains(event.target)
+  ) {
+    closeDesktopCreativeMenu();
+  }
+});
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") {
+    closeDesktopCreativeMenu();
+  }
+});
+
 if (mobileMenuButton && navigation) {
   mobileMenuButton.addEventListener("click", () => {
     const isOpen = navigation.classList.toggle("mobile-open");
@@ -281,6 +311,7 @@ creativeMenuItems.forEach((item) => {
     mobileMenuButton?.classList.remove("active");
     mobileMenuButton?.setAttribute("aria-expanded", "false");
     mobileMenuButton?.setAttribute("aria-label", "Open navigation menu");
+    closeDesktopCreativeMenu();
   });
 });
 /* =========================================================
