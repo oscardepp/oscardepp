@@ -719,6 +719,11 @@ html {
 .menu ul li a:hover {
   color: var(--lavender);
 }
+@media screen and (min-width: 701px) {
+  .menu ul {
+    margin-top: 110px;
+  }
+}
 /* ---------- footer ---------- */
 .footer {
   position: relative;
@@ -827,25 +832,42 @@ button:focus-visible,
     display: none;
   }
   .primary-navigation.active {
-    display: flex;
     position: fixed;
     top: 0;
     right: 0;
-    left: auto;
     bottom: 0;
-    width: min(62vw, 300px);
+    display: flex;
+    width: min(54vw, 260px);
     height: 100dvh;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     justify-content: flex-start;
-    gap: 2rem;
-    padding: 150px 0 40px 36px;
+    gap: 1.1rem;
+    padding: 108px 16px 28px;
     z-index: 998;
+    background: rgba(18, 15, 12, 0.32);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  .primary-navigation.active li {
+    width: 100%;
+    text-align: center;
   }
   .primary-navigation.active a {
-    font-size: 1.35rem;
-    font-weight: 700;
+    display: block;
+    width: 100%;
     margin: 0;
+    color: #fff;
+    font-size: 1.22rem;
+    font-weight: 400;
+    line-height: 1.25;
+    text-align: center;
+    text-decoration: none;
+  }
+  .primary-navigation.active a:hover,
+  .primary-navigation.active a:focus-visible {
+    color: var(--lavender);
   }
   .showcase.active {
     right: 0;

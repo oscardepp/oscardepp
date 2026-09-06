@@ -1,16 +1,19 @@
 * {
   box-sizing: border-box;
 }
+
 body {
   margin: 0;
   font-family: "Poppins", sans-serif;
 }
+
 /* =========================================================
    Photography
    ========================================================= */
 #photography {
   padding-top: 0;
 }
+
 /* ---------------------------------------------------------
    Masonry grid
    --------------------------------------------------------- */
@@ -21,11 +24,13 @@ body {
   width: 100%;
   padding: 0 4px;
 }
+
 #photography #photo-grid > .column {
   flex: 25%;
   max-width: 25%;
   padding: 0 4px;
 }
+
 /* ---------------------------------------------------------
    Interactive tile
    --------------------------------------------------------- */
@@ -45,6 +50,7 @@ body {
   transform-origin: center center;
   transition: transform 160ms ease;
 }
+
 @media screen and (min-width: 701px) and (prefers-reduced-motion: no-preference) {
   #photography #photo-grid .photo-tile.photo-reveal {
     opacity: 0;
@@ -55,11 +61,13 @@ body {
       transform 160ms ease;
     transition-delay: var(--reveal-delay, 0ms);
   }
+
   #photography #photo-grid .photo-tile.photo-reveal.is-visible {
     opacity: 1;
     translate: 0 0;
   }
 }
+
 /* ---------------------------------------------------------
    Current image / video
    --------------------------------------------------------- */
@@ -76,6 +84,7 @@ body {
     opacity 260ms ease;
   will-change: transform, opacity;
 }
+
 /* ---------------------------------------------------------
    Incoming image
    --------------------------------------------------------- */
@@ -89,16 +98,20 @@ body {
   object-fit: cover;
   opacity: 0;
 }
+
 #photography #photo-grid .photo-tile > .incoming-media.from-right {
   transform: translateX(6%);
 }
+
 #photography #photo-grid .photo-tile > .incoming-media.from-left {
   transform: translateX(-6%);
 }
+
 #photography #photo-grid .photo-tile > .incoming-media.is-entering {
   opacity: 1;
   transform: translateX(0);
 }
+
 /* ---------------------------------------------------------
    Outgoing image
    --------------------------------------------------------- */
@@ -106,10 +119,12 @@ body {
   opacity: 0;
   transform: translateX(-6%);
 }
+
 #photography #photo-grid .photo-tile > .current-media.exit-right {
   opacity: 0;
   transform: translateX(6%);
 }
+
 /* ---------------------------------------------------------
    Photography overlay
    --------------------------------------------------------- */
@@ -125,6 +140,7 @@ body {
   transition: opacity 220ms ease;
   pointer-events: none;
 }
+
 /*
     Overlay belonging to the next photo remains
     hidden while the image transition occurs.
@@ -133,9 +149,11 @@ body {
   z-index: 6;
   opacity: 0 !important;
 }
+
 #photography #photo-grid .photo-tile > .overlay.is-exiting {
   opacity: 0 !important;
 }
+
 /*
     Desktop hover:
     reveal only the currently active description.
@@ -148,23 +166,27 @@ body {
     opacity: 1;
   }
 }
+
 @media (hover: none) and (pointer: coarse) {
   #photography #photo-grid .photo-tile > .overlay {
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.25s ease;
   }
+
   #photography
     #photo-grid
     .photo-tile.show-overlay
     > .overlay:not(.incoming-overlay):not(.is-exiting) {
     opacity: 1;
   }
+
   #photography #photo-grid .photo-tile {
     -webkit-tap-highlight-color: transparent;
     touch-action: pan-y;
   }
 }
+
 /* ---------------------------------------------------------
    Photography text
    --------------------------------------------------------- */
@@ -178,12 +200,14 @@ body {
   color: var(--samurai-blue);
   line-height: 1;
 }
+
 #photography #photo-grid .photo-tile .photo-title {
   margin: 0;
   font-size: clamp(1.4rem, 2.2vw, 2.5rem);
   font-weight: 700;
   line-height: 1.05;
 }
+
 #photography #photo-grid .photo-tile .photo-meta {
   display: flex;
   flex-direction: column;
@@ -195,11 +219,13 @@ body {
   font-style: italic;
   line-height: 1.1;
 }
+
 #photography #photo-grid .photo-tile .photo-location,
 #photography #photo-grid .photo-tile .photo-date {
   display: block;
   width: 100%;
 }
+
 /* ---------------------------------------------------------
    1 / N counter
    --------------------------------------------------------- */
@@ -224,15 +250,18 @@ body {
     transform 180ms ease;
   pointer-events: none;
 }
+
 #photography #photo-grid .photo-stack-counter[hidden] {
   display: none;
 }
+
 @media (hover: hover) and (pointer: fine) {
   #photography #photo-grid .photo-tile:hover .photo-stack-counter {
     opacity: 0.8;
     transform: translateY(0);
   }
 }
+
 /* =========================================================
    Navigation
    ========================================================= */
@@ -244,6 +273,7 @@ body {
   padding: 20px 30px;
   background-color: #f1f1f1;
 }
+
 .nav a {
   float: left;
   padding: 12px;
@@ -254,16 +284,19 @@ body {
   font-size: 18px;
   line-height: 25px;
 }
+
 .nav a.logo {
   font-size: 25px;
   font-weight: 700;
   color: var(--samurai-blue);
   transition: color var(--transition-fast) ease;
 }
+
 .nav a.logo:hover {
   background: transparent;
   color: var(--lavender);
 }
+
 .nav .creative-toggle span {
   background: var(--samurai-blue);
   transition:
@@ -272,16 +305,20 @@ body {
     opacity var(--transition-fast) ease,
     background-color var(--transition-fast) ease;
 }
+
 .nav .creative-toggle:hover span {
   background: var(--lavender);
 }
+
 .nav .creative-toggle {
   display: none;
 }
+
 .header-right {
   float: right;
   display: block;
 }
+
 .nav .tablink {
   float: left;
   padding: 12px;
@@ -296,30 +333,35 @@ body {
   line-height: 25px;
   cursor: pointer;
 }
+
 .nav .tablink.active-page-tab {
   background-color: var(--samurai-blue);
   color: #fff;
 }
+
 .nav .tablink:hover {
   background-color: hsla(216, 82%, 66%, 0.75);
   transition: background-color 0.7s;
 }
+
 @media screen and (min-width: 701px) {
   .creative-nav {
     display: grid;
-    grid-template-columns:
-      minmax(180px, 1fr)
-      minmax(300px, 2fr)
-      minmax(180px, 1fr);
+    grid-template-columns: minmax(180px, 1fr) minmax(300px, 2fr) minmax(
+        180px,
+        1fr
+      );
     align-items: center;
     height: 72px;
     min-height: 72px;
     padding: 7px 18px;
     overflow: visible;
   }
+
   .creative-nav > .logo {
     display: none;
   }
+
   .creative-nav-center {
     grid-column: 2;
     display: flex;
@@ -330,6 +372,7 @@ body {
     text-align: center;
     transform: none;
   }
+
   .creative-current-section {
     color: #777;
     font-size: 0.7rem;
@@ -338,6 +381,7 @@ body {
     letter-spacing: 0.15em;
     text-transform: uppercase;
   }
+
   .creative-nav .creative-author {
     float: none;
     margin-top: 0;
@@ -354,10 +398,12 @@ body {
       color 180ms ease,
       opacity 180ms ease;
   }
+
   .creative-author:hover {
     background: transparent;
     color: var(--lavender);
   }
+
   .creative-section-line {
     position: relative;
     display: inline-flex;
@@ -365,6 +411,7 @@ body {
     justify-content: center;
     margin-top: 7px;
   }
+
   .creative-section-menu-toggle {
     position: absolute;
     top: 50%;
@@ -379,12 +426,14 @@ body {
     opacity: 0;
     transition: opacity 180ms ease;
   }
+
   .creative-section-line:hover .creative-section-menu-toggle,
   .creative-section-menu-toggle:hover,
   .creative-section-menu-toggle:focus-visible,
   .creative-section-menu-toggle[aria-expanded="true"] {
     opacity: 0.55;
   }
+
   .creative-chevron {
     position: absolute;
     top: 9px;
@@ -398,10 +447,12 @@ body {
       transform 220ms cubic-bezier(0.22, 0.61, 0.36, 1),
       top 220ms ease;
   }
+
   .creative-section-menu-toggle[aria-expanded="true"] .creative-chevron {
     top: 12px;
     transform: rotate(-135deg);
   }
+
   .creative-nav-edge {
     display: flex;
     align-items: center;
@@ -419,27 +470,34 @@ body {
       opacity 180ms ease,
       transform 250ms cubic-bezier(0.22, 0.61, 0.36, 1);
   }
+
   .creative-nav-prev {
     grid-column: 1;
     justify-self: start;
   }
+
   .creative-nav-next {
     grid-column: 3;
     justify-self: end;
   }
+
   .creative-nav-edge:hover {
     opacity: 1;
   }
+
   .creative-nav-prev:hover {
     transform: translateX(-5px);
   }
+
   .creative-nav-next:hover {
     transform: translateX(5px);
   }
+
   .creative-nav-arrow {
     font-size: 19px;
     font-weight: 300;
   }
+
   .creative-nav .header-right {
     position: absolute;
     top: calc(100% - 1px);
@@ -461,12 +519,14 @@ body {
       transform 220ms cubic-bezier(0.22, 0.61, 0.36, 1),
       visibility 160ms;
   }
+
   .creative-nav .header-right.desktop-open {
     opacity: 1;
     visibility: visible;
     pointer-events: auto;
     transform: translate(-50%, 0);
   }
+
   .creative-nav .header-right a,
   .creative-nav .header-right .tablink {
     float: none;
@@ -478,20 +538,25 @@ body {
     font-size: 13px;
     line-height: 1.2;
   }
+
   .creative-nav .header-right .tablink.active-page-tab {
     background: rgba(43, 42, 76, 0.08);
     color: var(--samurai-blue);
   }
+
   .creative-nav ~ .tabcontent {
     padding-top: 72px;
   }
+
   .creative-nav ~ .tabcontent > .ttl {
     display: none;
   }
+
   #photography #photo-grid > .column > .photo-tile:first-child {
     margin-top: 8px;
   }
 }
+
 /* =========================================================
    Page titles
    ========================================================= */
@@ -504,6 +569,7 @@ body {
   font-size: 4rem;
   font-weight: 700;
 }
+
 /* =========================================================
    Short Stories
    ========================================================= */
@@ -517,6 +583,7 @@ body {
   color: #fff;
   font-family: "Source Serif Pro", serif;
 }
+
 #shortstory .headabout {
   position: relative;
   margin-left: 3%;
@@ -525,12 +592,14 @@ body {
   font-size: 40px;
   font-weight: 600;
 }
+
 #shortstory .synopsis {
   height: 100%;
   margin-left: 3%;
   margin-right: 3%;
   overflow-wrap: break-word;
 }
+
 #shortstory .row {
   position: relative;
   display: flex;
@@ -538,6 +607,7 @@ body {
   align-items: center;
   justify-content: space-between;
 }
+
 #shortstory .tab-titles {
   position: relative;
   display: flex;
@@ -547,6 +617,7 @@ body {
   gap: clamp(24px, 8vw, 90px);
   flex-wrap: nowrap;
 }
+
 #shortstory .tab-links {
   position: relative;
   flex: 0 0 auto;
@@ -565,6 +636,7 @@ body {
   line-height: normal;
   cursor: pointer;
 }
+
 #shortstory .tab-links::after {
   content: "";
   position: absolute;
@@ -576,12 +648,15 @@ body {
   transform: translateX(-50%);
   transition: width 0.5s;
 }
+
 #shortstory .tab-links.active-link::after {
   width: 40px;
 }
+
 #shortstory .tab-contents {
   display: none;
 }
+
 #shortstory .tab-contents.active-tab {
   position: relative;
   left: 0;
@@ -589,6 +664,7 @@ body {
   width: 100%;
   margin-right: 100px;
 }
+
 #shortstory .book {
   position: relative;
   width: 528px;
@@ -599,18 +675,23 @@ body {
   border: 1px solid rgba(0, 0, 0, 0.7);
   border-radius: 3px;
 }
+
 #shortstory .book::-webkit-scrollbar {
   width: 10px;
 }
+
 #shortstory .book::-webkit-scrollbar-track {
   background: rgba(2, 3, 1, 0.1);
 }
+
 #shortstory .book::-webkit-scrollbar-thumb {
   background: #020301;
 }
+
 #shortstory .book::-webkit-scrollbar-thumb:hover {
   background: rgba(2, 3, 1, 0.8);
 }
+
 /* =========================================================
    Shared Book Styles
    ========================================================= */
@@ -619,17 +700,20 @@ body {
   width: 525px;
   padding: 25px;
 }
+
 .book .page h1,
 .book .page h2,
 .book .page p {
   margin: 0;
 }
+
 .book .page h3 {
   color: #000;
   text-align: center;
   font-size: 1.5rem;
   font-weight: 600;
 }
+
 .book .page p {
   display: block;
   margin-bottom: 1rem;
@@ -637,16 +721,19 @@ body {
   font-size: 1rem;
   line-height: 2rem;
 }
+
 .book .page p:nth-child(2)::first-letter {
   font-size: 1.5rem;
   font-weight: 600;
 }
+
 /* =========================================================
    Short Story Pages
    ========================================================= */
 #shortstory .book .page {
   background-color: #fff;
 }
+
 #shortstory .book .page.frontcover {
   display: flex;
   height: 606px;
@@ -660,6 +747,7 @@ body {
   background-blend-mode: overlay;
   color: #020301;
 }
+
 #shortstory .book .page.frontcover > div {
   position: relative;
   display: flex;
@@ -667,6 +755,7 @@ body {
   align-items: center;
   justify-content: center;
 }
+
 #shortstory .book .page.frontcover > div h1 {
   position: relative;
   margin-bottom: 30px;
@@ -676,11 +765,13 @@ body {
   font-style: italic;
   letter-spacing: 0.5rem;
 }
+
 #shortstory .book .page.frontcover > div h2 {
   position: relative;
   font-size: 1.7rem;
   font-weight: 400;
 }
+
 #shortstory .book .page.frontcover > div h2::before {
   content: "";
   position: absolute;
@@ -690,6 +781,7 @@ body {
   height: 1px;
   background-color: rgba(2, 3, 1, 0.3);
 }
+
 /* =========================================================
    Poetry
    ========================================================= */
@@ -702,6 +794,7 @@ body {
   justify-content: space-between;
   margin-top: 0;
 }
+
 .poetry .container {
   position: relative;
   display: block;
@@ -709,6 +802,7 @@ body {
   min-height: 100dvh;
   height: 100%;
 }
+
 .poetry img {
   position: absolute;
   width: 100%;
@@ -716,6 +810,7 @@ body {
   object-fit: cover;
   opacity: 0.9;
 }
+
 .poetry .overlay {
   position: absolute;
   inset: 0;
@@ -723,6 +818,7 @@ body {
   height: 100%;
   background: rgba(0, 0, 0, 0.5);
 }
+
 .poemheading {
   position: relative;
   width: 100%;
@@ -732,11 +828,13 @@ body {
   font-size: 40px;
   font-weight: 800;
 }
+
 .poetry pre {
   font-family: "Poppins", sans-serif;
   font-size: 15px;
   font-weight: 400;
 }
+
 .poetry .book {
   position: relative;
   width: min(528px, 100%);
@@ -747,24 +845,31 @@ body {
   border-radius: 3px;
   color: #fff;
 }
+
 .poetry .book::-webkit-scrollbar-track {
   background: rgba(2, 3, 1, 0.1);
 }
+
 .poetry .book::-webkit-scrollbar-thumb {
   background: rgba(2, 3, 1, 0.4);
 }
+
 .poetry .book::-webkit-scrollbar-thumb:hover {
   background: rgba(2, 3, 1, 0.6);
 }
+
 .poetry .book .page {
   background-color: transparent;
 }
+
 .poetry .book .page h3 {
   color: #fff;
 }
+
 .poetry .book .page p {
   color: #fff;
 }
+
 /* =========================================================
    Keyboard Accessibility
    ========================================================= */
@@ -774,6 +879,7 @@ body {
   outline: 3px solid var(--samurai-blue);
   outline-offset: 4px;
 }
+
 /* =========================================================
    Footer
    ========================================================= */
@@ -791,9 +897,11 @@ body {
   border-radius: 0;
   z-index: 1;
 }
+
 .footer p {
   margin: 0;
 }
+
 /* =========================================================
    Tablet Photography
    ========================================================= */
@@ -803,6 +911,7 @@ body {
     max-width: 50%;
   }
 }
+
 /* =========================================================
    Mobile Photography
    ========================================================= */
@@ -811,11 +920,13 @@ body {
     flex: 100%;
     max-width: 100%;
   }
+
   #photography #photo-grid .photo-stack-counter {
     opacity: 0.65;
     transform: none;
   }
 }
+
 /* =========================================================
    General Mobile
    ========================================================= */
@@ -832,12 +943,15 @@ body {
     overflow: visible;
     background: #f1f1f1;
   }
+
   .creative-nav-edge {
     display: none;
   }
+
   .creative-nav > a.logo {
     display: none;
   }
+
   .creative-nav-center {
     position: absolute;
     top: 50%;
@@ -851,6 +965,7 @@ body {
     text-align: center;
     transform: translate(-50%, -50%);
   }
+
   .creative-nav .creative-author {
     float: none;
     margin: 0;
@@ -863,6 +978,7 @@ body {
     opacity: 1;
     text-decoration: none;
   }
+
   .creative-section-line {
     position: relative;
     display: flex;
@@ -870,6 +986,7 @@ body {
     justify-content: center;
     margin-top: 3px;
   }
+
   .creative-current-section {
     color: #777;
     font-size: 0.68rem;
@@ -878,9 +995,11 @@ body {
     letter-spacing: 0.14em;
     text-transform: uppercase;
   }
+
   .creative-section-menu-toggle {
     display: none;
   }
+
   .nav .creative-toggle {
     position: absolute;
     top: 50%;
@@ -892,30 +1011,38 @@ body {
     flex-shrink: 0;
     transform: translateY(-50%);
   }
+
   .nav .creative-toggle span {
     left: 7px;
     width: 34px;
     height: 3px;
   }
+
   .nav .creative-toggle span:nth-child(1) {
     top: 12px;
   }
+
   .nav .creative-toggle span:nth-child(2) {
     top: 22px;
   }
+
   .nav .creative-toggle span:nth-child(3) {
     top: 32px;
   }
+
   .nav .creative-toggle.active span:nth-child(1),
   .nav .creative-toggle.active span:nth-child(3) {
     top: 22px;
   }
+
   .creative-nav ~ .tabcontent {
     padding-top: 72px;
   }
+
   .creative-nav ~ .tabcontent > .ttl {
     display: none;
   }
+
   .ttl {
     width: 100%;
     padding-top: 120px;
@@ -925,21 +1052,36 @@ body {
     line-height: 1.1;
     text-align: center;
   }
+
   #photography {
     padding-top: 0;
   }
+
   .header-right {
     position: absolute;
+
     top: 100%;
     right: 0;
+
     width: min(70vw, 320px);
+
     display: none;
-    padding: 20px;
-    background: #f1f1f1;
+
+    /*
+   * less empty space above Home
+   */
+    padding: 2px 14px 10px;
+    background: rgba(241, 241, 241, 0.75);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+    box-shadow: 0 10px 26px rgba(0, 0, 0, 0.08);
   }
+
   .header-right.mobile-open {
     display: block;
   }
+
   .header-right a,
   .nav .tablink {
     float: none;
@@ -947,32 +1089,39 @@ body {
     width: 100%;
     text-align: left;
   }
+
   #shortstory .synopsis {
     width: auto;
     margin-left: 7%;
     margin-right: 7%;
   }
+
   #shortstory .book {
     width: calc(100vw - 32px);
     height: 656px;
     margin-left: auto;
     margin-right: auto;
   }
+
   #shortstory .book .page {
     width: 100%;
     padding: 20px;
   }
+
   #shortstory .tab-contents.active-tab {
     width: 100%;
     margin-right: 0;
   }
+
   #shortstory .tab-titles {
     justify-content: space-evenly;
     gap: 0;
   }
+
   #shortstory .tab-links {
     font-size: 18px;
   }
+
   /* ---------------------------------------------------------
        Poetry mobile
        --------------------------------------------------------- */
@@ -980,6 +1129,7 @@ body {
     width: 100%;
     margin-top: 0;
   }
+
   .poetry .container {
     position: relative;
     width: 100%;
@@ -987,6 +1137,7 @@ body {
     height: auto;
     overflow: visible;
   }
+
   .poetry img {
     position: absolute;
     inset: 0;
@@ -994,6 +1145,7 @@ body {
     height: 100%;
     object-fit: cover;
   }
+
   .poetry .overlay {
     position: relative;
     inset: auto;
@@ -1002,6 +1154,7 @@ body {
     height: auto;
     padding-bottom: 40px;
   }
+
   .poetry .book {
     width: 100%;
     height: auto;
@@ -1009,10 +1162,12 @@ body {
     padding: 0 24px;
     overflow: visible;
   }
+
   .poetry .book .page {
     width: 100%;
     padding: 20px 0;
   }
+
   .poetry pre {
     width: 100%;
     margin: 0;
@@ -1022,6 +1177,7 @@ body {
     font-size: 15px;
     line-height: 1.55;
   }
+
   .poemheading {
     width: 100%;
     margin: 0;
@@ -1031,6 +1187,7 @@ body {
     line-height: 1.15;
   }
 }
+
 /* =========================================================
    Reduced Motion
    ========================================================= */
@@ -1042,18 +1199,21 @@ body {
     transition: none !important;
   }
 }
+
 /* =========================================================
    Mobile full-screen photography viewer
    ========================================================= */
 .mobile-photo-viewer {
   display: none;
 }
+
 @media (hover: none) and (pointer: coarse) {
   body.mobile-viewer-open {
     overflow: hidden;
     touch-action: none;
     overscroll-behavior: none;
   }
+
   .mobile-photo-viewer {
     position: fixed;
     inset: 0;
@@ -1070,6 +1230,7 @@ body {
       opacity 0.2s ease,
       visibility 0.2s ease;
   }
+
   .mobile-photo-viewer.active {
     opacity: 1;
     visibility: visible;
@@ -1085,6 +1246,7 @@ body {
     touch-action: none;
     overscroll-behavior: none;
   }
+
   .mobile-viewer-media {
     display: block;
     width: 100%;
@@ -1105,6 +1267,7 @@ body {
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
   }
+
   /*
     Only deliberate double-tap zoom/reset
     receives an animation.
@@ -1112,10 +1275,12 @@ body {
   .mobile-viewer-media.zoom-settling {
     transition: transform 160ms cubic-bezier(0.22, 0.61, 0.36, 1);
   }
+
   body.mobile-viewer-open,
   .mobile-viewer-stage {
     overscroll-behavior: none;
   }
+
   .mobile-viewer-close {
     position: absolute;
     top: max(18px, env(safe-area-inset-top));
@@ -1136,6 +1301,7 @@ body {
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
   }
+
   .mobile-viewer-info {
     position: absolute;
     left: 0;
@@ -1153,26 +1319,31 @@ body {
       opacity 0.2s ease,
       transform 0.2s ease;
   }
+
   .mobile-photo-viewer.show-info .mobile-viewer-info {
     opacity: 1;
     transform: translateY(0);
   }
+
   .mobile-viewer-title {
     font-size: 1.5rem;
     font-weight: 700;
     line-height: 1.1;
   }
+
   .mobile-viewer-location {
     margin-top: 6px;
     font-size: 0.95rem;
     font-style: italic;
   }
+
   .mobile-viewer-date {
     margin-top: 2px;
     font-size: 0.85rem;
     font-style: italic;
     opacity: 0.8;
   }
+
   .mobile-viewer-counter {
     position: absolute;
     top: max(30px, calc(env(safe-area-inset-top) + 12px));
