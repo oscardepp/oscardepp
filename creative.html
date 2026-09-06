@@ -1,508 +1,726 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>Creative | Oscar Depp</title>
-  <meta name="description" content="Creative work including short fiction, poetry, and photography.">
-  <!-- <meta name="robots" content="noindex, nofollow, noarchive, nosnippet"> -->
-
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="creative.css">
-
-  <script src="js/creative.js" defer></script>
-</head>
-
-<body>
-  <div class="nav">
-    <a href="index.html" class="logo">Oscar Depp</a>
-
-    <div class="header-right" id="hr">
-      <a href="index.html">Home</a>
-
-      <button class="tablink" type="button" data-page="ShortStory">
-        Short Story
-      </button>
-
-      <button class="tablink" type="button" data-page="Poetry">
-        Poetry
-      </button>
-
-      <button class="tablink" type="button" data-page="Photography" id="defaultOpen">
-        Photography
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Creative | Oscar Depp</title>
+    <meta
+      name="description"
+      content="Creative work including short fiction, poetry, and photography."
+    />
+    <!-- <meta name="robots" content="noindex, nofollow, noarchive, nosnippet"> -->
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="creative.css" />
+    <script src="js/creative.js" defer></script>
+  </head>
+  <body>
+    <div class="nav">
+      <a href="index.html" class="logo">Oscar Depp</a>
+      <div class="header-right" id="hr">
+        <a href="index.html">Home</a>
+        <button class="tablink" type="button" data-page="ShortStory">
+          Short Story
+        </button>
+        <button class="tablink" type="button" data-page="Poetry">Poetry</button>
+        <button
+          class="tablink"
+          type="button"
+          data-page="Photography"
+          id="defaultOpen"
+        >
+          Photography
+        </button>
+      </div>
+      <button
+        class="toggle creative-toggle"
+        type="button"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+        aria-controls="hr"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
       </button>
     </div>
-
-    <button class="toggle creative-toggle" type="button" aria-label="Open navigation menu" aria-expanded="false"
-      aria-controls="hr">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
-  </div>
-  <div id="ShortStory" class="tabcontent">
-    <!---------short story---------->
-    <h1 class="ttl">Short Stories</h1>
-    <section id="shortstory">
-      <div class="container">
-        <div class="row">
-          <h3 class="headabout"> About My Work </h3>
-          <p class="synopsis">Works 1, 2, & 3 are flash fiction under 250 words, and 4,5 are longer short stories I have
-            written.
-            I'm inspired by wriiting that confront everyday banality, fragmented experiences, linguistic
-            tongues,
-            and changing cosmopolitan culture. My favorite pieces of work are from Karl Ove Knausgaard, Zadie
-            Smith, and Amor Towles.
-          </p>
-          <div class="tab-titles" role="tablist" aria-label="Short stories">
-            <button class="tab-links active-link" type="button" role="tab" id="story-tab-1" data-tab="story1"
-              aria-controls="story1" aria-selected="true">
-              1.
-            </button>
-
-            <button class="tab-links" type="button" role="tab" id="story-tab-2" data-tab="story2" aria-controls="story2"
-              aria-selected="false">
-              2.
-            </button>
-
-            <button class="tab-links" type="button" role="tab" id="story-tab-3" data-tab="story3" aria-controls="story3"
-              aria-selected="false">
-              3.
-            </button>
-
-            <button class="tab-links" type="button" role="tab" id="story-tab-4" data-tab="story4" aria-controls="story4"
-              aria-selected="false">
-              4.
-            </button>
-
-            <button class="tab-links" type="button" role="tab" id="story-tab-5" data-tab="story5" aria-controls="story5"
-              aria-selected="false">
-              5.
-            </button>
-          </div>
-          <div class="tab-contents active-tab" id="story1" role="tabpanel" aria-labelledby="story-tab-1"
-            aria-hidden="false">
-            <div class="book">
-              <div class="page frontcover">
-                <div>
-                  <h1>The Girl with the Lost Arm</h1>
-                  <h2>Oscar Depp</h2>
+    <div id="ShortStory" class="tabcontent">
+      <!---------short story---------->
+      <h1 class="ttl">Short Stories</h1>
+      <section id="shortstory">
+        <div class="container">
+          <div class="row">
+            <h3 class="headabout">About My Work</h3>
+            <p class="synopsis">
+              Works 1, 2, & 3 are flash fiction under 250 words, and 4,5 are
+              longer short stories I have written. I'm inspired by wriiting that
+              confront everyday banality, fragmented experiences, linguistic
+              tongues, and changing cosmopolitan culture. My favorite pieces of
+              work are from Karl Ove Knausgaard, Zadie Smith, and Amor Towles.
+            </p>
+            <div class="tab-titles" role="tablist" aria-label="Short stories">
+              <button
+                class="tab-links active-link"
+                type="button"
+                role="tab"
+                id="story-tab-1"
+                data-tab="story1"
+                aria-controls="story1"
+                aria-selected="true"
+              >
+                1.
+              </button>
+              <button
+                class="tab-links"
+                type="button"
+                role="tab"
+                id="story-tab-2"
+                data-tab="story2"
+                aria-controls="story2"
+                aria-selected="false"
+              >
+                2.
+              </button>
+              <button
+                class="tab-links"
+                type="button"
+                role="tab"
+                id="story-tab-3"
+                data-tab="story3"
+                aria-controls="story3"
+                aria-selected="false"
+              >
+                3.
+              </button>
+              <button
+                class="tab-links"
+                type="button"
+                role="tab"
+                id="story-tab-4"
+                data-tab="story4"
+                aria-controls="story4"
+                aria-selected="false"
+              >
+                4.
+              </button>
+              <button
+                class="tab-links"
+                type="button"
+                role="tab"
+                id="story-tab-5"
+                data-tab="story5"
+                aria-controls="story5"
+                aria-selected="false"
+              >
+                5.
+              </button>
+            </div>
+            <div
+              class="tab-contents active-tab"
+              id="story1"
+              role="tabpanel"
+              aria-labelledby="story-tab-1"
+              aria-hidden="false"
+            >
+              <div class="book">
+                <div class="page frontcover">
+                  <div>
+                    <h1>The Girl with the Lost Arm</h1>
+                    <h2>Oscar Depp</h2>
+                  </div>
+                </div>
+                <div class="page">
+                  <h3>A Short Story</h3>
+                  <p>"What does my arm taste like?"</p>
+                  <p>"Why don't you taste it?"</p>
+                  <p>"What time is it?"</p>
+                  <p>"Half-past four."</p>
+                  <p>
+                    If not for the long and awkward pauses, Frank might've
+                    thought this girl called the wrong number. Who would ask
+                    anyone what their arm tastes like at five in the morning?
+                    But her voice-so unafraid and vibrant, so without
+                    hesitation, and so full of joy-kept him talking. Frank
+                    briefly closed his eyes before the peculiar girl asked
+                    another question.
+                  </p>
+                  <p>"Will you listen?" She asked.</p>
+                  <p>"Of course."</p>
+                  <p>
+                    She didn't say anything back, but he could hear her making
+                    mouth noises against the phone. He was curious by the
+                    puzzling voice in his ear but also hardly listening-it was
+                    too hot and early to be answering her questions. It reminded
+                    him of a time when he also wanted to taste everything in
+                    sight. Her untamed voice brought him back to the call.
+                  </p>
+                  <p>"Hey old man, where do the stars sleep?"</p>
+                  <p>"Under the sky's blanket," he firmly replied.</p>
+                  <p>"Then... where does the sky sleep?" she pressed.</p>
+                  <p>
+                    "In the clouds," he riposted, with a big yawn coming over
+                    his face.
+                  </p>
+                  <p>"Well then, what does my arm taste like?"</p>
+                  <p>
+                    Before he could answer, her voice faded into a murmur and
+                    wandered out the room. Frank's eyes started drooping, and
+                    his head crumbled into the desk. Sweat from his right arm
+                    clung to his skin and drizzled down to his wrist, where it
+                    finally hit his mouth like a slap in the face.
+                  </p>
+                  <p>
+                    He ended the call shortly after, left in a confused state.
+                    But at least he knew what an arm tasted like.
+                  </p>
+                  <p>
+                    <em
+                      >O.D.<br />
+                      272 words.</em
+                    >
+                  </p>
                 </div>
               </div>
-              <div class="page">
-                <h3>A Short Story</h3>
-                <p>“What does my arm taste like?” </p>
-                <p> “Why don't you taste it?”</p>
-                <p> “What time is it?” </p>
-                <p>“Half-past four.”</p>
-                <p>If not for the long and awkward pauses, Frank might've thought this girl called the wrong
-                  number. Who
-                  would ask anyone what their arm tastes like at five in the morning? But her voice-so
-                  unafraid and
-                  vibrant, so without hesitation, and so full of joy-kept him talking. Frank briefly
-                  closed his eyes
-                  before the peculiar girl asked another question. </p>
-                <p>“Will you listen?” She asked. </p>
-                <p>“Of course.”</p>
-                <p>She didn’t say anything back, but he could hear her making mouth noises against the
-                  phone. He was
-                  curious by the puzzling voice in his ear but also hardly listening–it was too hot and
-                  early to be
-                  answering her questions. It reminded him of a time when he also wanted to taste
-                  everything in sight.
-                  Her untamed voice brought him back to the call. </p>
-                <p>“Hey old man, where do the stars sleep?” </p>
-                <p>“Under the sky's blanket,” he firmly replied. </p>
-                <p>“Then… where does the sky sleep?” she pressed. </p>
-                <p>“In the clouds,” he riposted, with a big yawn coming over his face.</p>
-                <p>“Well then, what does my arm taste like?”</p>
-                <p>Before he could answer, her voice faded into a murmur and wandered out the room. Frank’s
-                  eyes started
-                  drooping, and his head crumbled into the desk. Sweat from his right arm clung to his
-                  skin and
-                  drizzled down to his wrist, where it finally hit his mouth like a slap
-                  in the
-                  face. </p>
-                <p>He ended the call shortly after, left in a confused state. But at least he knew what an
-                  arm tasted
-                  like.
-                </p>
-                <p> <em>O.D.<br> 272 words.</em></p>
+            </div>
+            <div
+              class="tab-contents"
+              id="story2"
+              role="tabpanel"
+              aria-labelledby="story-tab-2"
+              aria-hidden="true"
+            >
+              <div class="book">
+                <div class="page frontcover">
+                  <div>
+                    <h1>Filling the Bedroom Morning Void</h1>
+                    <h2>Oscar Depp</h2>
+                  </div>
+                </div>
+                <div class="page">
+                  <h3>A Short Story</h3>
+                  <p>
+                    Beep Beep. Fifty-Five Tickity-Tock. Beep Beep. Fifty-Six
+                    Tickity Tock.
+                  </p>
+                  <p>
+                    The door clicks its tongue and out its mouth comes the old
+                    lady next door with her broom. The sunlight encroaches the
+                    window, opening my room light. Construction workers line up
+                    in a haphazard line to buy breakfast at the local deli,
+                    yelling their orders at the chef. One egg, a sausage patty,
+                    and some red onions, all sandwiched in an oversized
+                    focaccia. The smell and noise start to consume my bedroom. A
+                    wave of children chase only after the sound of the hollow
+                    air of a basketball compressing into the ground. The morning
+                    starts to get a character of its own, and I know it's time
+                    to get breakfast and hop on the train.
+                  </p>
+                  <p>
+                    <em>O.D. <br />131 words.</em>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div
+              class="tab-contents"
+              id="story3"
+              role="tabpanel"
+              aria-labelledby="story-tab-3"
+              aria-hidden="true"
+            >
+              <div class="book">
+                <div class="page frontcover">
+                  <div>
+                    <h1>A Country's Changing Diet</h1>
+                    <h2>Oscar Depp</h2>
+                  </div>
+                </div>
+                <div class="page">
+                  <h3>A Short Story</h3>
+                  <p>
+                    "What's that?" Eva asked, pointing to the dining table, as
+                    she saw a lady juggling plates seeming to contain chocolate
+                    cake. Some of Eva's school friends dropped their train
+                    tracks and looked at the mother walking back & forth from
+                    the kitchen.
+                  </p>
+                  <p>
+                    "Dinner's ready!" she announced, as children began to flood
+                    in from all corners.
+                  </p>
+                  <p>
+                    "I'm hungry. I want some food. I want some!" Eva repeated
+                    with more urgency. I looked at her again; she was now
+                    jumping up & down.
+                  </p>
+                  <p>"Go."</p>
+                  <p>
+                    From a reflection of the window, a clock showed it was a
+                    quarter to six. A man near the curtains sighed while his
+                    wife went to help with the food. Strollers with three-year
+                    old's lay inert. Shadows filled creases of the parents'
+                    faces, as they talked about fat percentages in avocado.
+                  </p>
+                  <p>
+                    Eva scurried over to the other children and raised her chin
+                    to look at the food. She turned back, making sure I saw her
+                    frugal expression and heard her feet scratch the ground.
+                  </p>
+                  <p>
+                    "It's all green. Can we go home, pappa?" It was beans &
+                    casseroles for a birthday party dinner. The other children
+                    seemed ecstatic about the food, with parents smiling at
+                    their creative creations.
+                  </p>
+                  <p>
+                    "There's cake! It's celery though," I said, stroking Eva's
+                    hair. She dropped her head, glancing away from the crowd she
+                    just played with. Everything parents did here always seemed
+                    to blend, and everyone seemed blind to the fact that
+                    children were eating celery for dessert.
+                  </p>
+                  <p>"Let's go." We skipped the salad.</p>
+                  <p>
+                    <em
+                      >O.D.<br />
+                      250 words.</em
+                    >
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div
+              class="tab-contents"
+              id="story4"
+              role="tabpanel"
+              aria-labelledby="story-tab-4"
+              aria-hidden="true"
+            >
+              <div class="book">
+                <div class="page frontcover">
+                  <div>
+                    <h1>A Dreaming Phantom's Elegy</h1>
+                    <h2>Oscar Depp</h2>
+                  </div>
+                </div>
+                <div class="page">
+                  <h3>A Short Story</h3>
+                  <p>
+                    "Hurry up! It's time to go!" a distant voice echoes through
+                    the chamber. Somewhere within the cavernous space, I hear
+                    thundering footsteps approach the entreating entrance to the
+                    inner door. Piercing torchlights tear through my cheek.
+                    Something stirs. The darkness within the passageway suddenly
+                    feels heavier than the darkness on the ceiling. The rumbling
+                    of the floor stops, and my slumber cuts short, with visitors
+                    too curious to not lose themselves in the enchanted desert
+                    land.
+                  </p>
+                  <p>
+                    I am a dead man in the Valley of Kings. Not many days ago, I
+                    lived and died. Nobody significant-I died at 19. For some,
+                    19 is enough to be significant, so much so that I'm buried
+                    deep beyond any human reach. In this room, there is a
+                    deadness not familiar to me. Not the death that suggests
+                    life has ceased, but the total absence of it that lives as a
+                    bodiless entity, in the same way there's no life in a stone
+                    or chair. It's me, my unopened funeral presents, my unused
+                    ship into the afterlife, and my empty kitchen. The uneasy
+                    atmosphere dispels with the entrance of the footsteps.
+                  </p>
+                  <p>
+                    A pungent waft of smoky wood perfume penetrates my nostrils.
+                    Bandages weld and fasten the cracked bones of what used to
+                    be my face together, revealing the grimace of another man.
+                    Stones assemble painfully across my face, but I cannot feel
+                    it-my humbling servants had excavated all of the organs I
+                    needed to breathe, smell, and feel the living vitality
+                    around me. Perhaps, living in an isolated tomb, I have no
+                    need for such functions. As a being lacking the human
+                    characteristics of perception, I must conclude I am a
+                    different man and being than this rotting container-I am
+                    simply the owner of this corpse. I wear a worn body and
+                    require no affirmation of existence.
+                  </p>
+                  <p>
+                    "Come!" Yousef exclaims, peering at the outline of what
+                    appears to be valuables hidden under white cloth near the
+                    altar. "A big stack of gold is here!"
+                  </p>
+                  <p>
+                    A majestic purple gown, gifted by the Great Spanish King of
+                    Cordoba stood adjacent. Its existing beauty is a testament
+                    to its incredible age. Yousef quickly rips away the cloth,
+                    revealing its shape, detaching the sealed ship from its
+                    stand. The intricate main mast bends in half, and the hull
+                    withers away into dust, and dissipates to the ground.
+                    Yousef, looking up at the gown in regretful contrast, folds
+                    the white cloth back over the broken replica.
+                  </p>
+                  <p>
+                    "Never mind. I've got a screw loose," Yousef shouts out
+                    towards the soundless eternal chamber. Without response, he
+                    moves on. The table, consisting of the broken boat to my
+                    afterlife hidden under the same white fabric dotted with
+                    hieroglyphic script. Next to it sits a clay cruet containing
+                    oils and medicine, bearing an elaborate miniature portrait
+                    of my face, but he is not interested.
+                  </p>
+                  <p>
+                    Yousef is one visitor out of many: musing and wandering
+                    through my house, taking my gifts, they never touch the body
+                    that carries me. If only they did, they would see the key
+                    under my armpit to the real tomb of my father. They become
+                    cautious and hesitant, and rush to smaller things, like a
+                    cup or a plate in the kitchen. Death is the last great
+                    horizon, that's why it must be kept hidden-under immense
+                    boulders, in perpetual darkness, and beyond life.
+                  </p>
+                  <p>
+                    Yousef's senses had finally accustomed to the lifeless, dry
+                    air around him. Beyond the edges of the golden sarcophagus
+                    and my eyesight, the luminous hue of his torchlight reveals
+                    funeral rites that adorn the wall, passages beyond my
+                    eyesight. Yousef's voice emerges:
+                  </p>
+                  <p>
+                    <em>
+                      Rotting flowers leave behind all the sinned,<br />
+                      Freed from its trapping root,<br />
+                      The ship follows the blind wind,<br />
+                      Dowering the sea with lust and loot.
+                    </em>
+                  </p>
+                  <p>
+                    This was an unfamiliar line, the prose sounded different
+                    from the scripture on the ceiling. In fact, those are the
+                    only stories I can read, as my corpse and cracked skull
+                    faces upwards. I cannot look at anything; only to where the
+                    others direct light. My eye sockets are unoccupied cavities,
+                    but the visitors seem to be making too much noise that I can
+                    see from somewhere else, perhaps directly from my soul.
+                  </p>
+                  <p>
+                    Who built this wretched ship?<br />
+                    Built on fragile faith and cowering courage<br />
+                    The ship is shattered and splintered at every golden
+                    arch.<br />
+                    Beautiful enough to impress a dead man,<br />
+                    But not enough to cross the river.<br />
+                    Where are its crew, its wooden oars, and its energy?<br />
+                    All the men wash away in dry dust.<br />
+                    At least its furnished<br />
+                    with food for the flood and flight,<br />
+                    beneath the expired, loitering souls.<br />
+                    The anchor stops at the harbor,<br />
+                    Trying to restore its leaking vitality.<br />
+                    Instead it falls, dropping into<br />
+                    The dark pit of unanswered and dead prayers<br />
+                    From the beds of beadsmen into a low damp ground,<br />
+                    Violently shaking in their gurgling breaths.
+                  </p>
+                  <p>
+                    <em>Hold the torch higher, I cannot see the writing.</em> I
+                    could not say anything: this empty chamber only has room for
+                    one mouth. He was no longer looking at the writing, but
+                    rather downwards to my ornamental furniture. Why were they
+                    stealing my boat? The style finally sounds familiar, and I
+                    remember the rest of the poem:
+                  </p>
+                  <p>
+                    The dark darkens still, splashing sickly tides of black
+                    waste<br />
+                    Into where it is already dark, voices patter away,<br />
+                    Not able to carry the already weakened ship,<br />
+                    darkening still the silent battleground.<br />
+                    the vessel sways without direction, rocking peacefully<br />
+                    there is only the sound of brass bullets and moaning winds
+                    clashing<br />
+                    against the frail hull.<br />
+                    Oh couldn't they have built a stronger ship?<br />
+                    There is nothing left, there is no more here,<br />
+                    my little ship is gone.
+                  </p>
+                  <p>
+                    "I'm going out to smoke," Yousef announces, flicking off his
+                    flashlight. Certain his friends had abandoned him, he still
+                    declared he was going out to quell his guilt that he may be
+                    leaving someone behind. I could not tell if he was a local
+                    man attempting to rob my expired gifts, if they were, they
+                    were fools, my friends with long noses in foreign hats would
+                    soon bring me warm shawarma. Every hour felt the same to me,
+                    but every footstep sounded slightly different. These men
+                    cower too long in the dark.
+                  </p>
+                  <p>
+                    A fresh corpse that is dead for one day is different from a
+                    thousand-year-old corpse. I had written this while my body
+                    was still fresh, before my gifted servants even had a chance
+                    to adorn my life with words, before I had lost attachment to
+                    the people and objects around me. Time is the cyclic
+                    procreant: it hides away the knowledge of my poem in a dark
+                    cave, and digs back into the sealed cave with new meaning.
+                    Now, I am a being without fruit, without organs to feel,
+                    without attachment.
+                  </p>
+                  <p>
+                    Alas, it is time to go,<br />
+                    With accoutrements and gifts<br />
+                    And cooking pans and checker games<br />
+                    Fitted for the fleeting soul.<br />
+                    The dank frost bites, making the legs shiver,<br />
+                    Back to the inception of the Nile river.
+                  </p>
+                  <p>
+                    Yousef, perhaps in guilt, lingers before leaving towards the
+                    chamber door. After intense sounds of scratching on what
+                    looked like smooth papyrus paper, pattering footsteps grew
+                    more piercing. Yousef peered at the holes of my unopened
+                    eyes. As if directly recognizing my presence, he dropped the
+                    note on my chest and sprinted towards the door. Before the
+                    wavering paper landed on my body, Yousef was gone. None with
+                    life want to be the only ones alone in an empty space.
+                  </p>
+                  <p>
+                    Harder to decipher than my language, the characters were
+                    lightly marked with chalk, clearly a message to his other
+                    colleagues. The symbols on the grease-stained newspaper
+                    dated in 2015 read:
+                  </p>
+                  <p>
+                    - Cinnamon Toast Crunch<br />
+                    -cigarettes<br />
+                    -I'm outside.
+                  </p>
+                  <p>
+                    The broken silence replaces my uneasiness, and I embrace
+                    another slumber. The men run straight home, and the dark
+                    plunged deeper into the waste of blurry city lights. Perhaps
+                    the men have left to sell my teapots and cooking pans to
+                    their people.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div
+              class="tab-contents"
+              id="story5"
+              role="tabpanel"
+              aria-labelledby="story-tab-5"
+              aria-hidden="true"
+            >
+              <div class="book">
+                <div class="page frontcover">
+                  <div>
+                    <h1>Stolen shoes</h1>
+                    <h2>Oscar Depp</h2>
+                  </div>
+                </div>
+                <div class="page">
+                  <h3>A Short Story</h3>
+                  <p>
+                    If you can wear one, you can wear them all. Matt dips the
+                    nose of his beat-up pink vans into the darker pimples of the
+                    pavement-spots of freshly melted puddles of snow.
+                    Careful-don't let the water enter the shoe-only the soles.
+                    Darting eyes. The heel of one sneaker dives into the drier
+                    and paler pavement. Its face floors the surface. Firm, the
+                    cemented shoe forges itself a fresh imprint. Good, no more
+                    eyes. He looks back at his ephemeral artwork-a daily ant
+                    trail of the daylight shadows. The city once more conquered
+                    in some worn-out basketball shoes. Repeat.
+                  </p>
+                  <p>
+                    Tick-tock. Goldfish sprinkled around his desk count the
+                    number of days left. Matt often skips volunteer work in this
+                    way to stare at the ceiling. Four minutes left until 5pm. A
+                    small hill of paper-airplanes sit between the desk and the
+                    wall. No, four and a couple seconds more to be exact. One
+                    hand inserts a cookie between his teeth, the other digs into
+                    the fragile stack, feeling around for something with more
+                    definite shape. Scrunch. The T.V. Remote.
+                  </p>
+                  <p>
+                    <em>
+                      -Triple trips to Florida. Why do people have the same pair
+                      of shoes for the same occasion?<br />
+                      -Yeah I found it. 12 hours. What about gas?<br />
+                      -Cashapp? No, Venmo.
+                    </em>
+                  </p>
+                  <p>
+                    He keeps a goldfish and a cookie in his mouth, and the
+                    muscles supporting his neck relax. His head hurls back
+                    freely, retreating into the comforts of his chair. Lifting
+                    the cookie only using his lower lip, he contorts his face
+                    and sniffs the outer layer. Matt never eats food properly;
+                    he treats it like his dog sniffs its own dog.
+                  </p>
+                  <p>Kindness!</p>
+                  <p>
+                    His tongue wraps around the goldfish, feeling the small
+                    bumps of salt. He bites his lip. His eyes don't know where
+                    to-Focus, the goldfish is in front of you. They've been
+                    pulled too far out. Pain rushes to his cheeks. Without time
+                    to ease the pain nor any senses to affirm it, he feels its
+                    immediate taste-the Goldfish's orange tang in his mouth and
+                    the salty aftertaste. Blood or Goldfish or cookie? Pain has
+                    no future but itself, pain is nothing but uncertainty, pain
+                    is-Sometimes pain pulls you away from your own weight, from
+                    the self-chosen pain. All that remains are its
+                    echoes-helping you find the real notes to play.
+                  </p>
+                  <p>Back to life.</p>
+                  <p>
+                    Under the covers, another ray of light enters the room from
+                    the right. Had I left the doors open? Shuffling around the
+                    entrance and perhaps placing their shoes in the shoe rack,
+                    they heed their march into my futon territory. Like an
+                    immobile stream wishing to wander, I spread my arms and
+                    close my eyes faking absence. After they decide to intrude
+                    foreign territory, another voice materializes from the left
+                    side of my room. Where were they now?
+                  </p>
+                  <p>
+                    Josephine's cherry Jordan's stand out when they hit the
+                    dank, granule pavement. She hates the immutability of its
+                    thumping and beating flow through the streets. Sometimes
+                    beautiful, often sad. One day's perpetual sequence of steps
+                    forgotten in spontaneity. Sad. Her automated body functions
+                    keep her from watching Kendal and Olivia and Emma and Sophia
+                    and Eva pass by. Sad. No cracks, a perfect circle: a bubble.
+                  </p>
+                  <p>
+                    The designer and colored creases on her shoes had fallen
+                    off. She considered warranty, but Uncle Joey would tell her
+                    to buzzer off. The shoe is nothing: time and motion always
+                    eats away all the detail. She wants the orange juice. Her
+                    eyebrows lift off the edge of Joey's art pedestal-why was he
+                    still here? Joey reaches for a damp paintbrush left on the
+                    floor. Guess he was skipping his four-o'clock doctor's
+                    appointment. Slurp.
+                  </p>
+                  <p>
+                    Their footsteps stop in front of my computer, and all light
+                    vanishes. Through my cotton blanket and the curtains, the
+                    darkness illuminates the last light, the moon, with greater
+                    luster. Surprised, I hadn't even recognized the moon was
+                    alive. They call my name again, this time with a more
+                    distinct feminine tone, this time quickly and more loudly.
+                    Who is this voice so quiet and violent in her ear? Who could
+                    it be?
+                  </p>
+                  <p>Look at Thomas-he's dancing with the wind!</p>
+                  <p>
+                    Still no vodka. 15% off only today. Face roller for your
+                    feet.
+                  </p>
+                  <p>More laughter. His face slumps from its peak.</p>
+                  <p>
+                    Middle school boys care more about their sneakers soles than
+                    their souls. Clank. Highschool boys care about trucks.
+                    Clunka. The time between each stride takes away sound and
+                    creates space for thought. Clunkaclack. The jingle between
+                    the sound and the absence of it blends into a melodic drum
+                    that feeds into her head. A tune to forget. Clunkaclack tap.
+                    Everything separates together and the absent melody stops.
+                    Then she starts dancing.
+                  </p>
+                  <p>Take it easy, Hannah, it's okay.</p>
+                  <p>
+                    The crows won't come to get you, it's okay, Maria won't hurt
+                    you.
+                  </p>
+                  <p>
+                    Trevor on T.V. laughs. David on T.V. laughs even though he
+                    just did a minute ago. I don't need goldfish anymore.
+                  </p>
+                  <p>
+                    No one person can walk the same line at the same place. Matt
+                    likes walking in puddles because it shows his physical line
+                    where only he walks at that specific moment. Other people
+                    could trace his footsteps in exactly the same way, but not
+                    at the same time, or they would be the same person. Could
+                    they be? Inked footsteps have vigor and life, where the
+                    motion meets the shadow.
+                  </p>
+                  <p>
+                    Why do we look up when there's so much on the ground? You
+                    can spread your perception of the world outside your own
+                    comfort zone, and open your eyes to the incredible world
+                    that surrounds the bubble that you've grown to be content
+                    in. But time continues. Quickly shuffling through the
+                    barrier, bumping into others, time continues. It pulls you
+                    in, until you can't come out. It huddles you to its peak,
+                    and then it suddenly dies. Crowning disaster in a pair with
+                    shoes.
+                  </p>
+                  <p>
+                    Among the voices on the other side of the door, he
+                    detailed-then strayed-between the whimpers of sound his
+                    great-aunts make when they cry of sadness. And the silence
+                    of the recalcitrant men holding up their emotions. His
+                    father came back, then his grandmother. He felt the urge to
+                    reassure them that he was like everybody else, feeling grief
+                    like everybody else, but he felt nothing, there was no
+                    emotion. He shrugs it off. The atmosphere in the room
+                    grasped him so much, it almost felt like a form of pity.
+                    Isolation in emotion, isolation in the atmosphere. Still,
+                    tomorrow is Sunday, meaning there is school, he thought. He
+                    gently released himself from these differences and turned on
+                    the light. The darkness in the room merged with the sharp
+                    iPad light and I gently relieved the differences of the
+                    outside world. Time advances and the voices fade. There's no
+                    way to reject it, no way to ever deny them.
+                  </p>
+                </div>
               </div>
             </div>
           </div>
-          <div class="tab-contents" id="story2" role="tabpanel" aria-labelledby="story-tab-2" aria-hidden="true">
+        </div>
+      </section>
+    </div>
+    <div id="Poetry" class="tabcontent">
+      <h1 class="ttl">Poetry</h1>
+      <section class="poetry">
+        <header>
+          <!-- <h1>POETRY</h1> -->
+        </header>
+        <div class="container">
+          <img
+            src="https://github.com/oscardepp/oscardepp/assets/137336589/253dfac7-6001-4da2-813b-960f6d4ccc79"
+            alt="boatyard"
+          />
+          <div class="overlay">
+            <h2 class="poemheading">Shape of things</h2>
             <div class="book">
-              <div class="page frontcover">
-                <div>
-                  <h1>Filling the Bedroom Morning Void </h1>
-                  <h2>Oscar Depp</h2>
-                </div>
-              </div>
               <div class="page">
-                <h3>A Short Story</h3>
-                <p>Beep Beep. Fifty-Five Tickity-Tock. Beep Beep. Fifty-Six Tickity Tock.</p>
-                <p>The door clicks its tongue and out its mouth comes the old lady next door with her broom.
-                  The sunlight encroaches the window, opening my room light. Construction workers line up
-                  in a haphazard line to buy breakfast at the local deli, yelling their orders at the
-                  chef. One egg, a sausage patty, and some red onions, all sandwiched in an oversized
-                  focaccia. The smell and noise start to consume my bedroom. A wave of children chase only
-                  after the sound of the hollow air of a basketball compressing into the ground. The
-                  morning starts to get a character of its own, and I know it’s time to get breakfast and
-                  hop on the train.</p>
-                <p><em>O.D. <br>131 words.</em></p>
-              </div>
-            </div>
-          </div>
-          <div class="tab-contents" id="story3" role="tabpanel" aria-labelledby="story-tab-3" aria-hidden="true">
-            <div class="book">
-              <div class="page frontcover">
-                <div>
-                  <h1>A Country's Changing Diet </h1>
-                  <h2>Oscar Depp</h2>
-                </div>
-              </div>
-              <div class="page">
-                <h3>A Short Story</h3>
-                <p>“What’s that?” Eva asked, pointing to the dining table, as she saw a lady juggling plates
-                  seeming to contain chocolate cake. Some of Eva’s school friends dropped their train
-                  tracks and looked at the mother walking back & forth from the kitchen.</p>
-                <p>“Dinner’s ready!” she announced, as children began to flood in from all corners.</p>
-                <p>“I’m hungry. I want some food. I want some!” Eva repeated with more urgency. I looked at
-                  her again; she was now jumping up & down.</p>
-                <p>“Go.”</p>
-                <p>From a reflection of the window, a clock showed it was a quarter to six. A man near the
-                  curtains sighed while his wife went to help with the food. Strollers with three-year
-                  old’s lay inert. Shadows filled creases of the parents’ faces, as they talked about fat
-                  percentages in avocado.</p>
-                <p>Eva scurried over to the other children and raised her chin to look at the food. She
-                  turned back, making sure I saw her frugal expression and heard her feet scratch the
-                  ground. </p>
-                <p>“It’s all green. Can we go home, pappa?” It was beans & casseroles for a birthday party
-                  dinner. The other children seemed ecstatic about the food, with parents smiling at their
-                  creative creations.</p>
-                <p>“There’s cake! It’s celery though,” I said, stroking Eva’s hair. She dropped her head,
-                  glancing away from the crowd she just played with. Everything parents did here always
-                  seemed to blend, and everyone seemed blind to the fact that children were eating celery
-                  for dessert.</p>
-                <p>“Let’s go.” We skipped the salad.</p>
-                <p> <em>O.D.<br> 250 words.</em></p>
-              </div>
-            </div>
-          </div>
-          <div class="tab-contents" id="story4" role="tabpanel" aria-labelledby="story-tab-4" aria-hidden="true">
-            <div class="book">
-              <div class="page frontcover">
-                <div>
-                  <h1>A Dreaming Phantom's Elegy </h1>
-                  <h2>Oscar Depp</h2>
-                </div>
-              </div>
-              <div class="page">
-                <h3>A Short Story</h3>
-                <p>“Hurry up! It’s time to go!” a distant voice echoes through the chamber. Somewhere within
-                  the cavernous space, I hear thundering footsteps approach the entreating entrance to the
-                  inner door. Piercing torchlights tear through my cheek. Something stirs. The darkness
-                  within the passageway suddenly feels heavier than the darkness on the ceiling. The
-                  rumbling of the floor stops, and my slumber cuts short, with visitors too curious to not
-                  lose themselves in the enchanted desert land.</p>
-                <p>I am a dead man in the Valley of Kings. Not many days ago, I lived and died. Nobody
-                  significant–I died at 19. For some, 19 is enough to be significant, so much so that I’m
-                  buried deep beyond any human reach. In this room, there is a deadness not familiar to
-                  me. Not the death that suggests life has ceased, but the total absence of it that lives
-                  as a bodiless entity, in the same way there’s no life in a stone or chair. It’s me, my
-                  unopened funeral presents, my unused ship into the afterlife, and my empty kitchen. The
-                  uneasy atmosphere dispels with the entrance of the footsteps.</p>
-                <p>A pungent waft of smoky wood perfume penetrates my nostrils. Bandages weld and fasten
-                  the cracked bones of what used to be my face together, revealing the grimace of another
-                  man. Stones assemble painfully across my face, but I cannot feel it-my humbling servants
-                  had excavated all of the organs I needed to breathe, smell, and feel the living vitality
-                  around me. Perhaps, living in an isolated tomb, I have no need for such functions. As a
-                  being lacking the human characteristics of perception, I must conclude I am a different
-                  man and being than this rotting container-I am simply the owner of this corpse. I wear a
-                  worn body and require no affirmation of existence.</p>
-                <p>“Come!” Yousef exclaims, peering at the outline of what appears to be valuables hidden
-                  under white cloth near the altar. “A big stack of gold is here!”</p>
-                <p>A majestic purple gown, gifted by the Great Spanish King of Cordoba stood adjacent. Its
-                  existing beauty is a testament to its incredible age. Yousef quickly rips away the
-                  cloth, revealing its shape, detaching the sealed ship from its stand. The intricate main
-                  mast bends in half, and the hull withers away into dust, and dissipates to the ground.
-                  Yousef, looking up at the gown in regretful contrast, folds the white cloth back over
-                  the broken replica.</p>
-                <p>“Never mind. I've got a screw loose,” Yousef shouts out towards the soundless eternal
-                  chamber. Without response, he moves on. The table, consisting of the broken boat to my
-                  afterlife hidden under the same white fabric dotted with hieroglyphic script. Next to it
-                  sits a clay cruet containing oils and medicine, bearing an elaborate miniature portrait
-                  of my face, but he is not interested.</p>
-                <p>Yousef is one visitor out of many: musing and wandering through my house, taking my
-                  gifts, they never touch the body that carries me. If only they did, they would see the
-                  key under my armpit to the real tomb of my father. They become cautious and hesitant,
-                  and rush to smaller things, like a cup or a plate in the kitchen. Death is the last
-                  great horizon, that's why it must be kept hidden-under immense boulders, in perpetual
-                  darkness, and beyond life.</p>
-                <p>Yousef's senses had finally accustomed to the lifeless, dry air around him. Beyond the
-                  edges of the golden sarcophagus and my eyesight, the luminous hue of his torchlight
-                  reveals funeral rites that adorn the wall, passages beyond my eyesight. Yousef's voice
-                  emerges:</p>
-                <p><em>
-                    Rotting flowers leave behind all the sinned,<br>
-                    Freed from its trapping root,<br>
-                    The ship follows the blind wind,<br>
-                    Dowering the sea with lust and loot.
-                  </em></p>
-                <p>This was an unfamiliar line, the prose sounded different from the scripture on the
-                  ceiling. In fact, those are the only stories I can read, as my corpse and cracked skull
-                  faces upwards. I cannot look at anything; only to where the others direct light. My eye
-                  sockets are unoccupied cavities, but the visitors seem to be making too much noise that
-                  I can see from somewhere else, perhaps directly from my soul.</p>
-                <p>Who built this wretched ship?<br>
-                  Built on fragile faith and cowering courage<br>
-                  The ship is shattered and splintered at every golden arch.<br>
-                  Beautiful enough to impress a dead man,<br>
-                  But not enough to cross the river.<br>
-                  Where are its crew, its wooden oars, and its energy?<br>
-                  All the men wash away in dry dust.<br>
-                  At least its furnished<br>
-                  with food for the flood and flight,<br>
-                  beneath the expired, loitering souls.<br>
-                  The anchor stops at the harbor,<br>
-                  Trying to restore its leaking vitality.<br>
-                  Instead it falls, dropping into<br>
-                  The dark pit of unanswered and dead prayers<br>
-                  From the beds of beadsmen into a low damp ground,<br>
-                  Violently shaking in their gurgling breaths. </p>
-                <p><em>Hold the torch higher, I cannot see the writing.</em> I could not say anything: this
-                  empty
-                  chamber only has room for one mouth. He was no longer looking at the writing, but rather
-                  downwards to my ornamental furniture. Why were they stealing my boat? The style finally
-                  sounds familiar, and I remember the rest of the poem:</p>
-                <p>The dark darkens still, splashing sickly tides of black waste<br>
-                  Into where it is already dark, voices patter away,<br>
-                  Not able to carry the already weakened ship,<br>
-                  darkening still the silent battleground.<br>
-                  the vessel sways without direction, rocking peacefully<br>
-                  there is only the sound of brass bullets and moaning winds clashing<br>
-                  against the frail hull.<br>
-                  Oh couldn't they have built a stronger ship?<br>
-                  There is nothing left, there is no more here,<br>
-                  my little ship is gone.</p>
-                <p>“I'm going out to smoke,” Yousef announces, flicking off his flashlight. Certain his
-                  friends had abandoned him, he still declared he was going out to quell his guilt that he
-                  may be leaving someone behind. I could not tell if he was a local man attempting to rob
-                  my expired gifts, if they were, they were fools, my friends with long noses in foreign
-                  hats would soon bring me warm shawarma. Every hour felt the same to me, but every
-                  footstep sounded slightly different.
-                  These men cower too long in the dark.</p>
-                <p>A fresh corpse that is dead for one day is different from a thousand-year-old corpse. I
-                  had written this while my body was still fresh, before my gifted servants even had a
-                  chance to adorn my life with words, before I had lost attachment to the people and
-                  objects around me. Time is the cyclic procreant: it hides away the knowledge of my poem
-                  in a dark cave, and digs back into the sealed cave with new meaning. Now, I am a being
-                  without fruit, without organs to feel, without attachment.</p>
-                <p>Alas, it is time to go,<br>
-                  With accoutrements and gifts<br>
-                  And cooking pans and checker games<br>
-                  Fitted for the fleeting soul.<br>
-                  The dank frost bites, making the legs shiver,<br>
-                  Back to the inception of the Nile river.</p>
-                <p>Yousef, perhaps in guilt, lingers before leaving towards the chamber door. After intense
-                  sounds of scratching on what looked like smooth papyrus paper, pattering footsteps grew
-                  more piercing. Yousef peered at the holes of my unopened eyes. As if directly
-                  recognizing my presence, he dropped the note on my chest and sprinted towards the door.
-                  Before the wavering paper landed on my body, Yousef was gone. None with life want to be
-                  the only ones alone in an empty space.</p>
-                <p>Harder to decipher than my language, the characters were lightly marked with chalk,
-                  clearly a message to his other colleagues. The symbols on the grease-stained newspaper
-                  dated in 2015 read:</p>
-                <p>- Cinnamon Toast Crunch<br>
-                  -cigarettes<br>
-                  -I'm outside.</p>
-                <p>The broken silence replaces my uneasiness, and I embrace another slumber. The men run
-                  straight home, and the dark plunged deeper into the waste of blurry city lights. Perhaps
-                  the men have left to sell my teapots and cooking pans to their people.</p>
-              </div>
-            </div>
-          </div>
-          <div class="tab-contents" id="story5" role="tabpanel" aria-labelledby="story-tab-5" aria-hidden="true">
-            <div class="book">
-              <div class="page frontcover">
-                <div>
-                  <h1>Stolen shoes</h1>
-                  <h2>Oscar Depp</h2>
-                </div>
-              </div>
-              <div class="page">
-                <h3>A Short Story</h3>
-                <p>If you can wear one, you can wear them all. Matt dips the nose of his beat-up pink vans
-                  into
-                  the darker pimples of the pavement–spots of freshly melted puddles of snow.
-                  Careful–don’t
-                  let the water enter the shoe–only the soles. Darting eyes. The heel of one sneaker dives
-                  into the drier and paler pavement. Its face floors the surface. Firm, the cemented shoe
-                  forges itself a fresh imprint. Good, no more eyes. He looks back at his ephemeral
-                  artwork–a
-                  daily ant trail of the daylight shadows. The city once more conquered in some worn-out
-                  basketball shoes. Repeat.</p>
-                <p>Tick-tock. Goldfish sprinkled around his desk count the number of days left. Matt often
-                  skips volunteer work in this way to stare at the ceiling. Four minutes left until 5pm. A
-                  small hill of paper-airplanes sit between the desk and the wall. No, four and a couple
-                  seconds more to be exact. One hand inserts a cookie between his teeth, the other digs
-                  into
-                  the fragile stack, feeling around for something with more definite shape. Scrunch. The
-                  T.V.
-                  Remote.</p>
                 <p>
-                  <em>
-                    -Triple trips to Florida. Why do people have the same pair of shoes for the same occasion?<br>
-                    -Yeah I found it. 12 hours. What about gas?<br>
-                    -Cashapp? No, Venmo.
-                  </em>
+                  Let light bend <br />
+                  And leave behind<br />
+                  darkening gold dust<br />
+                  Let light take its short breath<br />
+                  Skinning sheets of age and lust<br />
+                  A hunger for space and air<br />
+                  Fighting and folding<br />
+                  Through small fractures<br />
+                  Before suffocating on trees<br />
+                  and window shades its holding<br />
+                  A golden repair
                 </p>
-                <p>He keeps a goldfish and a cookie in his mouth, and the muscles supporting his neck relax.
-                  His head hurls back freely, retreating into the comforts of his chair. Lifting the
-                  cookie
-                  only using his lower lip, he contorts his face and sniffs the outer layer. Matt never
-                  eats
-                  food properly; he treats it like his dog sniffs its own dog.</p>
-                <p>Kindness!</p>
-                <p>His tongue wraps around the goldfish, feeling the small bumps of salt. He bites his lip.
-                  His
-                  eyes don’t know where to–Focus, the goldfish is in front of you. They’ve been pulled too
-                  far
-                  out. Pain rushes to his cheeks. Without time to ease the pain nor any senses to affirm
-                  it,
-                  he feels its immediate taste–the Goldfish’s orange tang in his mouth and the salty
-                  aftertaste. Blood or Goldfish or cookie? Pain has no future but itself, pain is nothing
-                  but
-                  uncertainty, pain is–Sometimes pain pulls you away from your own weight, from the
-                  self-chosen pain. All that remains are its echoes–helping you find the real notes to
-                  play.</p>
-                <p>Back to life.</p>
-                <p>Under the covers, another ray of light enters the room from the right. Had I left the
-                  doors
-                  open? Shuffling around the entrance and perhaps placing their shoes in the shoe rack,
-                  they
-                  heed their march into my futon territory. Like an immobile stream wishing to wander, I
-                  spread my arms and close my eyes faking absence. After they decide to intrude foreign
-                  territory, another voice materializes from the left side of my room. Where were they
-                  now?</p>
-                <p>Josephine’s cherry Jordan’s stand out when they hit the dank, granule pavement. She hates
-                  the immutability of its thumping and beating flow through the streets. Sometimes
-                  beautiful,
-                  often sad. One day’s perpetual sequence of steps forgotten in spontaneity. Sad. Her
-                  automated body functions keep her from watching Kendal and Olivia and Emma and Sophia
-                  and
-                  Eva pass by. Sad. No cracks, a perfect circle: a bubble.</p>
-                <p>The designer and colored creases on her shoes had fallen off. She considered warranty,
-                  but
-                  Uncle Joey would tell her to buzzer off. The shoe is nothing: time and motion always
-                  eats
-                  away all the detail. She wants the orange juice. Her eyebrows lift off the edge of
-                  Joey’s
-                  art pedestal–why was he still here? Joey reaches for a damp paintbrush left on the
-                  floor.
-                  Guess he was skipping his four-o’clock doctor’s appointment. Slurp.</p>
-                <p>Their footsteps stop in front of my computer, and all light vanishes. Through my cotton
-                  blanket and the curtains, the darkness illuminates the last light, the moon, with
-                  greater
-                  luster. Surprised, I hadn’t even recognized the moon was alive. They call my name again,
-                  this time with a more distinct feminine tone, this time quickly and more loudly. Who is
-                  this
-                  voice so quiet and violent in her ear? Who could it be?</p>
-                <p>Look at Thomas–he’s dancing with the wind!</p>
-                <p>Still no vodka. 15% off only today. Face roller for your feet.</p>
-                <p>More laughter. His face slumps from its peak.</p>
-                <p>Middle school boys care more about their sneakers soles than their souls. Clank.
-                  Highschool
-                  boys care about trucks. Clunka. The time between each stride takes away sound and
-                  creates
-                  space for thought. Clunkaclack. The jingle between the sound and the absence of it
-                  blends
-                  into a melodic drum that feeds into her head. A tune to forget. Clunkaclack tap.
-                  Everything
-                  separates together and the absent melody stops. Then she starts dancing.</p>
-                <p>Take it easy, Hannah, it's okay.</p>
-                <p>The crows won’t come to get you, it's okay, Maria won’t hurt you.</p>
-                <p>Trevor on T.V. laughs. David on T.V. laughs even though he just did a minute ago. I don’t
-                  need goldfish anymore.</p>
-                <p>No one person can walk the same line at the same place. Matt likes walking in puddles
-                  because it shows his physical line where only he walks at that specific moment. Other
-                  people
-                  could trace his footsteps in exactly the same way, but not at the same time, or they
-                  would
-                  be the same person. Could they be? Inked footsteps have vigor and life, where the motion
-                  meets the shadow.</p>
-                <p>Why do we look up when there’s so much on the ground? You can spread your perception of
-                  the
-                  world outside your own comfort zone, and open your eyes to the incredible world that
-                  surrounds the bubble that you’ve grown to be content in. But time continues. Quickly
-                  shuffling through the barrier, bumping into others, time continues. It pulls you in,
-                  until
-                  you can’t come out. It huddles you to its peak, and then it suddenly dies. Crowning
-                  disaster
-                  in a pair with shoes.</p>
-                <p>Among the voices on the other side of the door, he detailed–then strayed–between the
-                  whimpers of sound his great-aunts make when they cry of sadness. And the silence of the
-                  recalcitrant men holding up their emotions. His father came back, then his grandmother.
-                  He
-                  felt the urge to reassure them that he was like everybody else, feeling grief like
-                  everybody
-                  else, but he felt nothing, there was no emotion. He shrugs it off. The atmosphere in the
-                  room grasped him so much, it almost felt like a form of pity. Isolation in emotion,
-                  isolation in the atmosphere. Still, tomorrow is Sunday, meaning there is school, he
-                  thought.
-                  He gently released himself from these differences and turned on the light. The darkness
-                  in
-                  the room merged with the sharp iPad light and I gently relieved the differences of the
-                  outside world. Time advances and the voices fade. There’s no way to reject it, no way to
-                  ever deny them.</p>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
-  </div>
-  <div id="Poetry" class="tabcontent">
-    <h1 class="ttl">Poetry</h1>
-    <section class="poetry">
-      <header>
-        <!-- <h1>POETRY</h1> -->
-      </header>
-      <div class="container">
-        <img src="https://github.com/oscardepp/oscardepp/assets/137336589/253dfac7-6001-4da2-813b-960f6d4ccc79"
-          alt="boatyard">
-        <div class="overlay">
-          <h2 class="poemheading">Shape of things</h2>
-          <div class="book">
-            <div class="page">
-              <p>
-                Let light bend <br>
-                And leave behind<br>
-                darkening gold dust<br>
-                Let light take its short breath<br>
-                Skinning sheets of age and lust<br>
-                A hunger for space and air<br>
-                Fighting and folding<br>
-                Through small fractures<br>
-                Before suffocating on trees<br>
-                and window shades its holding<br>
-                A golden repair
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="container">
-        <img src="https://github.com/oscardepp/oscardepp/assets/137336589/cca2ad8b-6535-4a6b-ba3b-aadd8a24138e"
-          alt="greece walkway">
-        <div class="overlay">
-          <h2 class="poemheading">The Spider & the Honeybee</h2>
-          <div class="book">
-            <div class="page">
-              <pre class="poemtext">
+        <div class="container">
+          <img
+            src="https://github.com/oscardepp/oscardepp/assets/137336589/cca2ad8b-6535-4a6b-ba3b-aadd8a24138e"
+            alt="greece walkway"
+          />
+          <div class="overlay">
+            <h2 class="poemheading">The Spider & the Honeybee</h2>
+            <div class="book">
+              <div class="page">
+                <pre class="poemtext">
   The ghosts have come out, the ghosts have come out! 
   Hark! they are handing out
   lush candy
@@ -513,31 +731,34 @@
   the hollow shell falls 
   and claps the floor. Twisting and swirling, 
   Bitter shrapnel lines
-  the frozen door–staining the bland sweetness
+  the frozen door-staining the bland sweetness
    that ran its rotting halls. 
   The ghosts have come out, the ghosts have come out!
   Hark! The ragged edges of their cement teeth
-  crackle louder than the children’s shrieks
+  crackle louder than the children's shrieks
   Lots of hands are stirring
   But no feet skittle. 
-  The ghosts have come out! The ghosts have–When we get stuck in your 
+  The ghosts have come out! The ghosts have-When we get stuck in your 
   silky, dingy nets, when you tangle 
-  my sought retreat, remember! My eternal hum–
+  my sought retreat, remember! My eternal hum-
   A minute of sweet buzzing. 
-            </pre>
+            </pre
+                >
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="container">
-        <img src="https://github.com/oscardepp/oscardepp/assets/137336589/200fd645-33ce-49cd-ae1a-d4da9c316772"
-          alt="grape tree">
-        <div class="overlay">
-          <h2 class="poemheading">The Postman in the Red Cap</h2>
-          <div class="book">
-            <div class="page">
-              <pre class="poemtext">
-  Most people don’t 
+        <div class="container">
+          <img
+            src="https://github.com/oscardepp/oscardepp/assets/137336589/200fd645-33ce-49cd-ae1a-d4da9c316772"
+            alt="grape tree"
+          />
+          <div class="overlay">
+            <h2 class="poemheading">The Postman in the Red Cap</h2>
+            <div class="book">
+              <div class="page">
+                <pre class="poemtext">
+  Most people don't 
   See  				  the stork in the redcap
   Who writes 			
         pithy poems				 on postcards. 
@@ -558,84 +779,95 @@
   in the layers of the mailbox
   Making sure the whirling words 
   Just slightly 		    evade his hand. 
-  The man’s wife 
+  The man's wife 
   Wanders to the mailbox 	scratching his head
   Who wrote this poem? He ponders
   The stork in the red cap
   keeps the dancing words to himself 
   Awkwardly drifting
-            –feathering–		into the sky. 
-            </pre>
+            -feathering-		into the sky. 
+            </pre
+                >
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="container">
-        <img src="https://github.com/oscardepp/oscardepp/assets/137336589/88e67c99-e8aa-4ffc-9859-c6993f87488b"
-          alt="french arch">
-        <div class="overlay">
-          <h2 class="poemheading">Sweet, Special Thank You.</h2>
-          <div class="book">
-            <div class="page">
-              <pre class="poemtext">
+        <div class="container">
+          <img
+            src="https://github.com/oscardepp/oscardepp/assets/137336589/88e67c99-e8aa-4ffc-9859-c6993f87488b"
+            alt="french arch"
+          />
+          <div class="overlay">
+            <h2 class="poemheading">Sweet, Special Thank You.</h2>
+            <div class="book">
+              <div class="page">
+                <pre class="poemtext">
   What should I call a day as preposterous as night?
   The eye of sky dews dear in divine dark,
-  its bloating snow sucks sight from tree’s blight,
+  its bloating snow sucks sight from tree's blight,
   And her woods brim with sound of shading bark.
-  Still time’s lease loosens in winter's sixteenth–
-  Light’s embers kindle when wanton bequeaths!
-  Nobody knew of the sky’s double tongue;
+  Still time's lease loosens in winter's sixteenth-
+  Light's embers kindle when wanton bequeaths!
+  Nobody knew of the sky's double tongue;
   More memories numb after frost forgets.
   Dreams asphyxiate in chambers of lung,
-  And fairy’s finger’s wrap into time’s nets.
-  Life’s limbs illusion more than night’s liars
+  And fairy's finger's wrap into time's nets.
+  Life's limbs illusion more than night's liars
   As stories of boundless sea drown desire.
   But some stories dance more temperate than eyes,
   For that my mouth translates no world but thanks,
-  Since divine dreams chink before life’s grand prize.
+  Since divine dreams chink before life's grand prize.
   For the short winter is endless with pranks,
   The mind conjures more till death dies in dusk
   Oh! My tempest will gust to thou under the dust.
-              </pre>
+              </pre
+                >
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="container">
-        <img src="https://github.com/oscardepp/oscardepp/assets/137336589/b4955bba-0cb6-4145-ba08-9e19429a474b"
-          alt="sky">
-        <div class="overlay">
-          <h2 class="poemheading">The Darkness of Valour in “The Church at Auvers”</h2>
-          <div class="book">
-            <div class="page">
-              <pre class="poemtext">
-  One crook’d cross pleated in parted prayer:
-  “Freedom beyond control!” moans dirty dirge from vain spire.
+        <div class="container">
+          <img
+            src="https://github.com/oscardepp/oscardepp/assets/137336589/b4955bba-0cb6-4145-ba08-9e19429a474b"
+            alt="sky"
+          />
+          <div class="overlay">
+            <h2 class="poemheading">
+              The Darkness of Valour in "The Church at Auvers"
+            </h2>
+            <div class="book">
+              <div class="page">
+                <pre class="poemtext">
+  One crook'd cross pleated in parted prayer:
+  "Freedom beyond control!" moans dirty dirge from vain spire.
   Swooning seas of stars shaft their laden share,
-  Though stained glass and taller choir chairs call “another!”
+  Though stained glass and taller choir chairs call "another!"
   Now stars descend on the hooves of east earth,
   Conflagrating ego and echo of deafening bells
   Salve the dying heirloom of waning worth. 
-  From remnants of their twinkling coffin births the sky’s grain,
+  From remnants of their twinkling coffin births the sky's grain,
   Blustering winds ordain clouds to deplume
-  Pied flower’s sun-stolen glory and bleeding bright reign.
+  Pied flower's sun-stolen glory and bleeding bright reign.
   Enthroned golden at noon, now pecked to prune,
-  Again hunts man’s pure ecstasy with the Great Gawain!
+  Again hunts man's pure ecstasy with the Great Gawain!
   Convulsing with all their pomp and power, 
   All wan and wry, their corpse deserts a dry wrinkled dour.
-             </pre>
+             </pre
+                >
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="container">
-        <img src="https://github.com/oscardepp/oscardepp/assets/137336589/ffc10622-e7d2-4639-b872-1199754c76c1"
-          alt="bumblebee">
-        <div class="overlay">
-          <h2 class="poemheading">Hispaniola, October 1937</h2>
-          <div class="book">
-            <div class="page">
-              <pre class="poemtext">
+        <div class="container">
+          <img
+            src="https://github.com/oscardepp/oscardepp/assets/137336589/ffc10622-e7d2-4639-b872-1199754c76c1"
+            alt="bumblebee"
+          />
+          <div class="overlay">
+            <h2 class="poemheading">Hispaniola, October 1937</h2>
+            <div class="book">
+              <div class="page">
+                <pre class="poemtext">
 He had no friends willing to tell his tale,
 The plight of justice which led the assail.
 He attended to harlots of criollos,
@@ -650,63 +882,65 @@ Hastened hymns of oriole overtures
 More full than nature's silencing features.
 Butterflies can't blossom from their bud
 if caterpillars grow on glib cud.
-        </pre>
+        </pre
+                >
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="container">
-        <img src="https://github.com/oscardepp/oscardepp/assets/137336589/5ee76309-59e6-4cbd-bc0c-6431ce72e047"
-          alt="lights bamboo shades">
-        <div class="overlay">
-          <h2 class="poemheading">Chocolate's Plain Secret</h2>
-          <div class="book">
-            <div class="page">
-              <pre class="poemtext">
-  Almonds under brown licour’s Possessing
-  Erodes my mountain’s apt to Estimate
-  Oh! How desert thirsts for God’s releasing!
+        <div class="container">
+          <img
+            src="https://github.com/oscardepp/oscardepp/assets/137336589/5ee76309-59e6-4cbd-bc0c-6431ce72e047"
+            alt="lights bamboo shades"
+          />
+          <div class="overlay">
+            <h2 class="poemheading">Chocolate's Plain Secret</h2>
+            <div class="book">
+              <div class="page">
+                <pre class="poemtext">
+  Almonds under brown licour's Possessing
+  Erodes my mountain's apt to Estimate
+  Oh! How desert thirsts for God's releasing!
   When all thy path lay indeterminate,
-  Fox and Cockroach are given God’s Granting
+  Fox and Cockroach are given God's Granting
   Haunting those who sin in deserving; 
   Myth stray truth for Wandering Wanting 
-  Send Salty Seas of Gold to tongue’s swerving!
-  Yet without the precipice myth’s knowing,
+  Send Salty Seas of Gold to tongue's swerving!
+  Yet without the precipice myth's knowing,
   The Bare, the full are all but mistaking,
   With Chocolate Garden of Eden growing!
-  Washed away are the sculptor’s first makings,
-  Shakespeare’s stage shadows the porter’s flatter
+  Washed away are the sculptor's first makings,
+  Shakespeare's stage shadows the porter's flatter
   Gorged shadows make even empty matter.
-             </pre>
+             </pre
+                >
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
-  </div>
-  <div id="Photography" class="tabcontent">
-    <h1 class="ttl">Photography</h1>
-
-    <section id="photography">
-      <div class="header" id="myHeader">
-        <p>
-          Collection of Photos I've taken around the world.<br>
-          Hover over any image for a description.
-        </p>
-      </div>
-
-      <div class="row" id="photo-grid"></div>
-    </section>
-  </div>
-
-  <footer class="footer">
-    <p id="creative-copyright"></p>
-  </footer>
-
-  <!-- Cloudflare Web Analytics -->
-  <script type='module' src='https://static.cloudflareinsights.com/beacon.min.js'
-    data-cf-beacon='{"token": "deb61bcd68134e3b8c9629303eeb7c98"}'></script><!-- End Cloudflare Web Analytics -->
-
-</body>
-
+      </section>
+    </div>
+    <div id="Photography" class="tabcontent">
+      <h1 class="ttl">Photography</h1>
+      <section id="photography">
+        <div class="header" id="myHeader">
+          <p>
+            Collection of Photos I've taken around the world.<br />
+            Hover over any image for a description.
+          </p>
+        </div>
+        <div class="row" id="photo-grid"></div>
+      </section>
+    </div>
+    <footer class="footer">
+      <p id="creative-copyright"></p>
+    </footer>
+    <!-- Cloudflare Web Analytics -->
+    <script
+      type="module"
+      src="https://static.cloudflareinsights.com/beacon.min.js"
+      data-cf-beacon='{"token": "deb61bcd68134e3b8c9629303eeb7c98"}'
+    ></script>
+    <!-- End Cloudflare Web Analytics -->
+  </body>
 </html>

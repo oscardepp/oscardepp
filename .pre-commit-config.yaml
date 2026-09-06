@@ -1,0 +1,14 @@
+repos:
+  - repo: local
+    hooks:
+      - id: prettier
+        name: Format source files with Prettier
+        entry: npm exec --yes --package=prettier@3.6.2 -- prettier --write
+        language: system
+        types_or: [javascript, css, html, markdown, json, yaml]
+
+      - id: normalize-ascii-punctuation
+        name: Normalize punctuation in source files
+        entry: python3 scripts/normalize_source_text.py
+        language: system
+        types_or: [javascript, css, html, markdown, json, yaml]
