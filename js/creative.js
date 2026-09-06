@@ -1050,8 +1050,7 @@ function openMobileViewer(photos, startingIndex = 0) {
   mobileViewerPhotos = photos;
   mobileViewerIndex = Math.max(0, Math.min(startingIndex, photos.length - 1));
   const viewer = ensureMobileViewer();
-  viewer.classList.add("active");
-  viewer.classList.remove("show-info");
+  viewer.classList.add("active", "show-info");
   viewer.setAttribute("aria-hidden", "false");
   document.body.classList.add("mobile-viewer-open");
   renderMobileViewerPhoto();
