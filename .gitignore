@@ -3,4 +3,6 @@
 .idea/
 *.swp
 *.tmp
+__pycache__/
+*.py[cod]
 googlede277ec584a19a05.html
