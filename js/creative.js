@@ -428,6 +428,7 @@ let mobileViewerIndex = 0;
 let scale = 1;
 let translateX = 0;
 let translateY = 0;
+let mobileViewerChanging = false;
 function ensureMobileViewer() {
   if (mobileViewer) {
     return mobileViewer;
@@ -854,22 +855,140 @@ function closeMobileViewer() {
     stage.innerHTML = "";
   }
 }
-function changeMobileViewerPhoto(direction) {
-  if (mobileViewerPhotos.length <= 1) {
+async function changeMobileViewerPhoto(direction) {
+  if (mobileViewerChanging || mobileViewerPhotos.length <= 1) {
     return;
   }
-  mobileViewerIndex =
-    (mobileViewerIndex + direction + mobileViewerPhotos.length) %
-    mobileViewerPhotos.length;
-  /*
-        Hide description whenever we move
-        to another image.
-    */
-  mobileViewer?.classList.remove("show-info");
-  scale = 1;
-  translateX = 0;
-  translateY = 0;
-  renderMobileViewerPhoto();
+
+  const viewer = mobileViewer;
+  const stage = viewer?.querySelector(".mobile-viewer-stage");
+  const info = viewer?.querySelector(".mobile-viewer-info");
+  const currentMedia = stage?.querySelector(".mobile-viewer-media");
+
+  if (!viewer || !stage || !currentMedia) {
+    return;
+  }
+
+  mobileViewerChanging = true;
+
+  try {
+    const nextIndex =
+      (mobileViewerIndex + direction + mobileViewerPhotos.length) %
+      mobileViewerPhotos.length;
+
+    const nextPhoto = mobileViewerPhotos[nextIndex];
+    const keepCaption = viewer.classList.contains("show-info");
+    const moveX = direction > 0 ? -24 : 24;
+
+    await preloadPhoto(nextPhoto).catch(() => null);
+
+    currentMedia.classList.remove("zoom-settling");
+    currentMedia.getAnimations().forEach((animation) => animation.cancel());
+
+    const photoOut = currentMedia.animate(
+      [
+        {
+          opacity: 1,
+          transform: "translate3d(0, 0, 0) scale(1)",
+        },
+        {
+          opacity: 0.86,
+          transform: `translate3d(${moveX}px, 0, 0) scale(1)`,
+        },
+      ],
+      {
+        duration: 130,
+        easing: "cubic-bezier(.4, 0, 1, 1)",
+        fill: "forwards",
+      },
+    );
+
+    const oldCaptionAnimations =
+      keepCaption && info
+        ? Array.from(info.children).map((element) =>
+            element.animate(
+              [
+                {
+                  opacity: 1,
+                  transform: "translateY(0)",
+                },
+                {
+                  opacity: 0,
+                  transform: "translateY(5px)",
+                },
+              ],
+              {
+                duration: 100,
+                easing: "ease-out",
+                fill: "forwards",
+              },
+            ),
+          )
+        : [];
+
+    await Promise.all([
+      photoOut.finished.catch(() => {}),
+      ...oldCaptionAnimations.map((animation) =>
+        animation.finished.catch(() => {}),
+      ),
+    ]);
+
+    mobileViewerIndex = nextIndex;
+    scale = 1;
+    translateX = 0;
+    translateY = 0;
+
+    renderMobileViewerPhoto();
+
+    if (keepCaption) {
+      viewer.classList.add("show-info");
+    }
+
+    const nextMedia = stage.querySelector(".mobile-viewer-media");
+
+    nextMedia?.animate(
+      [
+        {
+          opacity: 0.86,
+          transform: `translate3d(${-moveX}px, 0, 0) scale(1)`,
+        },
+        {
+          opacity: 1,
+          transform: "translate3d(0, 0, 0) scale(1)",
+        },
+      ],
+      {
+        duration: 180,
+        easing: "cubic-bezier(.22, .61, .36, 1)",
+      },
+    );
+
+    if (keepCaption && info) {
+      Array.from(info.children).forEach((element, index) => {
+        element.animate(
+          [
+            {
+              opacity: 0,
+              transform: "translateY(5px)",
+            },
+            {
+              opacity: 1,
+              transform: "translateY(0)",
+            },
+          ],
+          {
+            duration: 160,
+            delay: index * 18,
+            easing: "cubic-bezier(.22, .61, .36, 1)",
+          },
+        );
+      });
+    }
+  } finally {
+    window.setTimeout(() => {
+      mobileViewerChanging = false;
+    }, 190);
+  }
 }
 function renderMobileViewerPhoto() {
   if (!mobileViewer || mobileViewerPhotos.length === 0) {
