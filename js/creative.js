@@ -50,11 +50,136 @@ document.addEventListener("keydown", (event) => {
    ========================================================= */
 const pageTabs = document.querySelectorAll(".nav .tablink");
 const pageContents = document.querySelectorAll(".tabcontent");
+const creativeSections = [
+  {
+    label: "Home",
+    href: "index.html",
+  },
+  {
+    label: "Short Stories",
+    page: "ShortStory",
+  },
+  {
+    label: "Poetry",
+    page: "Poetry",
+  },
+  {
+    label: "Photography",
+    page: "Photography",
+  },
+];
+const creativeSectionTitle = document.getElementById(
+  "creative-current-section",
+);
+const creativePreviousButton = document.querySelector(".creative-nav-prev");
+const creativeNextButton = document.querySelector(".creative-nav-next");
+const creativePreviousLabel = creativePreviousButton?.querySelector(
+  ".creative-nav-edge-label",
+);
+const creativeNextLabel = creativeNextButton?.querySelector(
+  ".creative-nav-edge-label",
+);
+let currentCreativePage = "";
+
+function setCreativeSectionTitle(text) {
+  if (!creativeSectionTitle) {
+    return;
+  }
+
+  creativeSectionTitle.getAnimations().forEach((animation) => {
+    animation.cancel();
+  });
+
+  const fadeOut = creativeSectionTitle.animate(
+    [
+      {
+        opacity: 1,
+        transform: "translateY(0)",
+      },
+      {
+        opacity: 0,
+        transform: "translateY(-7px)",
+      },
+    ],
+    {
+      duration: 110,
+      easing: "ease-in",
+      fill: "forwards",
+    },
+  );
+
+  fadeOut.finished
+    .then(() => {
+      creativeSectionTitle.textContent = text;
+      creativeSectionTitle.animate(
+        [
+          {
+            opacity: 0,
+            transform: "translateY(7px)",
+          },
+          {
+            opacity: 1,
+            transform: "translateY(0)",
+          },
+        ],
+        {
+          duration: 180,
+          easing: "cubic-bezier(.22, .61, .36, 1)",
+          fill: "forwards",
+        },
+      );
+    })
+    .catch(() => {});
+}
+
+function updateCreativeNavigation(pageName) {
+  const currentIndex = creativeSections.findIndex(
+    (section) => section.page === pageName,
+  );
+
+  if (currentIndex === -1) {
+    return;
+  }
+
+  const previousSection =
+    creativeSections[
+      (currentIndex - 1 + creativeSections.length) % creativeSections.length
+    ];
+  const nextSection =
+    creativeSections[(currentIndex + 1) % creativeSections.length];
+
+  if (creativePreviousLabel) {
+    creativePreviousLabel.textContent = previousSection.label;
+  }
+
+  if (creativeNextLabel) {
+    creativeNextLabel.textContent = nextSection.label;
+  }
+
+  setCreativeSectionTitle(creativeSections[currentIndex].label);
+}
+
+function navigateCreativeSection(section) {
+  if (section.href) {
+    window.location.href = section.href;
+    return;
+  }
+
+  const tab = Array.from(pageTabs).find(
+    (item) => item.dataset.page === section.page,
+  );
+
+  if (tab) {
+    openPage(section.page, tab);
+  }
+}
 function openPage(pageName, selectedTab) {
   const selectedPage = document.getElementById(pageName);
   if (!selectedPage) {
     return;
   }
+
+  currentCreativePage = pageName;
   pageContents.forEach((content) => {
     const isSelected = content === selectedPage;
     content.style.display = isSelected ? "block" : "none";
@@ -65,11 +190,71 @@ function openPage(pageName, selectedTab) {
     tab.classList.toggle("active-page-tab", isSelected);
     tab.setAttribute("aria-selected", String(isSelected));
   });
+
+  updateCreativeNavigation(pageName);
 }
 pageTabs.forEach((tab) => {
   tab.addEventListener("click", () => {
     openPage(tab.dataset.page, tab);
   });
+});
+
+creativePreviousButton?.addEventListener("click", () => {
+  const currentIndex = creativeSections.findIndex(
+    (section) => section.page === currentCreativePage,
+  );
+
+  if (currentIndex !== -1) {
+    navigateCreativeSection(
+      creativeSections[
+        (currentIndex - 1 + creativeSections.length) % creativeSections.length
+      ],
+    );
+  }
+});
+
+creativeNextButton?.addEventListener("click", () => {
+  const currentIndex = creativeSections.findIndex(
+    (section) => section.page === currentCreativePage,
+  );
+
+  if (currentIndex !== -1) {
+    navigateCreativeSection(
+      creativeSections[(currentIndex + 1) % creativeSections.length],
+    );
+  }
+});
+
+document.addEventListener("keydown", (event) => {
+  const activeElement = document.activeElement;
+  const isTyping =
+    activeElement instanceof HTMLInputElement ||
+    activeElement instanceof HTMLTextAreaElement ||
+    activeElement?.isContentEditable;
+
+  if (isTyping || currentCreativePage === "") {
+    return;
+  }
+
+  const currentIndex = creativeSections.findIndex(
+    (section) => section.page === currentCreativePage,
+  );
+
+  if (event.key === "ArrowLeft") {
+    event.preventDefault();
+    navigateCreativeSection(
+      creativeSections[
+        (currentIndex - 1 + creativeSections.length) % creativeSections.length
+      ],
+    );
+  }
+
+  if (event.key === "ArrowRight") {
+    event.preventDefault();
+    navigateCreativeSection(
+      creativeSections[(currentIndex + 1) % creativeSections.length],
+    );
+  }
 });
 /* =========================================================
    Mobile navigation
@@ -1057,6 +1242,9 @@ function createInteractiveTile(photos) {
        ===================================================== */
   const firstPhoto = photos[0];
   const firstMedia = createMedia(firstPhoto);
+  if (firstMedia instanceof HTMLImageElement) {
+    firstMedia.loading = "lazy";
+  }
   firstMedia.classList.add("tile-media", "current-media");
   tile.appendChild(firstMedia);
   tile.appendChild(createOverlay(firstPhoto));
@@ -1068,12 +1256,6 @@ function createInteractiveTile(photos) {
   counter.setAttribute("aria-hidden", "true");
   tile.appendChild(counter);
   updateTileCounter(tile);
-  /* =====================================================
-       Preload next image
-       ===================================================== */
-  if (photos.length > 1) {
-    preloadPhoto(photos[1]).catch(() => {});
-  }
   /* =====================================================
        Mobile touch handling
        ===================================================== */
@@ -1154,6 +1336,53 @@ function createInteractiveTile(photos) {
   return tile;
 }
 /* =========================================================
+   Photography reveal and loading
+   ========================================================= */
+const prefersReducedMotion = window.matchMedia(
+  "(prefers-reduced-motion: reduce)",
+).matches;
+const desktopPhotography = window.matchMedia("(min-width: 701px)").matches;
+const photoRevealObserver =
+  typeof IntersectionObserver === "undefined"
+    ? null
+    : new IntersectionObserver(
+        (entries, observer) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) {
+              return;
+            }
+
+            const tile = entry.target;
+            tile.classList.add("is-visible");
+
+            const photos = tile._photos || [];
+            if (photos.length > 1) {
+              preloadPhoto(photos[1]).catch(() => {});
+            }
+
+            observer.unobserve(tile);
+          });
+        },
+        {
+          rootMargin: "180px 0px 180px 0px",
+          threshold: 0.03,
+        },
+      );
+
+function prepareTileReveal(tile, index, columnIndex) {
+  if (!desktopPhotography || prefersReducedMotion || !photoRevealObserver) {
+    tile.classList.add("is-visible");
+    return;
+  }
+
+  const offsets = [-34, -14, 14, 34];
+  tile.classList.add("photo-reveal");
+  tile.style.setProperty("--reveal-x", `${offsets[columnIndex] || 0}px`);
+  tile.style.setProperty("--reveal-delay", `${Math.min(index, 7) * 55}ms`);
+  photoRevealObserver.observe(tile);
+}
+
+/* =========================================================
    Load Photography
    ========================================================= */
 async function loadPhotography() {
@@ -1212,6 +1441,7 @@ async function loadPhotography() {
     groups.forEach((group, index) => {
       const tile = createInteractiveTile(group.photos);
       const columnIndex = index % columns.length;
+      prepareTileReveal(tile, index, columnIndex);
       columns[columnIndex].appendChild(tile);
     });
   } catch (error) {

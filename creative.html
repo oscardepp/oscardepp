@@ -14,7 +14,32 @@
     <script src="js/creative.js" defer></script>
   </head>
   <body>
-    <div class="nav">
+    <div class="nav creative-nav">
+      <button
+        class="creative-nav-edge creative-nav-prev"
+        type="button"
+        aria-label="Previous section"
+      >
+        <span class="creative-nav-arrow" aria-hidden="true">&larr;</span>
+        <span class="creative-nav-edge-label">Poetry</span>
+      </button>
+
+      <div class="creative-nav-center">
+        <div class="creative-current-section" id="creative-current-section">
+          Photography
+        </div>
+        <a href="index.html" class="creative-author">Oscar Depp</a>
+      </div>
+
+      <button
+        class="creative-nav-edge creative-nav-next"
+        type="button"
+        aria-label="Next section"
+      >
+        <span class="creative-nav-edge-label">Home</span>
+        <span class="creative-nav-arrow" aria-hidden="true">&rarr;</span>
+      </button>
+
       <a href="index.html" class="logo">Oscar Depp</a>
       <div class="header-right" id="hr">
         <a href="index.html">Home</a>
@@ -923,12 +948,6 @@ if caterpillars grow on glib cud.
     <div id="Photography" class="tabcontent">
       <h1 class="ttl">Photography</h1>
       <section id="photography">
-        <div class="header" id="myHeader">
-          <p>
-            Collection of Photos I've taken around the world.<br />
-            Hover over any image for a description.
-          </p>
-        </div>
         <div class="row" id="photo-grid"></div>
       </section>
     </div>
