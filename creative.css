@@ -332,7 +332,7 @@ body {
   }
   .creative-current-section {
     color: #777;
-    font-size: 0.82rem;
+    font-size: 0.7rem;
     font-weight: 400;
     line-height: 1;
     letter-spacing: 0.15em;
@@ -363,7 +363,7 @@ body {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    margin-top: 11px;
+    margin-top: 7px;
   }
   .creative-section-menu-toggle {
     position: absolute;
