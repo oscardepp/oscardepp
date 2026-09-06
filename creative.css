@@ -1347,7 +1347,9 @@ body {
 
     body.mobile-viewer-open {
         overflow: hidden;
+
         touch-action: none;
+        overscroll-behavior: none;
     }
 
     .mobile-photo-viewer {
@@ -1384,7 +1386,7 @@ body {
         display: flex;
         align-items: center;
         justify-content: center;
-        overflow: hidden
+        overflow: hidden;
         touch-action: none;
         overscroll-behavior: none;
     }
