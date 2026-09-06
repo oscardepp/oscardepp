@@ -581,6 +581,7 @@ html {
   width: 100%;
   min-height: 70dvh;
   padding: clamp(60px, 7vw, 100px) clamp(20px, 3vw, 30px);
+  padding-bottom: 15px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -871,5 +872,90 @@ button:focus-visible,
   }
   .showcase.active {
     right: 0;
+  }
+}
+
+/* =========================================================
+   Contact section cleanup
+   ========================================================= */
+.contact img {
+  display: block;
+  width: min(420px, 70vw);
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
+  border-radius: 50%;
+}
+
+.contact .container {
+  justify-content: flex-start;
+  margin-top: 58px;
+}
+
+.contact .container > p:first-child {
+  margin: 0 0 20px;
+  text-align: center;
+}
+
+.contact .container > p:last-of-type {
+  margin: 30px 0 0;
+  text-align: center;
+}
+
+.contact .social {
+  position: static;
+  margin: 28px 0 6px;
+  bottom: auto;
+}
+
+@media screen and (max-width: 700px) {
+  .contact {
+    padding: 42px 20px 28px;
+  }
+
+  .contact header {
+    padding: 22px 28px;
+  }
+
+  .contact .container {
+    margin-top: 72px;
+    padding: 0;
+    justify-content: flex-start;
+  }
+
+  .contact .container > p:first-child {
+    margin: 0 0 18px;
+    font-size: 1rem;
+    line-height: 1.4;
+    text-align: center;
+  }
+
+  .contact img {
+    width: min(74vw, 390px);
+    margin: 0 auto;
+  }
+
+  .contact .container > p:last-of-type {
+    max-width: 30ch;
+    margin: 28px auto 0;
+    font-size: 0.98rem;
+    line-height: 1.5;
+    text-align: center;
+  }
+
+  .contact .social {
+    position: static;
+    gap: 18px;
+    margin: 24px 0 8px;
+  }
+
+  .contact .social li a {
+    width: 52px;
+    height: 52px;
+  }
+
+  .contact .social-icon {
+    width: 40px;
+    height: 40px;
   }
 }
