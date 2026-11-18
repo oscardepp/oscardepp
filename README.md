@@ -1,6 +1,6 @@
 ### Hi
 
-I'm a quantitative researcher at QRT in London & Paris. I recently completed my B.S. in Applied Math and M.S. in Computer Science from Northwestern University.
+I'm a researcher working in Europe. I recently completed my B.S. in Applied Math and M.S. in Computer Science from Northwestern University.
 I have experience in Optimal Control, Deep Learning (diffusion models), Large Scale Simulations, and Quantitative Equity Research and RMBS modeling.
 On my GitHub page, you'll find computer science, applied mathematics, robotics, aerospace, and design projects I've done in classes and in my free time. My projects blends together creative design with computer science and simulation work. Below you will find links to my work!
 My website is @ www.oscardepp.com
